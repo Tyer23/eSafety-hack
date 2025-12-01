@@ -1,0 +1,16 @@
+{
+  "parent_01": {
+    "password": "1234",
+    "role": "parent"
+  },
+
+  "kid_01": {
+    "password": "abcd",
+    "role": "child"
+  },
+
+  "kid_02": {
+    "password": "efgh",
+    "role": "child"
+  }
+}
