@@ -1,0 +1,312 @@
+"use client";
+
+import { useState, useMemo } from "react";
+
+interface MonthData {
+  month: string;
+  jamie: number;
+  emma: number;
+}
+
+type Metric = "positivity" | "kindness" | "privacy" | "wellbeing";
+
+export default function ThemeTrendsGraph() {
+  const [selectedMonthIndex, setSelectedMonthIndex] = useState(11); // Start at most recent month
+  const [selectedMetric, setSelectedMetric] = useState<Metric>("positivity");
+
+  // Generate month names for the past 12 months
+  const getMonthNames = () => {
+    const months: string[] = [];
+    const monthAbbr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const today = new Date();
+    
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+      months.push(monthAbbr[date.getMonth()]);
+    }
+    return months;
+  };
+
+  const monthNames = getMonthNames();
+
+  // Generate data for the past 12 months with different metrics
+  const generateData = (): Record<Metric, MonthData[]> => {
+    const baseData: MonthData[] = [];
+    const today = new Date();
+    
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+      const monthAbbr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const monthName = monthAbbr[date.getMonth()];
+      
+      // Generate realistic-looking data with some variation
+      const baseJamie = 75 + Math.sin(i * 0.5) * 15 + (Math.random() - 0.5) * 10;
+      const baseEmma = 80 + Math.cos(i * 0.5) * 12 + (Math.random() - 0.5) * 8;
+      
+      baseData.push({
+        month: monthName,
+        jamie: Math.max(50, Math.min(100, Math.round(baseJamie))),
+        emma: Math.max(55, Math.min(100, Math.round(baseEmma)))
+      });
+    }
+
+    // Different metrics have slight variations
+    return {
+      positivity: baseData.map(d => ({
+        ...d,
+        jamie: d.jamie,
+        emma: d.emma
+      })),
+      kindness: baseData.map(d => ({
+        ...d,
+        jamie: Math.max(50, Math.min(100, d.jamie + (Math.random() - 0.5) * 5)),
+        emma: Math.max(55, Math.min(100, d.emma + (Math.random() - 0.5) * 5))
+      })),
+      privacy: baseData.map(d => ({
+        ...d,
+        jamie: Math.max(50, Math.min(100, d.jamie - 5 + (Math.random() - 0.5) * 8)),
+        emma: Math.max(55, Math.min(100, d.emma - 3 + (Math.random() - 0.5) * 8))
+      })),
+      wellbeing: baseData.map(d => ({
+        ...d,
+        jamie: Math.max(50, Math.min(100, d.jamie + 3 + (Math.random() - 0.5) * 6)),
+        emma: Math.max(55, Math.min(100, d.emma + 5 + (Math.random() - 0.5) * 6))
+      }))
+    };
+  };
+
+  const allData = useMemo(() => generateData(), []);
+  const data = allData[selectedMetric];
+
+  const graphHeight = 300;
+  const graphWidth = 600;
+  const maxValue = 100;
+  const padding = 40;
+
+  const getY = (value: number) => {
+    return graphHeight - padding - (value / maxValue) * (graphHeight - padding * 2);
+  };
+
+  const getX = (index: number) => {
+    return padding + (index / (data.length - 1)) * (graphWidth - padding * 2);
+  };
+
+  // Generate smooth curve points using bezier-like interpolation
+  const generateSmoothPoints = (values: number[]) => {
+    const points: string[] = [];
+    values.forEach((value, i) => {
+      const x = getX(i);
+      const y = getY(value);
+      if (i === 0) {
+        points.push(`M ${x} ${y}`);
+      } else {
+        const prevX = getX(i - 1);
+        const prevY = getY(values[i - 1]);
+        const cp1x = prevX + (x - prevX) / 2;
+        const cp1y = prevY;
+        const cp2x = x - (x - prevX) / 2;
+        const cp2y = y;
+        points.push(`C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x} ${y}`);
+      }
+    });
+    return points.join(" ");
+  };
+
+  const jamiePath = generateSmoothPoints(data.map(d => d.jamie));
+  const emmaPath = generateSmoothPoints(data.map(d => d.emma));
+
+  const metricLabels: Record<Metric, string> = {
+    positivity: "Positivity",
+    kindness: "Kindness",
+    privacy: "Privacy Awareness",
+    wellbeing: "Digital Wellbeing"
+  };
+
+  const scrollMonths = (direction: "up" | "down") => {
+    if (direction === "up" && selectedMonthIndex > 0) {
+      setSelectedMonthIndex(selectedMonthIndex - 1);
+    } else if (direction === "down" && selectedMonthIndex < monthNames.length - 1) {
+      setSelectedMonthIndex(selectedMonthIndex + 1);
+    }
+  };
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      {/* Header */}
+      <div className="mb-6 flex items-start justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900">Positivity</h2>
+          <p className="text-sm text-slate-500 mt-1">Children&apos;s positivity metrics</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-slate-600">Range:</span>
+          <select
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-pastel-purple-300"
+            defaultValue="Last 12 months"
+          >
+            <option>Last 12 months</option>
+            <option>Last 6 months</option>
+            <option>Last 3 months</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="flex gap-6">
+        {/* Left Sidebar - Months (Scrollable) */}
+        <div className="flex flex-col items-center gap-2 max-h-[300px] overflow-y-auto">
+          <button
+            onClick={() => scrollMonths("up")}
+            disabled={selectedMonthIndex === 0}
+            className={`text-slate-400 hover:text-slate-600 mb-1 ${selectedMonthIndex === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+          {monthNames.map((month, index) => (
+            <button
+              key={`${month}-${index}`}
+              onClick={() => setSelectedMonthIndex(index)}
+              className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
+                selectedMonthIndex === index
+                  ? "bg-pastel-blue-500 text-white"
+                  : "text-slate-600 hover:bg-slate-100"
+              }`}
+            >
+              {month}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollMonths("down")}
+            disabled={selectedMonthIndex === monthNames.length - 1}
+            className={`text-slate-400 hover:text-slate-600 mt-1 ${selectedMonthIndex === monthNames.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Main Graph Area */}
+        <div className="flex-1 relative">
+          {/* Graph Container with dotted background */}
+          <div
+            className="relative rounded-lg border border-slate-200"
+            style={{
+              height: `${graphHeight}px`,
+              backgroundImage: `radial-gradient(circle, #cbd5e1 1px, transparent 1px)`,
+              backgroundSize: "20px 20px",
+              backgroundPosition: "0 0",
+            }}
+          >
+            <svg
+              width="100%"
+              height={graphHeight}
+              className="absolute inset-0"
+              viewBox={`0 0 ${graphWidth} ${graphHeight}`}
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {/* Grid lines */}
+              {[0, 25, 50, 75, 100].map((value) => {
+                const y = getY(value);
+                return (
+                  <line
+                    key={value}
+                    x1={padding}
+                    y1={y}
+                    x2={graphWidth - padding}
+                    y2={y}
+                    stroke="#e2e8f0"
+                    strokeWidth="1"
+                    strokeDasharray="2 2"
+                  />
+                );
+              })}
+
+              {/* Jamie's Line (Red) */}
+              <path
+                d={jamiePath}
+                fill="none"
+                stroke="#ef4444"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              {/* Emma's Line (Purple) */}
+              <path
+                d={emmaPath}
+                fill="none"
+                stroke="#a855f7"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              {/* Data points for Jamie */}
+              {data.map((d, i) => {
+                const x = getX(i);
+                const y = getY(d.jamie);
+                return (
+                  <circle
+                    key={`jamie-${i}`}
+                    cx={x}
+                    cy={y}
+                    r="4"
+                    fill="#ef4444"
+                    className="drop-shadow-sm"
+                  />
+                );
+              })}
+
+              {/* Data points for Emma */}
+              {data.map((d, i) => {
+                const x = getX(i);
+                const y = getY(d.emma);
+                return (
+                  <circle
+                    key={`emma-${i}`}
+                    cx={x}
+                    cy={y}
+                    r="4"
+                    fill="#a855f7"
+                    className="drop-shadow-sm"
+                  />
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Bottom Section with Legend and Filter */}
+          <div className="mt-4 flex items-end justify-between">
+            {/* Legend */}
+            <div className="flex items-center gap-6 text-xs">
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded bg-red-500" />
+                <span className="text-slate-700 font-medium">Jamie</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded bg-purple-500" />
+                <span className="text-slate-700 font-medium">Emma</span>
+              </div>
+            </div>
+
+            {/* Metric Filter */}
+            <div className="text-right">
+              <select
+                value={selectedMetric}
+                onChange={(e) => setSelectedMetric(e.target.value as Metric)}
+                className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-pastel-purple-300"
+              >
+                <option value="positivity">Positivity</option>
+                <option value="kindness">Kindness</option>
+                <option value="privacy">Privacy Awareness</option>
+                <option value="wellbeing">Digital Wellbeing</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
