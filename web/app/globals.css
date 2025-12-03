@@ -2,11 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "SF Pro Display", sans-serif;
-  background: #fdf2f8;
-  color: #0f172a;
+@layer base {
+  :root {
+    /* KindNet Brand Colors (from Figma) */
+    --kindnet-blurple: #6B7FFF;
+    --kindnet-blurple-light: #E8EBFF;
+    --kindnet-blurple-dark: #4A5FCC;
+
+    /* Traffic Light System */
+    --safe-green: #7ED957;
+    --caution-amber: #FF9F40;
+    --alert-red: #FF6B6B;
+
+    /* Neutrals (iOS 18 Style) */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F9F9F9;
+    --surface-card: #FFFFFF;
+
+    --text-primary: #1C1C1E;
+    --text-secondary: #48484A;
+    --text-tertiary: #8E8E93;
+
+    --divider: #E5E5EA;
+    --divider-subtle: #F2F2F7;
+
+    /* Shadows (iOS 18 - Very Subtle) */
+    --shadow-soft: 0 1px 4px rgba(0, 0, 0, 0.04);
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-float: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+    /* Radix UI CSS Variables */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 239 84% 71%;  /* blurple #6B7FFF */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 239 84% 71%;  /* blurple */
+    --chart-1: 120 60% 55%;  /* safe green */
+    --chart-2: 30 100% 63%;  /* caution */
+    --chart-3: 0 85% 72%;    /* alert */
+    --chart-4: 239 84% 71%;  /* blurple */
+    --chart-5: 240 4.8% 95.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 239 84% 71%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 239 84% 71%;
+    --chart-1: 120 60% 45%;
+    --chart-2: 30 100% 53%;
+    --chart-3: 0 85% 62%;
+    --chart-4: 239 84% 61%;
+    --chart-5: 240 3.7% 25.9%;
+  }
 }
 
+@layer base {
+  * {
+    @apply border-border;
+  }
 
+  body {
+    @apply bg-white text-gray-800;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* iOS 18 Typography Utilities */
+  .text-body {
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.41px;
+  }
+
+  .text-callout {
+    font-size: 16px;
+    line-height: 1.31;
+    letter-spacing: -0.32px;
+  }
+
+  .text-subhead {
+    font-size: 15px;
+    line-height: 1.33;
+    letter-spacing: -0.24px;
+  }
+
+  .text-footnote {
+    font-size: 13px;
+    line-height: 1.38;
+    letter-spacing: -0.08px;
+  }
+
+  .text-caption {
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: 0px;
+  }
+}

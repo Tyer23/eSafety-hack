@@ -35,13 +35,13 @@ export default function ActivityCalendar() {
   const getStatusColor = (status: DayStatus["status"]) => {
     switch (status) {
       case "excellent":
-        return "bg-pastel-purple-400/60";
+        return "bg-safe/60";
       case "good":
-        return "bg-pastel-blue-400/60";
+        return "bg-blurple/60";
       case "needs-attention":
-        return "bg-pastel-pink-400/60";
+        return "bg-caution/60";
       default:
-        return "bg-slate-100";
+        return "bg-gray-100";
     }
   };
 
@@ -79,24 +79,24 @@ export default function ActivityCalendar() {
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-slate-900">
+          <h3 className="text-subhead font-semibold text-gray-900">
             {monthNames[currentMonth]} {currentYear}
           </h3>
-          <p className="text-xs text-slate-500">Daily activity overview</p>
+          <p className="text-footnote text-gray-500">Daily activity overview</p>
         </div>
         <div className="flex gap-2">
           <button
             onClick={goToPreviousMonth}
-            className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-600 hover:bg-slate-50"
+            className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
           >
             ←
           </button>
           <button
             onClick={goToNextMonth}
-            className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-600 hover:bg-slate-50"
+            className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
           >
             →
           </button>
@@ -108,7 +108,7 @@ export default function ActivityCalendar() {
         {weekDays.map((day) => (
           <div
             key={day}
-            className="py-2 text-center text-[10px] font-medium text-slate-500"
+            className="py-2 text-center text-[10px] font-medium text-gray-500"
           >
             {day}
           </div>
@@ -134,15 +134,15 @@ export default function ActivityCalendar() {
                 <div
                   className={`h-8 w-8 rounded-full ${getStatusColor(
                     status
-                  )} flex items-center justify-center text-xs font-medium text-slate-800 shadow-sm backdrop-blur-sm`}
+                  )} flex items-center justify-center text-footnote font-medium text-gray-800 shadow-sm backdrop-blur-sm`}
                 >
                   {date}
                 </div>
               ) : (
                 <div
-                  className={`h-8 w-8 flex items-center justify-center text-xs text-slate-600 ${
+                  className={`h-8 w-8 flex items-center justify-center text-footnote text-gray-600 ${
                     isToday(date)
-                      ? "rounded-full border-2 border-pastel-blue-500 font-semibold"
+                      ? "rounded-full border-2 border-blurple font-semibold"
                       : ""
                   }`}
                 >
@@ -155,18 +155,18 @@ export default function ActivityCalendar() {
       </div>
 
       {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-4 text-xs">
+      <div className="mt-4 flex flex-wrap gap-4 text-footnote">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-pastel-purple-400/60" />
-          <span className="text-slate-700">Excellent day</span>
+          <div className="h-3 w-3 rounded-full bg-safe/60" />
+          <span className="text-gray-700">Excellent day</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-pastel-blue-400/60" />
-          <span className="text-slate-700">Good day</span>
+          <div className="h-3 w-3 rounded-full bg-blurple/60" />
+          <span className="text-gray-700">Good day</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-pastel-pink-400/60" />
-          <span className="text-slate-700">Needs attention</span>
+          <div className="h-3 w-3 rounded-full bg-caution/60" />
+          <span className="text-gray-700">Needs attention</span>
         </div>
       </div>
     </div>

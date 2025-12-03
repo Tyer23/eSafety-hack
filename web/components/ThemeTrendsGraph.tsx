@@ -131,17 +131,17 @@ export default function ThemeTrendsGraph() {
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
       {/* Header */}
       <div className="mb-6 flex items-start justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Positivity</h2>
-          <p className="text-sm text-slate-500 mt-1">Children&apos;s positivity metrics</p>
+          <h2 className="text-title-2 font-bold text-gray-900">Positivity</h2>
+          <p className="text-subhead text-gray-500 mt-1">Children&apos;s positivity metrics</p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-600">Range:</span>
+          <span className="text-footnote text-gray-600">Range:</span>
           <select
-            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-pastel-purple-300"
+            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-footnote font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blurple transition-colors"
             defaultValue="Last 12 months"
           >
             <option>Last 12 months</option>
@@ -157,7 +157,7 @@ export default function ThemeTrendsGraph() {
           <button
             onClick={() => scrollMonths("up")}
             disabled={selectedMonthIndex === 0}
-            className={`text-slate-400 hover:text-slate-600 mb-1 ${selectedMonthIndex === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className={`text-gray-400 hover:text-gray-600 mb-1 ${selectedMonthIndex === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
@@ -167,10 +167,10 @@ export default function ThemeTrendsGraph() {
             <button
               key={`${month}-${index}`}
               onClick={() => setSelectedMonthIndex(index)}
-              className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`px-3 py-2 rounded-lg text-footnote font-medium transition-colors whitespace-nowrap ${
                 selectedMonthIndex === index
-                  ? "bg-pastel-blue-500 text-white"
-                  : "text-slate-600 hover:bg-slate-100"
+                  ? "bg-blurple text-white"
+                  : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               {month}
@@ -179,7 +179,7 @@ export default function ThemeTrendsGraph() {
           <button
             onClick={() => scrollMonths("down")}
             disabled={selectedMonthIndex === monthNames.length - 1}
-            className={`text-slate-400 hover:text-slate-600 mt-1 ${selectedMonthIndex === monthNames.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className={`text-gray-400 hover:text-gray-600 mt-1 ${selectedMonthIndex === monthNames.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -223,21 +223,21 @@ export default function ThemeTrendsGraph() {
                 );
               })}
 
-              {/* Jamie's Line (Red) */}
+              {/* Jamie's Line (Alert Red) */}
               <path
                 d={jamiePath}
                 fill="none"
-                stroke="#ef4444"
+                stroke="#FF6B6B"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
 
-              {/* Emma's Line (Purple) */}
+              {/* Emma's Line (Blurple) */}
               <path
                 d={emmaPath}
                 fill="none"
-                stroke="#a855f7"
+                stroke="#6B7FFF"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -253,7 +253,7 @@ export default function ThemeTrendsGraph() {
                     cx={x}
                     cy={y}
                     r="4"
-                    fill="#ef4444"
+                    fill="#FF6B6B"
                     className="drop-shadow-sm"
                   />
                 );
@@ -269,7 +269,7 @@ export default function ThemeTrendsGraph() {
                     cx={x}
                     cy={y}
                     r="4"
-                    fill="#a855f7"
+                    fill="#6B7FFF"
                     className="drop-shadow-sm"
                   />
                 );
@@ -280,14 +280,14 @@ export default function ThemeTrendsGraph() {
           {/* Bottom Section with Legend and Filter */}
           <div className="mt-4 flex items-end justify-between">
             {/* Legend */}
-            <div className="flex items-center gap-6 text-xs">
+            <div className="flex items-center gap-6 text-footnote">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded bg-red-500" />
-                <span className="text-slate-700 font-medium">Jamie</span>
+                <div className="h-3 w-3 rounded bg-alert" />
+                <span className="text-gray-700 font-medium">Jamie</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded bg-purple-500" />
-                <span className="text-slate-700 font-medium">Emma</span>
+                <div className="h-3 w-3 rounded bg-blurple" />
+                <span className="text-gray-700 font-medium">Emma</span>
               </div>
             </div>
 
@@ -296,7 +296,7 @@ export default function ThemeTrendsGraph() {
               <select
                 value={selectedMetric}
                 onChange={(e) => setSelectedMetric(e.target.value as Metric)}
-                className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-pastel-purple-300"
+                className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-footnote font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blurple transition-colors"
               >
                 <option value="positivity">Positivity</option>
                 <option value="kindness">Kindness</option>
