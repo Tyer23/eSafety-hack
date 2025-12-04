@@ -15,11 +15,13 @@ Next.js 14 + React 18 + TypeScript prototype of the **KindNet** parent dashboard
 
 This project uses a comprehensive iOS 18-inspired design system with:
 - Design tokens (colors, typography, spacing, shadows)
-- Reusable UI primitives (Button, Card, Input, Badge, ChatBubble)
+- Reusable UI primitives (Button, Card, Input, Badge, ChatBubble, Icon)
 - Accessibility-first components (WCAG AA compliance)
 - Mobile-first responsive patterns
+- Comprehensive icon system with Lucide React
 
 **📖 Design System Documentation:** `.design-system/design-system.md`
+**📖 Icon System Guide:** `.design-system/icon-system-guide.md`
 
 ### What's Included
 
