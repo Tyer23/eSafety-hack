@@ -22,11 +22,17 @@
    - [Breakpoints](#breakpoints)
    - [Animations](#animations)
 5. [Icon System](#icon-system)
-6. [Component Architecture](#component-architecture)
-7. [Component Specifications](#component-specifications)
-8. [Coding Standards](#coding-standards)
-9. [Accessibility](#accessibility)
-10. [File Structure](#file-structure)
+6. [Jellybeat Mascot](#jellybeat-mascot)
+7. [Component Architecture](#component-architecture)
+8. [Component Specifications](#component-specifications)
+9. [Coding Standards](#coding-standards)
+10. [Accessibility](#accessibility)
+11. [Responsive Patterns](#responsive-patterns)
+12. [Common Pitfalls to Avoid](#common-pitfalls-to-avoid)
+13. [Component Checklist](#component-checklist)
+14. [Quick Reference](#quick-reference)
+15. [Resources](#resources)
+16. [Need Help?](#need-help)
 
 ---
 
@@ -751,6 +757,189 @@ const CustomComponent: React.FC<CustomProps> = ({ icon, size = "md" }) => {
 
 ---
 
+## Jellybeat Mascot
+
+**Purpose:** Friendly, approachable branding with semantic color states
+**File Format:** 600×600px PNG with transparency
+**Location:** `.design-system/assets-mascot/` (source) and `/images/` (public)
+
+### Color Variants & Semantic Meanings
+
+Jellybeat comes in 4 color variants, each with specific semantic use cases:
+
+| Variant | Filename | Semantic Meaning | Use Cases | Examples |
+|---------|----------|------------------|-----------|----------|
+| **Rainbow** 🌈 | `jellybeat-rainbow-full.png` | Default/Primary | Main branding, navigation, favicon | Logo, desktop nav, login page, chat avatar |
+| **Green** 💚 | `jellybeat-green-full.png` | Success/Positive | Completion, achievements, positive feedback | Success messages, celebration screens |
+| **Amber** 💛 | `jellybeat-amber-full.png` | Loading/Caution | Processing states, warnings | Loading screens, cautionary notices |
+| **Red** ❤️ | `jellybeat-red-full.png` | Error/Alert | Error states, critical warnings | 404 page, error boundaries, alerts |
+
+### Asset Specifications
+
+- **Dimensions:** 600×600px square
+- **Format:** PNG with alpha channel (transparency)
+- **File Size:** ~400-410KB each
+- **Compression:** Optimized for web
+- **Aspect Ratio:** 1:1 (square)
+
+### Using the Logo Component
+
+The `Logo` component provides a flexible, type-safe way to use Jellybeat throughout the app.
+
+#### Component API
+
+```tsx
+import Logo from '@/components/Logo'
+
+type JellybeatVariant = "rainbow" | "green" | "amber" | "red"
+type LogoVariant = "icon" | "horizontal"
+type LogoSize = "sm" | "md" | "lg" | "xl"
+
+interface LogoProps {
+  variant?: LogoVariant          // "icon" or "horizontal" (default)
+  jellybeatVariant?: JellybeatVariant  // Color variant (default: "rainbow")
+  size?: LogoSize                // Size preset (default: "md")
+  className?: string             // Additional Tailwind classes
+}
+```
+
+#### Basic Usage
+
+```tsx
+// Default: horizontal lockup with rainbow Jellybeat (40px)
+<Logo />
+
+// Icon only
+<Logo variant="icon" />
+
+// Different sizes
+<Logo size="sm" />  // 32px
+<Logo size="md" />  // 40px (default)
+<Logo size="lg" />  // 48px
+<Logo size="xl" />  // 64px
+```
+
+#### Semantic State Examples
+
+```tsx
+// Success state (green)
+<Logo jellybeatVariant="green" variant="icon" size="xl" />
+
+// Loading state (amber)
+<Logo jellybeatVariant="amber" variant="icon" size="lg" />
+
+// Error state (red)
+<Logo jellybeatVariant="red" variant="icon" size="xl" />
+
+// Primary branding (rainbow)
+<Logo jellybeatVariant="rainbow" variant="horizontal" size="md" />
+```
+
+#### Real-World Examples
+
+```tsx
+// Desktop navigation
+<Logo variant="horizontal" size="md" />
+
+// Mobile bottom nav
+<Logo variant="icon" size="sm" />
+
+// Chat AI avatar
+<Logo variant="icon" jellybeatVariant="rainbow" size="md" />
+
+// Loading screen
+<div className="flex flex-col items-center gap-4">
+  <Logo variant="icon" jellybeatVariant="amber" size="xl" />
+  <p className="text-gray-600">Loading your dashboard...</p>
+</div>
+
+// 404 page
+<div className="flex flex-col items-center gap-4">
+  <Logo variant="icon" jellybeatVariant="red" size="xl" />
+  <h1 className="text-h1">Page Not Found</h1>
+</div>
+```
+
+### Direct Image Usage
+
+For custom implementations outside the Logo component:
+
+```tsx
+import Image from 'next/image'
+
+// Direct Next.js Image component usage
+<Image
+  src="/images/jellybeat-rainbow-full.png"
+  alt="Jellybeat mascot"
+  width={48}
+  height={48}
+  quality={100}
+  priority
+  className="object-contain"
+/>
+```
+
+#### Asset Paths
+
+- **Source files:** `.design-system/assets-mascot/jellybeat-{color}-full.png`
+- **Public files:** `/images/jellybeat-{color}-full.png`
+- **Available colors:** `rainbow`, `green`, `amber`, `red`
+
+### Size Guidelines
+
+| Size Preset | Pixel Size | Use Case |
+|-------------|------------|----------|
+| `sm` | 32×32px | Compact UI, mobile bottom nav |
+| `md` | 40×40px | Default, chat avatars, icons |
+| `lg` | 48×48px | Prominent branding, headers |
+| `xl` | 64×64px | Hero sections, error states |
+
+### Image Optimization
+
+The Logo component uses Next.js Image with optimization settings:
+- **quality={100}** - Maximum quality to prevent blurriness
+- **priority** - Preloads for above-the-fold usage
+- **Explicit width/height** - Prevents layout shift
+- **object-contain** - Preserves aspect ratio
+
+### Best Practices
+
+#### ✅ DO
+- Use rainbow variant for primary branding
+- Use semantic colors to communicate state (green=success, amber=loading, red=error)
+- Use the Logo component for consistent rendering
+- Specify explicit sizes for better performance
+- Use `variant="icon"` for compact layouts
+- Use `quality={100}` when using Next.js Image directly
+
+#### ❌ DON'T
+- Don't use red Jellybeat for positive messages
+- Don't use green Jellybeat for errors
+- Don't mix color meanings (e.g., amber for success)
+- Don't scale beyond 64px without re-optimization
+- Don't use low quality settings (causes blurriness)
+- Don't use CSS background-image (prevents optimization)
+
+### Accessibility
+
+- **Alt text:** Always provide descriptive alt text
+  - Default: "Jellybeat mascot"
+  - Context-specific: "Loading", "Error", "Success", etc.
+- **Focus states:** Logo component inherits focus styles when interactive
+- **Color contrast:** All variants meet WCAG AA contrast requirements
+- **Screen readers:** Semantic meaning conveyed through surrounding context
+
+### Component Implementation Reference
+
+See `/components/Logo.tsx` for full implementation details:
+- Type-safe variant props
+- Responsive sizing logic
+- Next.js Image optimization
+- Horizontal lockup with branding text
+- Icon-only variant for compact layouts
+
+---
+
 ## Component Architecture
 
 ### Technology Stack
@@ -959,23 +1148,51 @@ import { Input } from '@/components/ui/input'
 
 **Built with:** CVA variants
 
+**Design Philosophy:** All badges use outline style (border + transparent background) except for small size which uses filled style with white text.
+
 #### Usage
 ```tsx
 import { Badge } from '@/components/ui/badge'
 
+// Default badge (blurple outline)
 <Badge variant="default">Default</Badge>
+
+// Secondary badge (gray outline)
 <Badge variant="secondary">Secondary</Badge>
+
+// Success badge (green outline)
 <Badge variant="success">Success</Badge>
+
+// Warning badge (amber outline)
 <Badge variant="warning">Warning</Badge>
+
+// Destructive badge (red outline)
 <Badge variant="destructive">Alert</Badge>
+
+// Outline badge (light gray outline)
 <Badge variant="outline">Outline</Badge>
+
+// Small size (filled with white text)
+<Badge size="sm">Small</Badge>
 ```
 
+#### Variants
+- **default:** Blurple border, blurple text, transparent bg
+- **secondary:** Dark gray (gray-700) border and text, transparent bg
+- **success:** Safe green border and text, transparent bg
+- **warning:** Caution amber border and text, transparent bg
+- **destructive:** Alert red border and text, transparent bg
+- **outline:** Dark gray (gray-700) border and text, transparent bg
+
 #### Specifications
-- **Padding:** 10px horizontal, 2px vertical
+- **Padding:** 10px horizontal, 2px vertical (default), 8px/2px (sm)
 - **Border radius:** 8px
-- **Font size:** 13px (footnote)
-- **Font weight:** 500 (medium)
+- **Border width:** 2px (all variants)
+- **Font size:** 13px footnote (default), 11px (sm)
+- **Font weight:** 600 (semibold)
+
+#### Size Exception
+- **sm size:** Filled style with bg-blurple, text-white, no border (exception to outline rule)
 
 ---
 
