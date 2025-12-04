@@ -21,12 +21,16 @@ class ClassificationResult:
 class DecisionEngine:
     """Determines message classification."""
     
-    # Issues that immediately trigger RED
+    # Issues that immediately trigger RED (critical/severe)
     RED_FLAGS = {
-        DetectedIssue.HATE_SPEECH,  # Highest priority - hate speech is always RED
-        DetectedIssue.THREAT,
-        DetectedIssue.PROFANITY,
-        DetectedIssue.PERSONAL_ATTACK,
+        DetectedIssue.SELF_HARM,  # Highest priority - immediate danger
+        DetectedIssue.HATE_SPEECH,  # Hate speech is always RED
+        DetectedIssue.SEXUAL_CONTENT,  # Sexual content is always RED for kids
+        DetectedIssue.THREAT,  # Threats are always RED
+        DetectedIssue.VIOLENCE,  # Violence is always RED
+        DetectedIssue.PROFANITY,  # Profanity is RED
+        DetectedIssue.PERSONAL_ATTACK,  # Personal attacks are RED
+        DetectedIssue.BULLYING,  # Bullying is RED
     }
     
     # Issues that trigger YELLOW
@@ -67,6 +71,16 @@ class DecisionEngine:
         for issue in analysis.detected_issues:
             if issue in self.YELLOW_FLAGS:
                 reasons.append(f"Detected: {issue.value}")
+        
+        # Age-inappropriate content should be at least YELLOW
+        if DetectedIssue.AGE_INAPPROPRIATE in analysis.detected_issues:
+            reasons.append("Age-inappropriate content detected")
+            return ClassificationResult(
+                classification=Classification.YELLOW,
+                confidence=0.8,
+                reasons=reasons,
+                feedback_type="gentle_suggestion"
+            )
         
         if reasons or analysis.toxicity.score > 0.3:
             if not reasons:

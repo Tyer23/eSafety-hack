@@ -18,7 +18,7 @@ class PatternAnalyzer:
     
     THREAT_PATTERNS = [
         r"(go\s+)?die", r"kill\s+(your)?self", r"kys",
-        r"(i'?ll|gonna|going to)\s+(hit|punch|kick|hurt|kill)",
+        r"(i'?ll|gonna|going to)\s+(hit|punch|kick|hurt|kill)\s+you",  # Only if directed at "you"
         r"you'?re\s+(dead|done|finished)", r"hope you die",
         r"wish you were dead", r"drop dead",
     ]
@@ -68,6 +68,14 @@ class PatternAnalyzer:
         self.dismissive_re = [re.compile(p, re.IGNORECASE) for p in self.DISMISSIVE_PATTERNS]
         self.hate_speech_re = [re.compile(p, re.IGNORECASE) for p in self.HATE_SPEECH_PATTERNS]
     
+    VIOLENCE_PATTERNS = [
+        r"i'?ll\s+(beat|punch|kick|hit|attack|hurt)\s+(you|them)",
+        r"i'?m\s+going\s+to\s+(beat|punch|kick|hit|attack|hurt)\s+(you|them)",
+        r"let'?s\s+fight",
+        r"i\s+want\s+to\s+(fight|hurt|attack)",
+        r"i'?m\s+going\s+to\s+attack\s+(them|you)",
+    ]
+    
     def analyze(self, text: str) -> PatternResult:
         text_lower = text.lower()
         matched: List[str] = []
@@ -80,6 +88,10 @@ class PatternAnalyzer:
         hate_speech = self._check_patterns(text, self.hate_speech_re, matched, "hate_speech")
         personal_attack = self._check_personal_attacks(text_lower, matched)
         
+        # Check for violence
+        violence_re = [re.compile(p, re.IGNORECASE) for p in self.VIOLENCE_PATTERNS]
+        violence = self._check_patterns(text, violence_re, matched, "violence")
+        
         return PatternResult(
             exclusion_detected=exclusion,
             harsh_criticism_detected=harsh,
@@ -88,6 +100,7 @@ class PatternAnalyzer:
             threat_detected=threat,
             profanity_detected=profanity,
             hate_speech_detected=hate_speech,
+            violence_detected=violence,
             matched_patterns=matched
         )
     

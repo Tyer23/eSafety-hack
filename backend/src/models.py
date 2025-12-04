@@ -45,6 +45,11 @@ class DetectedIssue(str, Enum):
     NAME_CALLING = "name_calling"
     PROFANITY = "profanity"
     HATE_SPEECH = "hate_speech"
+    SEXUAL_CONTENT = "sexual_content"
+    BULLYING = "bullying"
+    SELF_HARM = "self_harm"
+    AGE_INAPPROPRIATE = "age_inappropriate"
+    VIOLENCE = "violence"
 
 
 class ToxicityResult(BaseModel):
@@ -67,6 +72,11 @@ class PatternResult(BaseModel):
     threat_detected: bool = False
     profanity_detected: bool = False
     hate_speech_detected: bool = False
+    sexual_content_detected: bool = False
+    bullying_detected: bool = False
+    self_harm_detected: bool = False
+    age_inappropriate_detected: bool = False
+    violence_detected: bool = False
     matched_patterns: List[str] = Field(default_factory=list)
 
 
