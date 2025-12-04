@@ -166,7 +166,7 @@ export default function ParentChatPanel() {
               timestamp={message.timestamp}
               avatarUrl={
                 message.from === 'assistant'
-                  ? 'https://api.dicebear.com/7.x/bottts/svg?seed=kindnet'
+                  ? '/images/jellybeat-rainbow-full.png'
                   : undefined
               }
             />
