@@ -1,0 +1,49 @@
+# Kid Message Safety System - Docker Compose
+# Run: docker-compose up -d
+
+version: '3.8'
+
+services:
+  # Main API service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kids-safety-api
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - USE_MODELS=true
+      - FEEDBACK_MODE=hf_llm
+      - CACHE_ENABLED=true
+      - DEVICE=cpu
+      - AGE_RANGE=8-10
+      - HF_API_KEY=${HF_API_KEY}
+      - HF_MODEL_ID=${HF_MODEL_ID}
+    volumes:
+      # Persist downloaded models
+      - ./models:/app/models
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Optional: Redis for distributed caching
+  # Uncomment if scaling to multiple instances
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: kids-safety-redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis-data:/data
+  #   restart: unless-stopped
+
+# volumes:
+#   redis-data:
+
