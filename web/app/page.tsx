@@ -1,7 +1,55 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
 export default function HomePage() {
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState<"parent" | "child">("parent");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", password);
+
+      const response = await fetch("/api/login", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.ok && data.user.role === role) {
+        // Store user info in sessionStorage for now
+        sessionStorage.setItem("user", JSON.stringify(data.user));
+        
+        // Route based on role
+        if (data.user.role === "parent") {
+          router.push("/parent");
+        } else {
+          router.push(`/child/${data.user.username}`);
+        }
+      } else {
+        setError("Invalid username or password for selected role.");
+      }
+    } catch (err) {
+      setError("Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen px-4 py-6 md:px-0 md:py-0 bg-gray-50">
       {/* Mobile-first: single column, stacked layout */}
@@ -15,33 +63,58 @@ export default function HomePage() {
 
           <div className="space-y-3">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight text-gray-900">
-              Log in to your <span className="text-blurple">Parent</span>{" "}
-              dashboard
+              Welcome to <span className="text-blurple">KindNet</span>
             </h1>
             <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-xl">
-              This demo shows how parents might see privacy‑respecting summaries
-              of their child&apos;s digital patterns, inspired by the Digital
-              Guardian concept. No real data is collected.
+              Log in as a parent to see your child&apos;s digital patterns, or as a child to explore safely online.
             </p>
           </div>
 
           {/* Login Form - iOS 18 design system */}
           <div className="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 max-w-md shadow-card">
-            <form
-              className="space-y-4"
-              method="POST"
-              action="/api/login"
-              // Let the client side handle navigation; the API just returns JSON.
-            >
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              {/* Role Selection */}
+              <div className="space-y-2">
+                <label className="text-footnote font-medium text-gray-700">
+                  I am a...
+                </label>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setRole("parent")}
+                    className={`flex-1 h-12 rounded-xl border-2 transition-all ${
+                      role === "parent"
+                        ? "border-blurple bg-blurple-light text-blurple font-semibold"
+                        : "border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    Parent
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRole("child")}
+                    className={`flex-1 h-12 rounded-xl border-2 transition-all ${
+                      role === "child"
+                        ? "border-blurple bg-blurple-light text-blurple font-semibold"
+                        : "border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    Child
+                  </button>
+                </div>
+              </div>
+
               <div className="space-y-1.5">
                 <label className="text-footnote font-medium text-gray-700">
                   Username
                 </label>
                 <input
                   name="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                   className="w-full h-12 rounded-xl border border-gray-200 bg-gray-50 px-4 text-body text-gray-900 placeholder:text-gray-500 outline-none focus:bg-white focus:ring-2 focus:ring-blurple focus:ring-offset-2 focus:border-blurple transition-all"
-                  placeholder="e.g. parent_01"
+                  placeholder={role === "parent" ? "e.g. parent_01" : "e.g. kid_01"}
                   autoComplete="username"
                 />
               </div>
@@ -51,28 +124,46 @@ export default function HomePage() {
                 </label>
                 <input
                   name="password"
-                  required
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                   className="w-full h-12 rounded-xl border border-gray-200 bg-gray-50 px-4 text-body text-gray-900 placeholder:text-gray-500 outline-none focus:bg-white focus:ring-2 focus:ring-blurple focus:ring-offset-2 focus:border-blurple transition-all"
                   placeholder="••••"
                   autoComplete="current-password"
                 />
               </div>
+
+              {error && (
+                <div className="rounded-lg bg-alert/10 border border-alert/20 px-3 py-2 text-footnote text-alert">
+                  {error}
+                </div>
+              )}
+
               <div className="rounded-lg bg-blurple-light px-3 py-2 text-footnote text-gray-700">
-                <div className="font-semibold text-gray-900">Demo account</div>
-                <div>Username: <span className="font-medium">parent_01</span> · Password: <span className="font-medium">1234</span></div>
+                <div className="font-semibold text-gray-900">Demo accounts</div>
+                <div className="mt-1 space-y-1">
+                  {role === "parent" ? (
+                    <>
+                      <div>Parent: <span className="font-medium">parent_01</span> / <span className="font-medium">1234</span></div>
+                    </>
+                  ) : (
+                    <>
+                      <div>Jamie: <span className="font-medium">kid_01</span> / <span className="font-medium">abcd</span></div>
+                      <div>Emma: <span className="font-medium">kid_02</span> / <span className="font-medium">efgh</span></div>
+                    </>
+                  )}
+                </div>
               </div>
+
               {/* iOS 18 button - 48px height for touch target */}
-              <Link
-                href="/parent"
-                className="inline-flex w-full items-center justify-center rounded-xl h-12 px-4 text-body font-semibold text-white bg-blurple shadow-sm transition-all hover:bg-blurple-dark active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blurple focus-visible:ring-offset-2"
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex w-full items-center justify-center rounded-xl h-12 px-4 text-body font-semibold text-white bg-blurple shadow-sm transition-all hover:bg-blurple-dark active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blurple focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Log in as parent_01
-              </Link>
-              <p className="text-[11px] text-gray-500 leading-relaxed">
-                For this MVP, authentication is a simple file‑based check and the
-                button above jumps you straight into the parent view.
-              </p>
+                {loading ? "Logging in..." : "Log in"}
+              </button>
             </form>
           </div>
         </section>
@@ -84,39 +175,58 @@ export default function HomePage() {
               How this MVP maps to the spec
             </h2>
             <Badge variant="secondary" className="self-start md:self-auto">
-              Parent dashboard
+              {role === "parent" ? "Parent dashboard" : "Child interface"}
             </Badge>
           </div>
           <ul className="space-y-2.5 text-footnote md:text-subhead text-gray-600">
-            <li>
-              <span className="font-semibold text-blurple">
-                Pattern view:
-              </span>{" "}
-              parents see themes (e.g. cyberbullying, personal info) rather than
-              raw messages.
-            </li>
-            <li>
-              <span className="font-semibold text-blurple">
-                AI chat placeholder:
-              </span>{" "}
-              a chat panel ready for ML integration in the next step.
-            </li>
-            <li>
-              <span className="font-semibold text-blurple">
-                Local JSON "DB":
-              </span>{" "}
-              fake parents, kids, and their risky words are stored in files, no
-              real backend yet.
-            </li>
+            {role === "parent" ? (
+              <>
+                <li>
+                  <span className="font-semibold text-blurple">
+                    Pattern view:
+                  </span>{" "}
+                  parents see themes (e.g. cyberbullying, personal info) rather than
+                  raw messages.
+                </li>
+                <li>
+                  <span className="font-semibold text-blurple">
+                    AI chat placeholder:
+                  </span>{" "}
+                  a chat panel ready for ML integration in the next step.
+                </li>
+                <li>
+                  <span className="font-semibold text-blurple">
+                    Local JSON "DB":
+                  </span>{" "}
+                  fake parents, kids, and their risky words are stored in files, no
+                  real backend yet.
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <span className="font-semibold text-blurple">
+                    Browser-like interface:
+                  </span>{" "}
+                  children can search and type messages in a safe, guided environment.
+                </li>
+                <li>
+                  <span className="font-semibold text-blurple">
+                    Real-time feedback:
+                  </span>{" "}
+                  the guardian mascot provides gentle guidance as children type.
+                </li>
+                <li>
+                  <span className="font-semibold text-blurple">
+                    Personalized experience:
+                  </span>{" "}
+                  each child sees their own customized interface.
+                </li>
+              </>
+            )}
           </ul>
-          <div className="mt-3 rounded-xl border border-gray-200 bg-gray-50 p-3 text-[11px] text-gray-600 leading-relaxed">
-            Next step will be wiring in the ML classification engine and
-            real‑time pattern updates.
-          </div>
         </section>
       </div>
     </div>
   );
 }
-
-
