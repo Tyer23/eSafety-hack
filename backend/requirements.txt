@@ -1,0 +1,17 @@
+# Core API dependencies
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Optional: ML models (will fall back to rules if not installed)
+# Uncomment if you want to use ML models (requires more disk space)
+# transformers>=4.35.0
+# torch>=2.1.0
+# sentencepiece>=0.1.99
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
