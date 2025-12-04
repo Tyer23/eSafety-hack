@@ -1,28 +1,31 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from 'react'
+import { cn } from '@/lib/utils'
 
 interface ChatBubbleProps {
   message: string
   timestamp?: string
-  variant: "ai" | "parent"
+  variant: 'ai' | 'parent'
   avatarUrl?: string
   className?: string
 }
 
 const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
   ({ message, timestamp, variant, avatarUrl, className }, ref) => {
-    if (variant === "ai") {
+    if (variant === 'ai') {
       return (
         <div
           ref={ref}
-          className={cn("flex gap-3 sm:gap-3.5 mb-6 items-start px-4 sm:px-6", className)}
+          className={cn(
+            'flex gap-3 sm:gap-3.5 mb-6 items-start px-4 sm:px-6',
+            className
+          )}
         >
           {/* Avatar */}
           {avatarUrl && (
             <img
               src={avatarUrl}
               alt="KindNet AI"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover flex-shrink-0 mt-0.5"
+              className="bg-white w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover flex-shrink-0 mt-0.5"
               style={{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)' }}
               loading="eager"
             />
@@ -57,7 +60,7 @@ const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
     return (
       <div
         ref={ref}
-        className={cn("flex justify-end mb-6 px-4 sm:px-6", className)}
+        className={cn('flex justify-end mb-6 px-4 sm:px-6', className)}
       >
         <div className="flex flex-col items-end max-w-[80%] sm:max-w-[75%]">
           {/* Bubble with parent message styling */}
@@ -84,7 +87,7 @@ const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
     )
   }
 )
-ChatBubble.displayName = "ChatBubble"
+ChatBubble.displayName = 'ChatBubble'
 
 export { ChatBubble }
 export type { ChatBubbleProps }

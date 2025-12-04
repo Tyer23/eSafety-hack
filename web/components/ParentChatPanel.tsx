@@ -149,7 +149,7 @@ export default function ParentChatPanel() {
           </div>
           <Badge variant="default">
             <span className="flex items-center gap-1.5">
-              <Icon icon={SparklesIcon} size="sm" className="text-white" />
+              <Icon icon={SparklesIcon} size="sm" className="text-inherit" />
               <span className="hidden sm:inline">AI Assistant</span>
               <span className="sm:hidden">AI</span>
             </span>
@@ -157,7 +157,7 @@ export default function ParentChatPanel() {
         </div>
 
         {/* Chat messages - mobile-first spacing with padding */}
-        <div className="mb-4 flex flex-1 flex-col overflow-y-auto rounded-xl border border-gray-200 bg-white p-4 min-h-0">
+        <div className="mb-4 flex flex-1 flex-col overflow-y-auto rounded-xl border border-gray-200 bg-white py-4 min-h-0">
           {messages.map((message) => (
             <ChatBubble
               key={message.id}
