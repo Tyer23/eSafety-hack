@@ -1,4 +1,5 @@
 import ParentWordsPanel from "../../../components/ParentWordsPanel";
+import ResponsiveLayout from "../../../components/ResponsiveLayout";
 
 export default function PatternsPage() {
   const children = [
@@ -39,47 +40,60 @@ export default function PatternsPage() {
   ];
 
   return (
-    <div className="space-y-5">
-      <div>
-        <h1 className="text-title-2 font-semibold tracking-tight text-gray-900">
-          Patterns &amp; data
-        </h1>
-        <p className="mt-2 text-subhead text-gray-600 max-w-xl">
-          When you want to peek under the hood, this view organises{" "}
-          <span className="font-semibold">themes, example phrases,</span> and
-          other signals into clear sections.
+    <ResponsiveLayout
+      mobileHeader={{
+        title: "Patterns & Data",
+      }}
+      showMobileNav={true}
+    >
+      <div className="space-y-5">
+        {/* Header - hidden on mobile (shown in MobileHeader instead) */}
+        <div className="hidden md:block">
+          <h1 className="text-title-2 font-semibold tracking-tight text-gray-900">
+            Patterns &amp; data
+          </h1>
+          <p className="mt-2 text-subhead text-gray-600 max-w-xl">
+            When you want to peek under the hood, this view organises{" "}
+            <span className="font-semibold">themes, example phrases,</span> and
+            other signals into clear sections.
+          </p>
+        </div>
+
+        {/* Mobile description - only shown on mobile */}
+        <p className="md:hidden text-sm text-gray-600 leading-relaxed">
+          Themes, example phrases, and other signals organized into clear sections.
         </p>
-      </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
-          >
-            <div className="mb-2 flex items-center justify-end">
-              <span
-                className={`text-footnote font-medium ${
-                  stat.trend === "up"
-                    ? "text-safe"
-                    : "text-caution"
-                }`}
-              >
-                {stat.change}
-              </span>
+        {/* Stats Grid - mobile-first: 2 columns, desktop: 4 columns */}
+        <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4 shadow-sm"
+            >
+              <div className="mb-2 flex items-center justify-end">
+                <span
+                  className={`text-[11px] md:text-footnote font-medium ${
+                    stat.trend === "up"
+                      ? "text-safe"
+                      : "text-caution"
+                  }`}
+                >
+                  {stat.change}
+                </span>
+              </div>
+              <div className={`text-xl md:text-title-2 font-bold ${stat.color}`}>
+                {stat.value}
+              </div>
+              <div className="mt-1 text-[11px] md:text-footnote font-medium text-gray-700 leading-tight">
+                {stat.label}
+              </div>
             </div>
-            <div className={`text-title-2 font-bold ${stat.color}`}>
-              {stat.value}
-            </div>
-            <div className="mt-1 text-footnote font-medium text-gray-700">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <ParentWordsPanel children={children} />
-    </div>
+        <ParentWordsPanel children={children} />
+      </div>
+    </ResponsiveLayout>
   );
 }
