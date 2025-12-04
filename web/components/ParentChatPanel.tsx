@@ -83,7 +83,7 @@ export default function ParentChatPanel() {
   return (
     <div className="h-full flex bg-gray-50">
       {/* Sidebar for previous chats - hidden on mobile */}
-      <div className="hidden md:flex w-64 border-r border-gray-200 bg-white p-4 flex-col">
+      <div className="hidden flex w-64 border-r border-gray-200 bg-white p-4 flex-col">
         <h3 className="text-subhead font-semibold text-gray-900 mb-4">Previous chats</h3>
         <div className="flex-1 overflow-y-auto space-y-2">
           {chatSessions.map((session) => (
