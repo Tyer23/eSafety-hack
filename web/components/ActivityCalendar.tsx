@@ -1,14 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { DayStatus } from "@/lib/types";
 
-interface DayStatus {
-  date: number;
-  status: "excellent" | "good" | "needs-attention" | "neutral";
+interface ActivityCalendarProps {
+  dayStatuses: Record<string, DayStatus>;
+  childName?: string;
 }
 
-export default function ActivityCalendar() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+export default function ActivityCalendar({ dayStatuses, childName }: ActivityCalendarProps) {
+  const initialDate = (() => {
+    const firstKey = Object.keys(dayStatuses)[0];
+    if (firstKey) return new Date(firstKey);
+    return new Date();
+  })();
+
+  const [currentDate, setCurrentDate] = useState(initialDate);
 
   const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
@@ -16,23 +23,7 @@ export default function ActivityCalendar() {
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const today = new Date();
 
-  // Mock data: days with different statuses
-  const dayStatuses: Record<string, DayStatus["status"]> = {
-    [`${currentYear}-${currentMonth + 1}-1`]: "excellent",
-    [`${currentYear}-${currentMonth + 1}-3`]: "good",
-    [`${currentYear}-${currentMonth + 1}-5`]: "needs-attention",
-    [`${currentYear}-${currentMonth + 1}-7`]: "excellent",
-    [`${currentYear}-${currentMonth + 1}-10`]: "good",
-    [`${currentYear}-${currentMonth + 1}-12`]: "excellent",
-    [`${currentYear}-${currentMonth + 1}-15`]: "good",
-    [`${currentYear}-${currentMonth + 1}-18`]: "excellent",
-    [`${currentYear}-${currentMonth + 1}-20`]: "needs-attention",
-    [`${currentYear}-${currentMonth + 1}-22`]: "good",
-    [`${currentYear}-${currentMonth + 1}-25`]: "excellent",
-    [`${currentYear}-${currentMonth + 1}-28`]: "good",
-  };
-
-  const getStatusColor = (status: DayStatus["status"]) => {
+  const getStatusColor = (status: DayStatus) => {
     switch (status) {
       case "excellent":
         return "bg-safe/60";
@@ -85,7 +76,9 @@ export default function ActivityCalendar() {
           <h3 className="text-subhead font-semibold text-gray-900">
             {monthNames[currentMonth]} {currentYear}
           </h3>
-          <p className="text-footnote text-gray-500">Daily activity overview</p>
+          <p className="text-footnote text-gray-500">
+            Daily activity overview{childName ? ` for ${childName}` : ""}
+          </p>
         </div>
         <div className="flex gap-2">
           <button
@@ -122,7 +115,7 @@ export default function ActivityCalendar() {
         {/* Days of the month */}
         {Array.from({ length: daysInMonth }).map((_, i) => {
           const date = i + 1;
-          const dateKey = `${currentYear}-${currentMonth + 1}-${date}`;
+          const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(date).padStart(2, "0")}`;
           const status = dayStatuses[dateKey] || "neutral";
 
           return (

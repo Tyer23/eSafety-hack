@@ -36,7 +36,7 @@ const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
                 borderTopLeftRadius: '4px', // Sharp corner closest to avatar
               }}
             >
-              <p className="text-[17px] leading-[1.47] tracking-[-0.41px] text-gray-800">
+              <p className="text-[17px] leading-[1.47] tracking-[-0.41px] text-gray-800 whitespace-pre-line">
                 {message}
               </p>
             </div>
@@ -67,7 +67,7 @@ const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
               borderTopRightRadius: '4px', // Sharp corner on right
             }}
           >
-            <p className="text-[17px] leading-[1.47] tracking-[-0.41px] text-white">
+            <p className="text-[17px] leading-[1.47] tracking-[-0.41px] text-white whitespace-pre-line">
               {message}
             </p>
           </div>

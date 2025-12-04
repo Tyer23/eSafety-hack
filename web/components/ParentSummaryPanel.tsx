@@ -1,90 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Badge, Button } from "@/components/ui";
-
-interface ChildInfo {
-  id: string;
-  name: string;
-}
+import { ParentBehaviourData } from "@/lib/types";
 
 interface ParentSummaryPanelProps {
-  children: ChildInfo[];
+  data: ParentBehaviourData;
 }
 
-export default function ParentSummaryPanel({
-  children
-}: ParentSummaryPanelProps) {
-  const [selectedChild, setSelectedChild] = useState<string>(children[0]?.id || "");
+export default function ParentSummaryPanel({ data }: ParentSummaryPanelProps) {
+  const [selectedChild, setSelectedChild] = useState<string>(data.children[0]?.id || "");
+  const child = data.children.find((item) => item.id === selectedChild) || data.children[0];
+  const stats = child?.stats ?? [];
 
-  // Static demo data – will be wired to an API / ML summaries later.
-  const weeklySummary =
-    "This week, Jamie and Emma showed mostly kind and curious behaviour online. " +
-    "There were a few moments of unkind language and one near‑miss with sharing personal information, " +
-    "but they responded well after a gentle nudge from the guardian.";
-
-  // Stats data for each child
-  const childStats: Record<string, Array<{
-    label: string;
-    value: string;
-    trend: string;
-    tone: "positive" | "neutral";
-  }>> = {
-    kid_01: [
-      {
-        label: "Kind interactions",
-        value: "18",
-        trend: "+4",
-        tone: "positive"
-      },
-      {
-        label: "Potential risk moments",
-        value: "5",
-        trend: "-2",
-        tone: "neutral"
-      },
-      {
-        label: "Privacy warnings",
-        value: "1",
-        trend: "0",
-        tone: "neutral"
-      },
-      {
-        label: "Digital wellbeing",
-        value: "Balanced",
-        trend: "",
-        tone: "positive"
-      }
-    ],
-    kid_02: [
-      {
-        label: "Kind interactions",
-        value: "22",
-        trend: "+6",
-        tone: "positive"
-      },
-      {
-        label: "Potential risk moments",
-        value: "2",
-        trend: "-3",
-        tone: "neutral"
-      },
-      {
-        label: "Privacy warnings",
-        value: "0",
-        trend: "-1",
-        tone: "neutral"
-      },
-      {
-        label: "Digital wellbeing",
-        value: "Excellent",
-        trend: "",
-        tone: "positive"
-      }
-    ]
-  };
-
-  const stats = childStats[selectedChild] || childStats[children[0]?.id || ""] || [];
+  const toneBadge = useMemo(() => {
+    const trend = child?.overallTrend?.toLowerCase() ?? "steady";
+    if (trend.includes("improv")) return { label: "Improving", variant: "success" as const };
+    if (trend.includes("watch")) return { label: "Keep watch", variant: "default" as const };
+    return { label: "Steady", variant: "default" as const };
+  }, [child?.overallTrend]);
 
   return (
     <section className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
@@ -99,14 +33,14 @@ export default function ParentSummaryPanel({
               activity.
             </p>
           </div>
-          <Badge variant="success">
+          <Badge variant={toneBadge.variant}>
             <span className="flex items-center gap-1">
               <span className="h-2 w-2 rounded-full bg-white" />
-              <span>Healthy overall</span>
+              <span>{toneBadge.label}</span>
             </span>
           </Badge>
         </div>
-        <p className="text-subhead text-gray-800 leading-relaxed">{weeklySummary}</p>
+        <p className="text-subhead text-gray-800 leading-relaxed">{data.weeklySummary}</p>
         <div className="mt-3 text-[11px] text-gray-500">
           You see{" "}
           <span className="font-semibold text-gray-900">
@@ -117,22 +51,20 @@ export default function ParentSummaryPanel({
       </div>
 
       <div className="space-y-3">
-        {/* Toggle buttons */}
         <div className="flex gap-2">
-          {children.map((child) => (
+          {data.children.map((childOption) => (
             <Button
-              key={child.id}
-              onClick={() => setSelectedChild(child.id)}
-              variant={selectedChild === child.id ? "default" : "outline"}
+              key={childOption.id}
+              onClick={() => setSelectedChild(childOption.id)}
+              variant={selectedChild === childOption.id ? "default" : "outline"}
               size="sm"
               className="flex-1"
             >
-              {child.name}
+              {childOption.name}
             </Button>
           ))}
         </div>
 
-        {/* Stats cards */}
         <div className="grid grid-cols-2 gap-3">
           {stats.map((stat) => (
             <div
@@ -149,16 +81,37 @@ export default function ParentSummaryPanel({
                     className={`text-[11px] ${
                       stat.tone === "positive"
                         ? "text-safe"
-                        : "text-caution"
+                        : stat.tone === "caution"
+                          ? "text-caution"
+                          : "text-gray-500"
                     }`}
                   >
                     {stat.trend}
-                    {stat.tone === "positive" ? " vs last week" : " to watch"}
                   </div>
                 )}
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm">
+          <div className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">Positive progress</div>
+          <ul className="list-disc pl-4 text-sm text-gray-800 space-y-1">
+            {child?.positiveProgress?.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm">
+          <div className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">Gentle flags</div>
+          <ul className="list-disc pl-4 text-sm text-gray-800 space-y-1">
+            {child?.gentleFlags?.length ? child.gentleFlags.map((item) => (
+              <li key={item}>{item}</li>
+            )) : (
+              <li className="text-gray-500">No flags noted this week.</li>
+            )}
+          </ul>
         </div>
       </div>
     </section>

@@ -2,12 +2,11 @@ import ParentSummaryPanel from "../../../components/ParentSummaryPanel";
 import ThemeTrendsGraph from "../../../components/ThemeTrendsGraph";
 import ActivityCalendar from "../../../components/ActivityCalendar";
 import ResponsiveLayout from "../../../components/ResponsiveLayout";
+import { getParentBehaviourData } from "@/lib/behaviourData";
 
 export default function InsightsPage() {
-  const children = [
-    { id: "kid_01", name: "Jamie" },
-    { id: "kid_02", name: "Emma" }
-  ];
+  const data = getParentBehaviourData();
+  const primaryChild = data.children[0];
 
   return (
     <ResponsiveLayout
@@ -36,7 +35,7 @@ export default function InsightsPage() {
           single scary moments.
         </p>
 
-        <ParentSummaryPanel children={children} />
+        <ParentSummaryPanel data={data} />
 
         {/* Theme Trends Graph - Full width */}
         <div>
@@ -45,7 +44,10 @@ export default function InsightsPage() {
 
         {/* Calendar and Quick Stats Grid - mobile-first stacking */}
         <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2">
-          <ActivityCalendar />
+          <ActivityCalendar
+            dayStatuses={primaryChild.dayStatuses}
+            childName={primaryChild.name}
+          />
           <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-sm">
             <h3 className="text-subhead font-semibold text-gray-900 mb-3">
               Quick Stats
