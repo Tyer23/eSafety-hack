@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Button, Badge, ChatBubble, Icon } from '@/components/ui'
 import {
   SendIcon,
@@ -33,6 +33,12 @@ export default function ParentChatPanel() {
       text: "Hi! I can help you understand your child's online patterns in plain language. Try asking 'How is Jamie doing online this week?'",
     },
   ])
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   // Mock previous chat sessions
   const [chatSessions] = useState<ChatSession[]>([
@@ -87,22 +93,9 @@ export default function ParentChatPanel() {
 
   return (
     <div className="h-full flex bg-gray-50 relative">
-      {/* Sidebar for previous chats - slide-in on mobile */}
-      <div
-        className={`${
-          showSidebar ? 'fixed inset-0 z-40 md:relative md:z-0' : 'hidden'
-        } md:flex w-full md:w-64 border-r border-gray-200 bg-white flex-col`}
-      >
-        {/* Mobile overlay */}
-        <div
-          className={`${
-            showSidebar ? 'fixed inset-0 bg-black/50 md:hidden' : 'hidden'
-          }`}
-          onClick={() => setShowSidebar(false)}
-        />
-
-        {/* Sidebar content */}
-        <div className="relative z-10 bg-white h-full flex flex-col p-4 md:p-4 max-w-sm md:max-w-none mx-auto md:mx-0 rounded-r-2xl md:rounded-none">
+      {/* Desktop sidebar for previous chats */}
+      <div className="hidden md:flex w-64 border-r border-gray-200 bg-white flex-col">
+        <div className="h-full flex flex-col p-4">
           <h3 className="text-subhead font-semibold text-gray-900 mb-4">
             Previous chats
           </h3>
@@ -111,7 +104,6 @@ export default function ParentChatPanel() {
               <button
                 key={session.id}
                 className="w-full text-left p-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors"
-                onClick={() => setShowSidebar(false)}
               >
                 <div className="text-footnote font-medium text-gray-900 mb-1">
                   {session.title}
@@ -129,19 +121,63 @@ export default function ParentChatPanel() {
         </div>
       </div>
 
+      {/* Mobile modal for previous chats - centered, rounded */}
+      {showSidebar && (
+        <>
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={() => setShowSidebar(false)}
+          />
+
+          {/* Centered modal */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 md:hidden pointer-events-none">
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm max-h-[70vh] flex flex-col pointer-events-auto">
+              {/* Modal header */}
+              <div className="p-6 pb-4 border-b border-gray-100">
+                <h3 className="text-title-3 font-semibold text-gray-900">
+                  Previous chats
+                </h3>
+              </div>
+
+              {/* Modal content - scrollable */}
+              <div className="flex-1 overflow-y-auto p-6 space-y-2">
+                {chatSessions.map((session) => (
+                  <button
+                    key={session.id}
+                    className="w-full text-left p-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors"
+                    onClick={() => setShowSidebar(false)}
+                  >
+                    <div className="text-footnote font-medium text-gray-900 mb-1">
+                      {session.title}
+                    </div>
+                    <div className="text-[11px] text-gray-500 truncate">
+                      {session.lastMessage}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Modal footer */}
+              <div className="p-6 pt-4 border-t border-gray-100">
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  onClick={() => setShowSidebar(false)}
+                >
+                  <Icon icon={PlusIcon} size="sm" />
+                  New chat
+                </Button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       {/* Main chat area - mobile-first responsive */}
       <div className="flex-1 flex flex-col bg-gray-50 p-4 md:p-6 md:pb-6">
-        {/* Header - NOW VISIBLE on mobile too! */}
+        {/* Header */}
         <div className="mb-4 flex items-center justify-between gap-3">
-          {/* Menu button for previous chats - mobile only */}
-          <button
-            onClick={() => setShowSidebar(true)}
-            className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors md:hidden"
-            aria-label="Show previous chats"
-          >
-            <Icon icon={MenuIcon} size="lg" decorative={false} />
-          </button>
-
           <div className="flex-1">
             <h2 className="text-body md:text-title-2 font-semibold text-gray-900">
               Ask KindNet
@@ -171,10 +207,12 @@ export default function ParentChatPanel() {
               }
             />
           ))}
+          {/* Invisible element at the end for auto-scroll */}
+          <div ref={messagesEndRef} />
         </div>
 
         {/* Input area - mobile-first with touch-friendly sizing */}
-        <div className="space-y-2">
+        <div className="space-y-4">
           <textarea
             value={input}
             onChange={(event) => setInput(event.target.value)}
@@ -183,23 +221,39 @@ export default function ParentChatPanel() {
             className="w-full resize-none rounded-xl border border-gray-200 bg-white px-3 py-3 md:px-4 text-body text-gray-800 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-blurple focus:ring-offset-2 focus:border-blurple transition-colors"
             placeholder="Ask about Emma's week..."
           />
-          <div className="flex items-center justify-between gap-2">
-            <span className="hidden md:inline text-[11px] text-gray-500">
-              Press Enter to send, Shift+Enter for a new line.
-            </span>
-            <div className="flex items-center gap-2 ml-auto">
+          <div className="space-y-4">
+            {/* Main button row */}
+            <div className="flex items-center justify-between gap-2">
+              <span className="hidden md:inline text-[11px] text-gray-500">
+                Press Enter to send, Shift+Enter for a new line.
+              </span>
+              <div className="flex items-center gap-2 ml-auto">
+                <Button
+                  variant="secondary"
+                  size="default"
+                  className="md:hidden"
+                  aria-label="New chat"
+                >
+                  <Icon icon={PlusIcon} size="sm" />
+                  <span>New</span>
+                </Button>
+                <Button onClick={handleSend} size="default" aria-label="Send">
+                  <Icon icon={SendIcon} size="sm" />
+                  <span>Send</span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Old chats button - below, aligned right */}
+            <div className="-mr-4 flex justify-end md:hidden">
               <Button
-                variant="secondary"
+                variant="ghost"
                 size="default"
-                className="md:hidden"
-                aria-label="New chat"
+                onClick={() => setShowSidebar(true)}
+                aria-label="View old chats"
               >
-                <Icon icon={PlusIcon} size="sm" />
-                <span>New</span>
-              </Button>
-              <Button onClick={handleSend} size="default" aria-label="Send">
-                <Icon icon={SendIcon} size="sm" />
-                <span>Send</span>
+                <Icon icon={MenuIcon} size="sm" />
+                <span>Previous chats</span>
               </Button>
             </div>
           </div>

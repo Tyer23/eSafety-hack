@@ -16,13 +16,13 @@ export default function InsightsPage() {
       }}
       showMobileNav={true}
     >
-      <div className="space-y-5">
+      <div className="space-y-6 md:space-y-8">
         {/* Header - hidden on mobile (shown in MobileHeader instead) */}
         <div className="hidden md:block">
           <h1 className="text-title-2 font-semibold tracking-tight text-gray-900">
             Weekly insights
           </h1>
-          <p className="mt-2 text-subhead text-gray-600 max-w-xl">
+          <p className="mt-3 text-subhead text-gray-600 max-w-2xl">
             A calm overview of how things are going online, focused on{" "}
             <span className="font-semibold">trends and strengths</span>, not
             single scary moments.
@@ -44,13 +44,13 @@ export default function InsightsPage() {
         </div>
 
         {/* Calendar and Quick Stats Grid - mobile-first stacking */}
-        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2">
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
           <ActivityCalendar />
-          <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-sm">
-            <h3 className="text-subhead font-semibold text-gray-900 mb-3">
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+            <h3 className="text-subhead font-semibold text-gray-900 mb-6">
               Quick Stats
             </h3>
-            <div className="space-y-3 text-subhead">
+            <div className="space-y-5 text-subhead">
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">This week&apos;s focus</span>
                 <span className="font-semibold text-blurple">
