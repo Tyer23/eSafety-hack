@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import Logo from "@/components/Logo";
 
 export default function HomePage() {
   const router = useRouter();
@@ -56,6 +57,11 @@ export default function HomePage() {
       <div className="flex flex-col gap-6 md:grid md:gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
         {/* Main Login Section */}
         <section className="space-y-5 md:space-y-6">
+          {/* Logo - centered on mobile, left-aligned on desktop */}
+          <div className="flex justify-center md:justify-start mb-2">
+            <Logo variant="horizontal" size="lg" />
+          </div>
+
           <Badge variant="outline" className="inline-flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-blurple animate-pulse" />
             MVP prototype · Local-only demo

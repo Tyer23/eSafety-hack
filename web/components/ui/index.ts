@@ -14,3 +14,9 @@ export type { InputProps } from "./input"
 
 export { ChatBubble } from "./chat-bubble"
 export type { ChatBubbleProps } from "./chat-bubble"
+
+export { Icon } from "./icon"
+export type { IconProps, IconSize } from "./icon"
+
+// Re-export all commonly used icons
+export * from "./icons"

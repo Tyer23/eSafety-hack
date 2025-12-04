@@ -2,6 +2,31 @@
 
 All notable changes to the KindNet project.
 
+## Unreleased — Jellybeat mascot branding (branch: moody-agent-4-branding)
+
+### Added
+- Jellybeat mascot integration throughout the app
+  - Rainbow Jellybeat as main mascot and favicon
+  - Amber Jellybeat for loading states
+  - Green Jellybeat for success states
+  - Red Jellybeat for error/404 pages
+- Logo component with icon and horizontal lockup variants
+- LoadingState component with animated amber Jellybeat
+- Custom 404 error page with red Jellybeat
+- Favicon (rainbow Jellybeat) and metadata icons
+
+### Changed
+- Desktop navigation header now displays Logo with Jellybeat mascot
+- Login page features centered Logo component
+- Chat AI avatar updated from dicebear API to rainbow Jellybeat
+- Brand identity unified with Jellybeat across all touchpoints
+
+### Technical Details
+- Logo variants: icon-only and horizontal lockup (mascot + KindNet wordmark)
+- Mascot assets: 4 color variants stored in `/public/images/`
+- Responsive sizing: sm (32px), md (40px), lg (48px), xl (64px)
+- Accessible: proper alt text, aria-labels, semantic HTML
+
 ## Unreleased — Mobile-first responsive layout (branch: moody-agent-1-layout)
 
 ### Added

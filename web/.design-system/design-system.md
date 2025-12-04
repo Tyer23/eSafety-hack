@@ -22,11 +22,17 @@
    - [Breakpoints](#breakpoints)
    - [Animations](#animations)
 5. [Icon System](#icon-system)
-6. [Component Architecture](#component-architecture)
-7. [Component Specifications](#component-specifications)
-8. [Coding Standards](#coding-standards)
-9. [Accessibility](#accessibility)
-10. [File Structure](#file-structure)
+6. [Jellybeat Mascot](#jellybeat-mascot)
+7. [Component Architecture](#component-architecture)
+8. [Component Specifications](#component-specifications)
+9. [Coding Standards](#coding-standards)
+10. [Accessibility](#accessibility)
+11. [Responsive Patterns](#responsive-patterns)
+12. [Common Pitfalls to Avoid](#common-pitfalls-to-avoid)
+13. [Component Checklist](#component-checklist)
+14. [Quick Reference](#quick-reference)
+15. [Resources](#resources)
+16. [Need Help?](#need-help)
 
 ---
 
@@ -422,6 +428,7 @@ className="transition-all duration-normal"
 ## Icon System
 
 **Library:** Lucide React (iOS-compatible, 2px stroke weight)
+**Component:** `Icon` wrapper for consistent sizing and accessibility
 
 ### Why Lucide?
 - Perfect iOS 18 match with 2px stroke weight (matches SF Symbols)
@@ -430,63 +437,506 @@ className="transition-all duration-normal"
 - React components with TypeScript support
 - Active maintenance and large icon set (1000+ icons)
 
+### Icon Component
+
+KindNet provides an `Icon` component that enforces design system standards:
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { SendIcon, MessageCircleIcon } from '@/components/ui/icons'
+
+// Standard usage with size variant
+<Icon icon={SendIcon} size="md" />
+
+// With custom styling
+<Icon
+  icon={MessageCircleIcon}
+  size="lg"
+  className="text-blurple"
+  strokeWidth={2.5}
+/>
+
+// Icon-only button (not decorative, needs label)
+<button aria-label="Close">
+  <Icon icon={XIcon} size="lg" decorative={false} />
+</button>
+```
+
 ### Icon Sizes
-```tsx
-import { MessageCircle, Send, Menu, TrendingUp, Heart } from 'lucide-react'
 
-// Standard sizes
-<MessageCircle className="w-4 h-4" />   // 16px - Inline text
-<Send className="w-5 h-5" />            // 20px - Standard UI
-<Menu className="w-6 h-6" />            // 24px - Navigation
-<TrendingUp className="w-8 h-8" />      // 32px - Feature highlights
-<Heart className="w-12 h-12" />         // 48px - Large displays
+| Size | Pixels | Tailwind | Use Case |
+|------|--------|----------|----------|
+| `sm` | 16px | `w-4 h-4` | Inline text, small buttons |
+| `md` | 20px | `w-5 h-5` | Standard UI elements (default) |
+| `lg` | 24px | `w-6 h-6` | Navigation, primary actions |
+| `xl` | 32px | `w-8 h-8` | Feature highlights, metric badges |
+| `2xl` | 48px | `w-12 h-12` | Large displays, hero sections |
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { MessageCircleIcon, SendIcon, MenuIcon, TrendingUpIcon, HeartIcon } from '@/components/ui/icons'
+
+// Size examples
+<Icon icon={MessageCircleIcon} size="sm" />   // 16px - Inline text
+<Icon icon={SendIcon} size="md" />            // 20px - Standard UI
+<Icon icon={MenuIcon} size="lg" />            // 24px - Navigation
+<Icon icon={TrendingUpIcon} size="xl" />      // 32px - Feature highlights
+<Icon icon={HeartIcon} size="2xl" />          // 48px - Large displays
 ```
 
-### Common Icons
+### Available Icons
+
+**Navigation & UI:** `ChevronLeft`, `ChevronRight`, `ChevronDown`, `ChevronUp`, `Menu`, `X`, `Search`, `Settings`
+
+**Metrics & Status:** `TrendingUp`, `TrendingDown`, `Minus`
+
+**Actions:** `Send`, `Plus`, `Edit`, `Trash2`, `Download`, `Upload`, `Filter`, `MoreHorizontal`, `MoreVertical`
+
+**Communication:** `MessageCircle`, `Heart`, `ThumbsUp`, `Mail`
+
+**Info & Alerts:** `Info`, `AlertCircle`, `AlertTriangle`, `Check`, `HelpCircle`, `XCircle`, `CheckCircle`
+
+**Data & Charts:** `BarChart3`, `PieChart`, `LineChart`
+
+**Time:** `Calendar`, `Clock`
+
+**User Management:** `User`, `Users`
+
+**Visibility:** `Eye`, `EyeOff`
+
+**Security & Privacy:** `Shield`, `Lock`, `Unlock`
+
+**Files:** `File`, `FileText`, `Image`
+
+**Other:** `Home`, `Bell`, `Star`, `Share2`
+
+See `components/ui/icons.ts` for the full list or browse [Lucide Icons](https://lucide.dev)
+
+### Usage Patterns
+
+#### Decorative Icons (Default)
+Icons next to text are decorative and should have `aria-hidden="true"` (default):
+
 ```tsx
-import {
-  // Navigation & UI
-  ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
-  Menu, X, Search, Settings,
+import { Icon } from '@/components/ui/icon'
+import { SendIcon } from '@/components/ui/icons'
 
-  // Metrics & Status
-  TrendingUp,      // Positive metric badge
-  TrendingDown,    // Negative metric badge
-  Minus,           // Neutral metric badge
-
-  // Actions
-  Send, Plus, Edit, Trash2, Download,
-
-  // Communication
-  MessageCircle, Heart, ThumbsUp,
-
-  // Info & Alerts
-  Info, AlertCircle, AlertTriangle, Check, HelpCircle
-} from 'lucide-react'
-```
-
-### Icon Usage Patterns
-```tsx
-// Basic usage
-<TrendingUp className="w-7 h-7 text-safe" strokeWidth={2.5} />
-
-// In buttons
+// Icon is decorative (default behavior)
 <Button>
-  <Send className="w-4 h-4" />
+  <Icon icon={SendIcon} size="sm" />
   Send Message
 </Button>
+```
 
-// Icon-only buttons
-<Button size="icon" aria-label="Close">
-  <X className="w-5 h-5" />
-</Button>
+#### Standalone Icon Buttons
+Icon-only buttons need `aria-label` and `decorative={false}`:
+
+```tsx
+// ✅ GOOD - Standalone icon with label
+<button aria-label="Close modal">
+  <Icon icon={XIcon} size="lg" decorative={false} />
+</button>
+
+// ❌ BAD - Missing aria-label
+<button>
+  <Icon icon={XIcon} size="lg" />
+</button>
+```
+
+#### With Colors and Stroke
+Icons use `currentColor` by default:
+
+```tsx
+// Color from design tokens
+<Icon icon={TrendingUpIcon} size="xl" className="text-safe" />
+<Icon icon={AlertTriangleIcon} size="md" className="text-alert" />
+
+// Custom stroke weight (2px default, 2.5px for emphasis)
+<Icon icon={MenuIcon} size="lg" strokeWidth={2.5} />
+```
+
+#### Navigation Icons
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { MessageCircleIcon, TrendingUpIcon, BarChart3Icon, SettingsIcon } from '@/components/ui/icons'
+
+const navItems = [
+  { icon: MessageCircleIcon, label: "Chat", href: "/parent" },
+  { icon: TrendingUpIcon, label: "Insights", href: "/parent/insights" },
+  { icon: BarChart3Icon, label: "Patterns", href: "/parent/patterns" },
+  { icon: SettingsIcon, label: "Settings", href: "/settings" },
+]
+
+// In component
+{navItems.map((item) => (
+  <Link key={item.href} href={item.href}>
+    <Icon icon={item.icon} size="lg" />
+    <span>{item.label}</span>
+  </Link>
+))}
+```
+
+#### Metric Badges (Circular)
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { TrendingUpIcon, MinusIcon, TrendingDownIcon } from '@/components/ui/icons'
+
+// Positive metric
+<div className="w-16 h-16 rounded-full bg-safe flex items-center justify-center">
+  <Icon
+    icon={TrendingUpIcon}
+    size="xl"
+    className="text-white"
+    strokeWidth={2.5}
+    decorative={false}
+    aria-label="Positive trend"
+  />
+</div>
+
+// Neutral metric
+<div className="w-16 h-16 rounded-full bg-gray-400 flex items-center justify-center">
+  <Icon icon={MinusIcon} size="xl" className="text-white" strokeWidth={2.5} />
+</div>
+
+// Negative metric
+<div className="w-16 h-16 rounded-full bg-caution flex items-center justify-center">
+  <Icon icon={TrendingDownIcon} size="xl" className="text-white" strokeWidth={2.5} />
+</div>
+```
+
+#### Search Input
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { SearchIcon } from '@/components/ui/icons'
+
+<div className="relative">
+  <Icon
+    icon={SearchIcon}
+    size="md"
+    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+  />
+  <Input
+    type="search"
+    placeholder="Search..."
+    className="pl-10"
+  />
+</div>
+```
+
+#### Back Button
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { ChevronLeftIcon } from '@/components/ui/icons'
+
+<button
+  onClick={handleBack}
+  className="w-11 h-11 flex items-center justify-center rounded-lg transition-colors active:bg-gray-100"
+  aria-label="Go back"
+>
+  <Icon icon={ChevronLeftIcon} size="lg" strokeWidth={2.5} decorative={false} />
+</button>
+```
+
+### Alternative: Direct Import
+
+You can also import icons directly from Lucide (without the Icon wrapper):
+
+```tsx
+import { Send } from 'lucide-react'
+
+// Manual sizing required
+<Send className="w-5 h-5" />
+```
+
+**Recommendation:** Use the `Icon` component for consistency and automatic accessibility handling.
+
+### Adding New Icons
+
+#### Option 1: Direct Import (Quick)
+
+```tsx
+import { Smile } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
+
+<Icon icon={Smile} size="md" />
+```
+
+#### Option 2: Add to Icons Collection (Recommended)
+
+1. Open `components/ui/icons.ts`
+2. Add to exports:
+
+```ts
+export {
+  // ... existing icons
+  Smile,
+} from "lucide-react"
+
+export {
+  // ... existing Icon exports
+  Smile as SmileIcon,
+} from "lucide-react"
+```
+
+3. Use with consistent naming:
+
+```tsx
+import { SmileIcon } from '@/components/ui/icons'
+<Icon icon={SmileIcon} size="md" />
 ```
 
 ### Icon Style Guidelines
-- **Stroke weight:** 2.5px for metric badges, 2px default
-- **Color:** Use design tokens (text-blurple, text-safe, text-alert)
-- **Sizing:** Always use Tailwind size classes (w-4 h-4, w-5 h-5, etc.)
-- **Accessibility:** Add aria-label for icon-only buttons
+
+#### ✅ DO
+```tsx
+// Use Icon component with size variants
+<Icon icon={SendIcon} size="md" />
+
+// Add aria-label to standalone icon buttons
+<button aria-label="Close">
+  <Icon icon={XIcon} size="lg" decorative={false} />
+</button>
+
+// Use design system colors
+<Icon icon={TrendingUpIcon} size="xl" className="text-safe" />
+
+// Use appropriate sizes for context
+<Icon icon={MessageCircleIcon} size="sm" /> // In button text
+<Icon icon={MenuIcon} size="lg" /> // In navigation
+```
+
+#### ❌ DON'T
+```tsx
+// Don't use arbitrary sizes
+<Icon icon={SendIcon} className="w-[23px] h-[23px]" /> // ❌
+
+// Don't forget aria-label on standalone icons
+<button>
+  <Icon icon={XIcon} size="lg" /> // ❌ Missing aria-label
+</button>
+
+// Don't use hardcoded colors
+<Icon icon={TrendingUpIcon} style={{ color: '#7ED957' }} /> // ❌
+
+// Don't use wrong size for context
+<Icon icon={MessageCircleIcon} size="2xl" /> // ❌ Too large for button
+```
+
+### Accessibility Requirements
+
+- **Decorative icons:** Must have `aria-hidden="true"` (default)
+- **Standalone icon buttons:** Must have `aria-label` and `decorative={false}`
+- **Touch targets:** Icon buttons must be 44×44px minimum
+- **Color contrast:** Icons must meet WCAG AA contrast requirements (3:1 minimum)
+
+### TypeScript Support
+
+```tsx
+import { Icon, type IconProps, type IconSize } from '@/components/ui/icon'
+import { type LucideIcon } from 'lucide-react'
+
+// Using IconProps
+const MyIconComponent: React.FC<IconProps> = (props) => {
+  return <Icon {...props} />
+}
+
+// Custom component with icon prop
+interface CustomProps {
+  icon: LucideIcon
+  size?: IconSize
+}
+
+const CustomComponent: React.FC<CustomProps> = ({ icon, size = "md" }) => {
+  return <Icon icon={icon} size={size} />
+}
+```
+
+---
+
+## Jellybeat Mascot
+
+**Purpose:** Friendly, approachable branding with semantic color states
+**File Format:** 600×600px PNG with transparency
+**Location:** `.design-system/assets-mascot/` (source) and `/images/` (public)
+
+### Color Variants & Semantic Meanings
+
+Jellybeat comes in 4 color variants, each with specific semantic use cases:
+
+| Variant | Filename | Semantic Meaning | Use Cases | Examples |
+|---------|----------|------------------|-----------|----------|
+| **Rainbow** 🌈 | `jellybeat-rainbow-full.png` | Default/Primary | Main branding, navigation, favicon | Logo, desktop nav, login page, chat avatar |
+| **Green** 💚 | `jellybeat-green-full.png` | Success/Positive | Completion, achievements, positive feedback | Success messages, celebration screens |
+| **Amber** 💛 | `jellybeat-amber-full.png` | Loading/Caution | Processing states, warnings | Loading screens, cautionary notices |
+| **Red** ❤️ | `jellybeat-red-full.png` | Error/Alert | Error states, critical warnings | 404 page, error boundaries, alerts |
+
+### Asset Specifications
+
+- **Dimensions:** 600×600px square
+- **Format:** PNG with alpha channel (transparency)
+- **File Size:** ~400-410KB each
+- **Compression:** Optimized for web
+- **Aspect Ratio:** 1:1 (square)
+
+### Using the Logo Component
+
+The `Logo` component provides a flexible, type-safe way to use Jellybeat throughout the app.
+
+#### Component API
+
+```tsx
+import Logo from '@/components/Logo'
+
+type JellybeatVariant = "rainbow" | "green" | "amber" | "red"
+type LogoVariant = "icon" | "horizontal"
+type LogoSize = "sm" | "md" | "lg" | "xl"
+
+interface LogoProps {
+  variant?: LogoVariant          // "icon" or "horizontal" (default)
+  jellybeatVariant?: JellybeatVariant  // Color variant (default: "rainbow")
+  size?: LogoSize                // Size preset (default: "md")
+  className?: string             // Additional Tailwind classes
+}
+```
+
+#### Basic Usage
+
+```tsx
+// Default: horizontal lockup with rainbow Jellybeat (40px)
+<Logo />
+
+// Icon only
+<Logo variant="icon" />
+
+// Different sizes
+<Logo size="sm" />  // 32px
+<Logo size="md" />  // 40px (default)
+<Logo size="lg" />  // 48px
+<Logo size="xl" />  // 64px
+```
+
+#### Semantic State Examples
+
+```tsx
+// Success state (green)
+<Logo jellybeatVariant="green" variant="icon" size="xl" />
+
+// Loading state (amber)
+<Logo jellybeatVariant="amber" variant="icon" size="lg" />
+
+// Error state (red)
+<Logo jellybeatVariant="red" variant="icon" size="xl" />
+
+// Primary branding (rainbow)
+<Logo jellybeatVariant="rainbow" variant="horizontal" size="md" />
+```
+
+#### Real-World Examples
+
+```tsx
+// Desktop navigation
+<Logo variant="horizontal" size="md" />
+
+// Mobile bottom nav
+<Logo variant="icon" size="sm" />
+
+// Chat AI avatar
+<Logo variant="icon" jellybeatVariant="rainbow" size="md" />
+
+// Loading screen
+<div className="flex flex-col items-center gap-4">
+  <Logo variant="icon" jellybeatVariant="amber" size="xl" />
+  <p className="text-gray-600">Loading your dashboard...</p>
+</div>
+
+// 404 page
+<div className="flex flex-col items-center gap-4">
+  <Logo variant="icon" jellybeatVariant="red" size="xl" />
+  <h1 className="text-h1">Page Not Found</h1>
+</div>
+```
+
+### Direct Image Usage
+
+For custom implementations outside the Logo component:
+
+```tsx
+import Image from 'next/image'
+
+// Direct Next.js Image component usage
+<Image
+  src="/images/jellybeat-rainbow-full.png"
+  alt="Jellybeat mascot"
+  width={48}
+  height={48}
+  quality={100}
+  priority
+  className="object-contain"
+/>
+```
+
+#### Asset Paths
+
+- **Source files:** `.design-system/assets-mascot/jellybeat-{color}-full.png`
+- **Public files:** `/images/jellybeat-{color}-full.png`
+- **Available colors:** `rainbow`, `green`, `amber`, `red`
+
+### Size Guidelines
+
+| Size Preset | Pixel Size | Use Case |
+|-------------|------------|----------|
+| `sm` | 32×32px | Compact UI, mobile bottom nav |
+| `md` | 40×40px | Default, chat avatars, icons |
+| `lg` | 48×48px | Prominent branding, headers |
+| `xl` | 64×64px | Hero sections, error states |
+
+### Image Optimization
+
+The Logo component uses Next.js Image with optimization settings:
+- **quality={100}** - Maximum quality to prevent blurriness
+- **priority** - Preloads for above-the-fold usage
+- **Explicit width/height** - Prevents layout shift
+- **object-contain** - Preserves aspect ratio
+
+### Best Practices
+
+#### ✅ DO
+- Use rainbow variant for primary branding
+- Use semantic colors to communicate state (green=success, amber=loading, red=error)
+- Use the Logo component for consistent rendering
+- Specify explicit sizes for better performance
+- Use `variant="icon"` for compact layouts
+- Use `quality={100}` when using Next.js Image directly
+
+#### ❌ DON'T
+- Don't use red Jellybeat for positive messages
+- Don't use green Jellybeat for errors
+- Don't mix color meanings (e.g., amber for success)
+- Don't scale beyond 64px without re-optimization
+- Don't use low quality settings (causes blurriness)
+- Don't use CSS background-image (prevents optimization)
+
+### Accessibility
+
+- **Alt text:** Always provide descriptive alt text
+  - Default: "Jellybeat mascot"
+  - Context-specific: "Loading", "Error", "Success", etc.
+- **Focus states:** Logo component inherits focus styles when interactive
+- **Color contrast:** All variants meet WCAG AA contrast requirements
+- **Screen readers:** Semantic meaning conveyed through surrounding context
+
+### Component Implementation Reference
+
+See `/components/Logo.tsx` for full implementation details:
+- Type-safe variant props
+- Responsive sizing logic
+- Next.js Image optimization
+- Horizontal lockup with branding text
+- Icon-only variant for compact layouts
 
 ---
 
@@ -623,11 +1073,13 @@ import { Send } from 'lucide-react'
 #### Specifications
 - **Min height:** 44px (default), 36px (sm), 52px (lg)
 - **Min width:** 44px (touch target)
-- **Border radius:** 12px (default), 20px (lg)
+- **Border radius:** 12px (default), 8px (sm), 12px (lg)
+- **Font weight:** 600 (semibold) - matches badge weight
 - **Transition:** all 250ms
 - **Active state:** scale(0.98)
-- **Disabled state:** opacity 40%
+- **Disabled state:** opacity 50%
 - **Focus ring:** 2px blurple, 2px offset
+- **Small size:** Uses variant styling (not hardcoded colors) for proper toggle button support
 
 ---
 
@@ -698,23 +1150,52 @@ import { Input } from '@/components/ui/input'
 
 **Built with:** CVA variants
 
+**Design Philosophy:** All badges use outline style (border + transparent background) except for small size which uses filled style with white text.
+
 #### Usage
 ```tsx
 import { Badge } from '@/components/ui/badge'
 
+// Default badge (blurple outline)
 <Badge variant="default">Default</Badge>
+
+// Secondary badge (gray outline)
 <Badge variant="secondary">Secondary</Badge>
+
+// Success badge (green outline)
 <Badge variant="success">Success</Badge>
+
+// Warning badge (amber outline)
 <Badge variant="warning">Warning</Badge>
+
+// Destructive badge (red outline)
 <Badge variant="destructive">Alert</Badge>
+
+// Outline badge (light gray outline)
 <Badge variant="outline">Outline</Badge>
+
+// Small size (filled with white text)
+<Badge size="sm">Small</Badge>
 ```
 
+#### Variants
+- **default:** Blurple border, blurple text, transparent bg
+- **secondary:** Dark gray (gray-700) border and text, transparent bg
+- **success:** Safe green border and text, transparent bg
+- **warning:** Caution amber border and text, transparent bg
+- **destructive:** Alert red border and text, transparent bg
+- **outline:** Dark gray (gray-700) border and text, transparent bg
+
 #### Specifications
-- **Padding:** 10px horizontal, 2px vertical
+- **Padding:** 10px horizontal, 2px vertical (default), 8px/2px (sm)
 - **Border radius:** 8px
-- **Font size:** 13px (footnote)
-- **Font weight:** 500 (medium)
+- **Border width:** 2px (all variants)
+- **Font size:** 13px footnote (default), 11px (sm)
+- **Font weight:** 600 (semibold)
+- **Text wrapping:** Never wraps (whitespace-nowrap) - badge text always stays on one line
+
+#### Size Exception
+- **sm size:** Filled style with bg-blurple, text-white, no border (exception to outline rule)
 
 ---
 

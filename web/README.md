@@ -15,11 +15,54 @@ Next.js 14 + React 18 + TypeScript prototype of the **KindNet** parent dashboard
 
 This project uses a comprehensive iOS 18-inspired design system with:
 - Design tokens (colors, typography, spacing, shadows)
-- Reusable UI primitives (Button, Card, Input, Badge, ChatBubble)
+- Reusable UI primitives (Button, Card, Input, Badge, ChatBubble, Icon)
 - Accessibility-first components (WCAG AA compliance)
 - Mobile-first responsive patterns
+- Comprehensive icon system with Lucide React
+- Jellybeat mascot with semantic color variants
 
 **📖 Design System Documentation:** `.design-system/design-system.md`
+**📖 Icon System Guide:** `.design-system/icon-system-guide.md`
+
+### Jellybeat Mascot
+
+KindNet uses **Jellybeat**, a friendly jellyfish mascot, throughout the app. The mascot comes in 4 color variants with specific semantic meanings:
+
+| Variant | File | Use Case | Example |
+|---------|------|----------|---------|
+| **Rainbow** | `jellybeat-rainbow-full.png` | Default/primary branding | Logo, navigation, favicon |
+| **Green** | `jellybeat-green-full.png` | Success states | Completion messages, positive feedback |
+| **Amber** | `jellybeat-amber-full.png` | Loading/warning states | Loading screens, cautionary messages |
+| **Red** | `jellybeat-red-full.png` | Error states | 404 pages, error messages |
+
+#### Using the Logo Component
+
+```tsx
+import Logo from '@/components/Logo'
+
+// Default: horizontal lockup with rainbow Jellybeat
+<Logo />
+
+// Icon only
+<Logo variant="icon" size="lg" />
+
+// Success state with green Jellybeat
+<Logo jellybeatVariant="green" />
+
+// Loading state with amber Jellybeat
+<Logo jellybeatVariant="amber" />
+
+// Error state with red Jellybeat
+<Logo variant="icon" jellybeatVariant="red" size="xl" />
+```
+
+#### Direct Image Usage
+
+For custom implementations, mascot assets are located at:
+- **Source:** `.design-system/assets-mascot/jellybeat-{color}-full.png`
+- **Public:** `/images/jellybeat-{color}-full.png`
+
+All mascot images are 600×600px PNG files with transparency.
 
 ### What's Included
 
