@@ -144,7 +144,7 @@ export default function ParentChatPanel() {
             <span className="hidden md:inline text-[11px] text-gray-500">
               Press Enter to send, Shift+Enter for a new line.
             </span>
-            <Button onClick={handleSend} size="default" className="ml-auto">
+            <Button onClick={handleSend} size="default" className="ml-auto" aria-label="Send">
               <Send className="w-4 h-4" />
               <span className="hidden md:inline">Send</span>
             </Button>
