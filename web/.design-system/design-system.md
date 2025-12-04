@@ -422,6 +422,7 @@ className="transition-all duration-normal"
 ## Icon System
 
 **Library:** Lucide React (iOS-compatible, 2px stroke weight)
+**Component:** `Icon` wrapper for consistent sizing and accessibility
 
 ### Why Lucide?
 - Perfect iOS 18 match with 2px stroke weight (matches SF Symbols)
@@ -430,63 +431,323 @@ className="transition-all duration-normal"
 - React components with TypeScript support
 - Active maintenance and large icon set (1000+ icons)
 
+### Icon Component
+
+KindNet provides an `Icon` component that enforces design system standards:
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { SendIcon, MessageCircleIcon } from '@/components/ui/icons'
+
+// Standard usage with size variant
+<Icon icon={SendIcon} size="md" />
+
+// With custom styling
+<Icon
+  icon={MessageCircleIcon}
+  size="lg"
+  className="text-blurple"
+  strokeWidth={2.5}
+/>
+
+// Icon-only button (not decorative, needs label)
+<button aria-label="Close">
+  <Icon icon={XIcon} size="lg" decorative={false} />
+</button>
+```
+
 ### Icon Sizes
-```tsx
-import { MessageCircle, Send, Menu, TrendingUp, Heart } from 'lucide-react'
 
-// Standard sizes
-<MessageCircle className="w-4 h-4" />   // 16px - Inline text
-<Send className="w-5 h-5" />            // 20px - Standard UI
-<Menu className="w-6 h-6" />            // 24px - Navigation
-<TrendingUp className="w-8 h-8" />      // 32px - Feature highlights
-<Heart className="w-12 h-12" />         // 48px - Large displays
+| Size | Pixels | Tailwind | Use Case |
+|------|--------|----------|----------|
+| `sm` | 16px | `w-4 h-4` | Inline text, small buttons |
+| `md` | 20px | `w-5 h-5` | Standard UI elements (default) |
+| `lg` | 24px | `w-6 h-6` | Navigation, primary actions |
+| `xl` | 32px | `w-8 h-8` | Feature highlights, metric badges |
+| `2xl` | 48px | `w-12 h-12` | Large displays, hero sections |
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { MessageCircleIcon, SendIcon, MenuIcon, TrendingUpIcon, HeartIcon } from '@/components/ui/icons'
+
+// Size examples
+<Icon icon={MessageCircleIcon} size="sm" />   // 16px - Inline text
+<Icon icon={SendIcon} size="md" />            // 20px - Standard UI
+<Icon icon={MenuIcon} size="lg" />            // 24px - Navigation
+<Icon icon={TrendingUpIcon} size="xl" />      // 32px - Feature highlights
+<Icon icon={HeartIcon} size="2xl" />          // 48px - Large displays
 ```
 
-### Common Icons
+### Available Icons
+
+**Navigation & UI:** `ChevronLeft`, `ChevronRight`, `ChevronDown`, `ChevronUp`, `Menu`, `X`, `Search`, `Settings`
+
+**Metrics & Status:** `TrendingUp`, `TrendingDown`, `Minus`
+
+**Actions:** `Send`, `Plus`, `Edit`, `Trash2`, `Download`, `Upload`, `Filter`, `MoreHorizontal`, `MoreVertical`
+
+**Communication:** `MessageCircle`, `Heart`, `ThumbsUp`, `Mail`
+
+**Info & Alerts:** `Info`, `AlertCircle`, `AlertTriangle`, `Check`, `HelpCircle`, `XCircle`, `CheckCircle`
+
+**Data & Charts:** `BarChart3`, `PieChart`, `LineChart`
+
+**Time:** `Calendar`, `Clock`
+
+**User Management:** `User`, `Users`
+
+**Visibility:** `Eye`, `EyeOff`
+
+**Security & Privacy:** `Shield`, `Lock`, `Unlock`
+
+**Files:** `File`, `FileText`, `Image`
+
+**Other:** `Home`, `Bell`, `Star`, `Share2`
+
+See `components/ui/icons.ts` for the full list or browse [Lucide Icons](https://lucide.dev)
+
+### Usage Patterns
+
+#### Decorative Icons (Default)
+Icons next to text are decorative and should have `aria-hidden="true"` (default):
+
 ```tsx
-import {
-  // Navigation & UI
-  ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
-  Menu, X, Search, Settings,
+import { Icon } from '@/components/ui/icon'
+import { SendIcon } from '@/components/ui/icons'
 
-  // Metrics & Status
-  TrendingUp,      // Positive metric badge
-  TrendingDown,    // Negative metric badge
-  Minus,           // Neutral metric badge
-
-  // Actions
-  Send, Plus, Edit, Trash2, Download,
-
-  // Communication
-  MessageCircle, Heart, ThumbsUp,
-
-  // Info & Alerts
-  Info, AlertCircle, AlertTriangle, Check, HelpCircle
-} from 'lucide-react'
-```
-
-### Icon Usage Patterns
-```tsx
-// Basic usage
-<TrendingUp className="w-7 h-7 text-safe" strokeWidth={2.5} />
-
-// In buttons
+// Icon is decorative (default behavior)
 <Button>
-  <Send className="w-4 h-4" />
+  <Icon icon={SendIcon} size="sm" />
   Send Message
 </Button>
+```
 
-// Icon-only buttons
-<Button size="icon" aria-label="Close">
-  <X className="w-5 h-5" />
-</Button>
+#### Standalone Icon Buttons
+Icon-only buttons need `aria-label` and `decorative={false}`:
+
+```tsx
+// ✅ GOOD - Standalone icon with label
+<button aria-label="Close modal">
+  <Icon icon={XIcon} size="lg" decorative={false} />
+</button>
+
+// ❌ BAD - Missing aria-label
+<button>
+  <Icon icon={XIcon} size="lg" />
+</button>
+```
+
+#### With Colors and Stroke
+Icons use `currentColor` by default:
+
+```tsx
+// Color from design tokens
+<Icon icon={TrendingUpIcon} size="xl" className="text-safe" />
+<Icon icon={AlertTriangleIcon} size="md" className="text-alert" />
+
+// Custom stroke weight (2px default, 2.5px for emphasis)
+<Icon icon={MenuIcon} size="lg" strokeWidth={2.5} />
+```
+
+#### Navigation Icons
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { MessageCircleIcon, TrendingUpIcon, BarChart3Icon, SettingsIcon } from '@/components/ui/icons'
+
+const navItems = [
+  { icon: MessageCircleIcon, label: "Chat", href: "/parent" },
+  { icon: TrendingUpIcon, label: "Insights", href: "/parent/insights" },
+  { icon: BarChart3Icon, label: "Patterns", href: "/parent/patterns" },
+  { icon: SettingsIcon, label: "Settings", href: "/settings" },
+]
+
+// In component
+{navItems.map((item) => (
+  <Link key={item.href} href={item.href}>
+    <Icon icon={item.icon} size="lg" />
+    <span>{item.label}</span>
+  </Link>
+))}
+```
+
+#### Metric Badges (Circular)
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { TrendingUpIcon, MinusIcon, TrendingDownIcon } from '@/components/ui/icons'
+
+// Positive metric
+<div className="w-16 h-16 rounded-full bg-safe flex items-center justify-center">
+  <Icon
+    icon={TrendingUpIcon}
+    size="xl"
+    className="text-white"
+    strokeWidth={2.5}
+    decorative={false}
+    aria-label="Positive trend"
+  />
+</div>
+
+// Neutral metric
+<div className="w-16 h-16 rounded-full bg-gray-400 flex items-center justify-center">
+  <Icon icon={MinusIcon} size="xl" className="text-white" strokeWidth={2.5} />
+</div>
+
+// Negative metric
+<div className="w-16 h-16 rounded-full bg-caution flex items-center justify-center">
+  <Icon icon={TrendingDownIcon} size="xl" className="text-white" strokeWidth={2.5} />
+</div>
+```
+
+#### Search Input
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { SearchIcon } from '@/components/ui/icons'
+
+<div className="relative">
+  <Icon
+    icon={SearchIcon}
+    size="md"
+    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+  />
+  <Input
+    type="search"
+    placeholder="Search..."
+    className="pl-10"
+  />
+</div>
+```
+
+#### Back Button
+
+```tsx
+import { Icon } from '@/components/ui/icon'
+import { ChevronLeftIcon } from '@/components/ui/icons'
+
+<button
+  onClick={handleBack}
+  className="w-11 h-11 flex items-center justify-center rounded-lg transition-colors active:bg-gray-100"
+  aria-label="Go back"
+>
+  <Icon icon={ChevronLeftIcon} size="lg" strokeWidth={2.5} decorative={false} />
+</button>
+```
+
+### Alternative: Direct Import
+
+You can also import icons directly from Lucide (without the Icon wrapper):
+
+```tsx
+import { Send } from 'lucide-react'
+
+// Manual sizing required
+<Send className="w-5 h-5" />
+```
+
+**Recommendation:** Use the `Icon` component for consistency and automatic accessibility handling.
+
+### Adding New Icons
+
+#### Option 1: Direct Import (Quick)
+
+```tsx
+import { Smile } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
+
+<Icon icon={Smile} size="md" />
+```
+
+#### Option 2: Add to Icons Collection (Recommended)
+
+1. Open `components/ui/icons.ts`
+2. Add to exports:
+
+```ts
+export {
+  // ... existing icons
+  Smile,
+} from "lucide-react"
+
+export {
+  // ... existing Icon exports
+  Smile as SmileIcon,
+} from "lucide-react"
+```
+
+3. Use with consistent naming:
+
+```tsx
+import { SmileIcon } from '@/components/ui/icons'
+<Icon icon={SmileIcon} size="md" />
 ```
 
 ### Icon Style Guidelines
-- **Stroke weight:** 2.5px for metric badges, 2px default
-- **Color:** Use design tokens (text-blurple, text-safe, text-alert)
-- **Sizing:** Always use Tailwind size classes (w-4 h-4, w-5 h-5, etc.)
-- **Accessibility:** Add aria-label for icon-only buttons
+
+#### ✅ DO
+```tsx
+// Use Icon component with size variants
+<Icon icon={SendIcon} size="md" />
+
+// Add aria-label to standalone icon buttons
+<button aria-label="Close">
+  <Icon icon={XIcon} size="lg" decorative={false} />
+</button>
+
+// Use design system colors
+<Icon icon={TrendingUpIcon} size="xl" className="text-safe" />
+
+// Use appropriate sizes for context
+<Icon icon={MessageCircleIcon} size="sm" /> // In button text
+<Icon icon={MenuIcon} size="lg" /> // In navigation
+```
+
+#### ❌ DON'T
+```tsx
+// Don't use arbitrary sizes
+<Icon icon={SendIcon} className="w-[23px] h-[23px]" /> // ❌
+
+// Don't forget aria-label on standalone icons
+<button>
+  <Icon icon={XIcon} size="lg" /> // ❌ Missing aria-label
+</button>
+
+// Don't use hardcoded colors
+<Icon icon={TrendingUpIcon} style={{ color: '#7ED957' }} /> // ❌
+
+// Don't use wrong size for context
+<Icon icon={MessageCircleIcon} size="2xl" /> // ❌ Too large for button
+```
+
+### Accessibility Requirements
+
+- **Decorative icons:** Must have `aria-hidden="true"` (default)
+- **Standalone icon buttons:** Must have `aria-label` and `decorative={false}`
+- **Touch targets:** Icon buttons must be 44×44px minimum
+- **Color contrast:** Icons must meet WCAG AA contrast requirements (3:1 minimum)
+
+### TypeScript Support
+
+```tsx
+import { Icon, type IconProps, type IconSize } from '@/components/ui/icon'
+import { type LucideIcon } from 'lucide-react'
+
+// Using IconProps
+const MyIconComponent: React.FC<IconProps> = (props) => {
+  return <Icon {...props} />
+}
+
+// Custom component with icon prop
+interface CustomProps {
+  icon: LucideIcon
+  size?: IconSize
+}
+
+const CustomComponent: React.FC<CustomProps> = ({ icon, size = "md" }) => {
+  return <Icon icon={icon} size={size} />
+}
+```
 
 ---
 

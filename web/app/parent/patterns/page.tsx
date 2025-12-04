@@ -1,11 +1,23 @@
+"use client";
+
 import ParentWordsPanel from "../../../components/ParentWordsPanel";
 import ResponsiveLayout from "../../../components/ResponsiveLayout";
+import { Icon } from "@/components/ui";
+import { HeartHandshakeIcon, ShieldIcon, LocateIcon, FlagIcon } from "@/components/ui/icons";
 
 export default function PatternsPage() {
   const children = [
     { id: "kid_01", name: "Jamie" },
     { id: "kid_02", name: "Emma" }
   ];
+
+  // Icon mapping for stats
+  const statIcons: Record<string, any> = {
+    "Kind Interactions": HeartHandshakeIcon,
+    "Digital Wellbeing": ShieldIcon,
+    "Privacy Warnings": LocateIcon,
+    "Risk Moments": FlagIcon,
+  };
 
   // Stats cards moved from main dashboard
   const stats = [
@@ -66,7 +78,9 @@ export default function PatternsPage() {
 
         {/* Stats Grid - mobile-first: 2 columns, desktop: 4 columns */}
         <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
-          {stats.map((stat) => (
+          {stats.map((stat) => {
+            const StatIcon = statIcons[stat.label];
+            return (
             <div
               key={stat.label}
               className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4 shadow-sm"
@@ -85,11 +99,13 @@ export default function PatternsPage() {
               <div className={`text-xl md:text-title-2 font-bold ${stat.color}`}>
                 {stat.value}
               </div>
-              <div className="mt-1 text-[11px] md:text-footnote font-medium text-gray-700 leading-tight">
-                {stat.label}
+              <div className="mt-1 text-[11px] md:text-footnote font-medium text-gray-700 leading-tight flex items-center gap-1.5">
+                {StatIcon && <Icon icon={StatIcon} size="sm" className="text-gray-400" />}
+                <span>{stat.label}</span>
               </div>
             </div>
-          ))}
+          )})}
+
         </div>
 
         <ParentWordsPanel children={children} />

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Badge, Button } from "@/components/ui";
+import { Badge, Button, Icon } from "@/components/ui";
+import { ShieldIcon, HeartHandshakeIcon, LocateIcon, FlagIcon } from "@/components/ui/icons";
 
 interface ChildInfo {
   id: string;
@@ -22,6 +23,14 @@ export default function ParentSummaryPanel({
     "This week, Jamie and Emma showed mostly kind and curious behaviour online. " +
     "There were a few moments of unkind language and one near‑miss with sharing personal information, " +
     "but they responded well after a gentle nudge from the guardian.";
+
+  // Icon mapping for stats
+  const statIcons: Record<string, any> = {
+    "Kind interactions": HeartHandshakeIcon,
+    "Digital wellbeing": ShieldIcon,
+    "Privacy warnings": LocateIcon,
+    "Potential risk moments": FlagIcon,
+  };
 
   // Stats data for each child
   const childStats: Record<string, Array<{
@@ -100,8 +109,8 @@ export default function ParentSummaryPanel({
             </p>
           </div>
           <Badge variant="success">
-            <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-white" />
+            <span className="flex items-center gap-1.5">
+              <Icon icon={ShieldIcon} size="sm" className="text-white" />
               <span>Healthy overall</span>
             </span>
           </Badge>
@@ -134,12 +143,17 @@ export default function ParentSummaryPanel({
 
         {/* Stats cards */}
         <div className="grid grid-cols-2 gap-3">
-          {stats.map((stat) => (
+          {stats.map((stat) => {
+            const StatIcon = statIcons[stat.label];
+            return (
             <div
               key={stat.label}
               className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm"
             >
-              <div className="text-[11px] text-gray-500">{stat.label}</div>
+              <div className="text-[11px] text-gray-500 flex items-center gap-1.5">
+                {StatIcon && <Icon icon={StatIcon} size="sm" className="text-gray-400" />}
+                <span>{stat.label}</span>
+              </div>
               <div className="mt-1 flex items-baseline justify-between">
                 <div className="text-lg font-semibold text-gray-900">
                   {stat.value}
@@ -158,7 +172,7 @@ export default function ParentSummaryPanel({
                 )}
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </section>

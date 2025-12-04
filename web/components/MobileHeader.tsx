@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
+import { ChevronLeftIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 interface MobileHeaderProps {
@@ -45,7 +46,7 @@ export default function MobileHeader({
               className="flex items-center justify-center w-11 h-11 -ml-2 text-blurple rounded-lg transition-colors active:bg-gray-100"
               aria-label="Go back"
             >
-              <ChevronLeft className="w-6 h-6" strokeWidth={2.5} />
+              <Icon icon={ChevronLeftIcon} size="lg" strokeWidth={2.5} decorative={false} />
             </button>
           )}
         </div>
