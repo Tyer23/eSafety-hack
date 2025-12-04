@@ -8,7 +8,7 @@ interface ParentDashboardProps {
 
 export default function ParentDashboard({ parentId }: ParentDashboardProps) {
   return (
-    <div className="h-[calc(100vh-120px)] -mx-4 -my-6 overflow-hidden">
+    <div className="h-[calc(100vh-120px)]  overflow-hidden">
       <ParentChatPanel />
     </div>
   )

@@ -121,7 +121,7 @@ export default function ParentSummaryPanel({
           </div>
           <Badge variant="success">
             <span className="flex items-center gap-1.5">
-              <Icon icon={ShieldIcon} size="sm" className="text-white" />
+              <Icon icon={ShieldIcon} size="sm" className="text-inherit" />
               <span>Healthy overall</span>
             </span>
           </Badge>

@@ -14,6 +14,7 @@ export default function ParentPage() {
         title: 'Chat',
       }}
       showMobileNav={true}
+      applyPadding={false}
     >
       <ParentDashboard parentId={parentId} />
     </ResponsiveLayout>
