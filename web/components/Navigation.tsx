@@ -13,17 +13,17 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="flex items-center gap-2 text-xs font-medium">
+    <nav className="flex items-center gap-2 text-footnote font-medium">
       {navItems.map((item) => {
         const isActive = pathname === item.href;
         return (
           <Link
             key={item.href}
             href={item.href}
-            className={`px-3 py-1.5 transition-colors ${
+            className={`px-3 py-1.5 transition-colors rounded-lg ${
               isActive
-                ? "text-pastel-purple-700 font-semibold"
-                : "text-slate-600 hover:text-slate-900"
+                ? "text-blurple font-semibold bg-blurple/10"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
             {item.label}

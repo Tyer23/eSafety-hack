@@ -1,6 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/parent/page": "app/parent/page.js",
-  "/parent/insights/page": "app/parent/insights/page.js",
-  "/parent/patterns/page": "app/parent/patterns/page.js"
-}

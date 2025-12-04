@@ -13,38 +13,38 @@ export default function PatternsPage() {
       value: "18",
       change: "+4",
       trend: "up",
-      color: "bg-gradient-to-br from-pastel-pink-200 to-pastel-pink-300",
+      color: "text-safe",
     },
     {
       label: "Privacy Warnings",
       value: "1",
       change: "-2",
       trend: "down",
-      color: "bg-gradient-to-br from-pastel-blue-200 to-pastel-blue-300",
+      color: "text-caution",
     },
     {
       label: "Digital Wellbeing",
       value: "85%",
       change: "+5%",
       trend: "up",
-      color: "bg-gradient-to-br from-pastel-purple-200 to-pastel-purple-300",
+      color: "text-blurple",
     },
     {
       label: "Risk Moments",
       value: "3",
       change: "-1",
       trend: "down",
-      color: "bg-gradient-to-br from-pastel-pink-100 to-pastel-blue-100",
+      color: "text-alert",
     }
   ];
 
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
+        <h1 className="text-title-2 font-semibold tracking-tight text-gray-900">
           Patterns &amp; data
         </h1>
-        <p className="mt-2 text-sm text-slate-600 max-w-xl">
+        <p className="mt-2 text-subhead text-gray-600 max-w-xl">
           When you want to peek under the hood, this view organises{" "}
           <span className="font-semibold">themes, example phrases,</span> and
           other signals into clear sections.
@@ -56,23 +56,23 @@ export default function PatternsPage() {
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+            className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
           >
             <div className="mb-2 flex items-center justify-end">
               <span
-                className={`text-xs font-medium ${
+                className={`text-footnote font-medium ${
                   stat.trend === "up"
-                    ? "text-pastel-purple-700"
-                    : "text-pastel-blue-700"
+                    ? "text-safe"
+                    : "text-caution"
                 }`}
               >
                 {stat.change}
               </span>
             </div>
-            <div className={`text-2xl font-bold ${stat.color.includes('pink') ? 'text-pastel-pink-600' : stat.color.includes('blue') ? 'text-pastel-blue-600' : 'text-pastel-purple-600'}`}>
+            <div className={`text-title-2 font-bold ${stat.color}`}>
               {stat.value}
             </div>
-            <div className="mt-1 text-xs font-medium text-slate-700">
+            <div className="mt-1 text-footnote font-medium text-gray-700">
               {stat.label}
             </div>
           </div>
