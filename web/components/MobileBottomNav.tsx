@@ -40,7 +40,7 @@ export default function MobileBottomNav() {
 
   return (
     <nav
-      className="mx-2 fixed bottom-4 left-2 right-0 z-50 bg-white border-t border-gray-200 rounded-3xl shadow-elevated pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="fixed bottom-4 left-2 right-2 z-50 bg-white border-t border-gray-200 rounded-3xl shadow-elevated pb-[env(safe-area-inset-bottom)] md:hidden"
       role="navigation"
       aria-label="Mobile navigation"
     >
