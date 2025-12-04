@@ -1073,11 +1073,13 @@ import { Send } from 'lucide-react'
 #### Specifications
 - **Min height:** 44px (default), 36px (sm), 52px (lg)
 - **Min width:** 44px (touch target)
-- **Border radius:** 12px (default), 20px (lg)
+- **Border radius:** 12px (default), 8px (sm), 12px (lg)
+- **Font weight:** 600 (semibold) - matches badge weight
 - **Transition:** all 250ms
 - **Active state:** scale(0.98)
-- **Disabled state:** opacity 40%
+- **Disabled state:** opacity 50%
 - **Focus ring:** 2px blurple, 2px offset
+- **Small size:** Uses variant styling (not hardcoded colors) for proper toggle button support
 
 ---
 
@@ -1190,6 +1192,7 @@ import { Badge } from '@/components/ui/badge'
 - **Border width:** 2px (all variants)
 - **Font size:** 13px footnote (default), 11px (sm)
 - **Font weight:** 600 (semibold)
+- **Text wrapping:** Never wraps (whitespace-nowrap) - badge text always stays on one line
 
 #### Size Exception
 - **sm size:** Filled style with bg-blurple, text-white, no border (exception to outline rule)

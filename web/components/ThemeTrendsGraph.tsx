@@ -131,9 +131,9 @@ export default function ThemeTrendsGraph() {
   };
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
       {/* Header */}
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 md:mb-8 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div>
           <h2 className="text-title-2 font-bold text-gray-900">Positivity</h2>
           <p className="text-subhead text-gray-500 mt-1">Children&apos;s positivity metrics</p>
@@ -141,7 +141,7 @@ export default function ThemeTrendsGraph() {
         <div className="flex items-center gap-2">
           <span className="text-footnote text-gray-600">Range:</span>
           <select
-            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-footnote font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blurple transition-colors"
+            className="rounded-lg border border-gray-200 bg-white pl-3 pr-8 py-1.5 text-footnote font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blurple transition-colors"
             defaultValue="Last 12 months"
           >
             <option>Last 12 months</option>
@@ -151,15 +151,16 @@ export default function ThemeTrendsGraph() {
         </div>
       </div>
 
-      <div className="flex gap-6">
-        {/* Left Sidebar - Months (Scrollable) */}
-        <div className="flex flex-col items-center gap-2 max-h-[300px] overflow-y-auto">
+      <div className="flex flex-col gap-6 md:flex-row">
+        {/* Months Selector - Horizontal on mobile, Vertical on desktop */}
+        <div className="flex md:flex-col items-center gap-2 overflow-x-auto md:overflow-y-auto md:max-h-[300px] pb-2 md:pb-0">
+          {/* Left/Up scroll button */}
           <button
             onClick={() => scrollMonths("up")}
             disabled={selectedMonthIndex === 0}
-            className={`text-gray-400 hover:text-gray-600 mb-1 ${selectedMonthIndex === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className={`text-gray-400 hover:text-gray-600 ${selectedMonthIndex === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:rotate-0 -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
             </svg>
           </button>
@@ -167,7 +168,7 @@ export default function ThemeTrendsGraph() {
             <button
               key={`${month}-${index}`}
               onClick={() => setSelectedMonthIndex(index)}
-              className={`px-3 py-2 rounded-lg text-footnote font-medium transition-colors whitespace-nowrap ${
+              className={`px-3 py-2 rounded-lg text-footnote font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${
                 selectedMonthIndex === index
                   ? "bg-blurple text-white"
                   : "text-gray-600 hover:bg-gray-100"
@@ -176,12 +177,13 @@ export default function ThemeTrendsGraph() {
               {month}
             </button>
           ))}
+          {/* Right/Down scroll button */}
           <button
             onClick={() => scrollMonths("down")}
             disabled={selectedMonthIndex === monthNames.length - 1}
-            className={`text-gray-400 hover:text-gray-600 mt-1 ${selectedMonthIndex === monthNames.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className={`text-gray-400 hover:text-gray-600 ${selectedMonthIndex === monthNames.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:rotate-0 -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
@@ -278,25 +280,25 @@ export default function ThemeTrendsGraph() {
           </div>
 
           {/* Bottom Section with Legend and Filter */}
-          <div className="mt-4 flex items-end justify-between">
+          <div className="mt-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             {/* Legend */}
             <div className="flex items-center gap-6 text-footnote">
               <div className="flex items-center gap-2">
                 <div className="h-3 w-3 rounded bg-alert" />
-                <span className="text-gray-700 font-medium">Jamie</span>
+                <span className="text-gray-700 font-semibold">Jamie</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-3 w-3 rounded bg-blurple" />
-                <span className="text-gray-700 font-medium">Emma</span>
+                <span className="text-gray-700 font-semibold">Emma</span>
               </div>
             </div>
 
             {/* Metric Filter */}
-            <div className="text-right">
+            <div>
               <select
                 value={selectedMetric}
                 onChange={(e) => setSelectedMetric(e.target.value as Metric)}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-footnote font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blurple transition-colors"
+                className="w-full md:w-auto rounded-lg border border-gray-200 bg-white pl-3 pr-8 py-1.5 text-footnote font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-blurple transition-colors"
               >
                 <option value="positivity">Positivity</option>
                 <option value="kindness">Kindness</option>

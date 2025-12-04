@@ -34,10 +34,10 @@ export default function ParentSummaryPanel({
 
   // Icon mapping for stats
   const statIcons: Record<string, LucideIcon> = {
-    'Kind interactions': HeartHandshakeIcon,
-    'Digital wellbeing': ShieldIcon,
-    'Privacy warnings': LocateIcon,
-    'Potential risk moments': FlagIcon,
+    'Kind Interactions': HeartHandshakeIcon,
+    'Digital Wellbeing': ShieldIcon,
+    'Privacy Warnings': LocateIcon,
+    'Potential Risk Moments': FlagIcon,
   }
 
   // Stats data for each child
@@ -52,25 +52,25 @@ export default function ParentSummaryPanel({
   > = {
     kid_01: [
       {
-        label: 'Kind interactions',
+        label: 'Kind Interactions',
         value: '18',
         trend: '+4',
         tone: 'positive',
       },
       {
-        label: 'Potential risk moments',
+        label: 'Potential Risk Moments',
         value: '5',
         trend: '-2',
         tone: 'neutral',
       },
       {
-        label: 'Privacy warnings',
+        label: 'Privacy Warnings',
         value: '1',
         trend: '0',
         tone: 'neutral',
       },
       {
-        label: 'Digital wellbeing',
+        label: 'Digital Wellbeing',
         value: 'Balanced',
         trend: '',
         tone: 'positive',
@@ -78,25 +78,25 @@ export default function ParentSummaryPanel({
     ],
     kid_02: [
       {
-        label: 'Kind interactions',
+        label: 'Kind Interactions',
         value: '22',
         trend: '+6',
         tone: 'positive',
       },
       {
-        label: 'Potential risk moments',
+        label: 'Potential Risk Moments',
         value: '2',
         trend: '-3',
         tone: 'neutral',
       },
       {
-        label: 'Privacy warnings',
+        label: 'Privacy Warnings',
         value: '0',
         trend: '-1',
         tone: 'neutral',
       },
       {
-        label: 'Digital wellbeing',
+        label: 'Digital Wellbeing',
         value: 'Excellent',
         trend: '',
         tone: 'positive',
@@ -108,28 +108,28 @@ export default function ParentSummaryPanel({
     childStats[selectedChild] || childStats[children[0]?.id || ''] || []
 
   return (
-    <section className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-      <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 shadow-sm">
-        <div className="flex items-center justify-between mb-3">
+    <section className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+        <div className="flex items-start justify-between mb-6 gap-4">
           <div>
             <h2 className="text-subhead font-semibold text-gray-900">
-              This week at a glance
+              This Week at a Glance
             </h2>
-            <p className="text-footnote text-gray-500">
+            <p className="text-footnote text-gray-500 mt-1">
               High‑level themes across all your children&apos;s online activity.
             </p>
           </div>
           <Badge variant="success">
             <span className="flex items-center gap-1.5">
               <Icon icon={ShieldIcon} size="sm" className="text-inherit" />
-              <span>Healthy overall</span>
+              <span>Healthy Overall</span>
             </span>
           </Badge>
         </div>
         <p className="text-subhead text-gray-800 leading-relaxed">
           {weeklySummary}
         </p>
-        <div className="mt-3 text-[11px] text-gray-500">
+        <div className="mt-4 text-[11px] text-gray-500">
           You see{' '}
           <span className="font-semibold text-gray-900">
             behaviours and patterns
@@ -138,14 +138,14 @@ export default function ParentSummaryPanel({
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {/* Toggle buttons */}
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           {children.map((child) => (
             <Button
               key={child.id}
               onClick={() => setSelectedChild(child.id)}
-              variant={selectedChild === child.id ? 'default' : 'outline'}
+              variant={selectedChild === child.id ? 'default' : 'secondary'}
               size="sm"
               className="flex-1"
             >
@@ -155,35 +155,39 @@ export default function ParentSummaryPanel({
         </div>
 
         {/* Stats cards */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
           {stats.map((stat) => {
             const StatIcon = statIcons[stat.label]
             return (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm"
+                className="rounded-2xl border border-gray-100 bg-white px-4 py-5 shadow-sm"
               >
-                <div className="text-[11px] text-gray-500 flex items-center gap-1.5">
+                <div className="text-[11px] text-gray-500 flex items-center gap-1.5 mb-3">
                   {StatIcon && (
                     <Icon icon={StatIcon} size="sm" className="text-gray-400" />
                   )}
                   <span>{stat.label}</span>
                 </div>
-                <div className="mt-1 flex items-baseline justify-between">
-                  <div className="text-lg font-semibold text-gray-900">
+                <div className="flex items-baseline justify-between">
+                  <div className="text-xl font-semibold text-gray-900">
                     {stat.value}
                   </div>
                   {stat.trend && (
                     <div
-                      className={`text-[11px] ${
+                      className={`text-[11px] font-medium ${
                         stat.tone === 'positive' ? 'text-safe' : 'text-caution'
                       }`}
                     >
                       {stat.trend}
-                      {stat.tone === 'positive' ? ' vs last week' : ' to watch'}
                     </div>
                   )}
                 </div>
+                {stat.trend && (
+                  <div className="text-[10px] text-gray-400 mt-1">
+                    {stat.tone === 'positive' ? 'vs last week' : 'to watch'}
+                  </div>
+                )}
               </div>
             )
           })}
