@@ -70,8 +70,8 @@ export default function ActivityCalendar({ dayStatuses, childName }: ActivityCal
   };
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between">
+    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+      <div className="mb-6 flex items-center justify-between">
         <div>
           <h3 className="text-subhead font-semibold text-gray-900">
             {monthNames[currentMonth]} {currentYear}
