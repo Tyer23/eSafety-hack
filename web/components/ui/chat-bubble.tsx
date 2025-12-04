@@ -24,6 +24,7 @@ const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
               alt="KindNet AI"
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover flex-shrink-0 mt-0.5"
               style={{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)' }}
+              loading="eager"
             />
           )}
 

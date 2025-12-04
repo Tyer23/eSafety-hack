@@ -41,14 +41,19 @@ export default function Logo({
 }: LogoProps) {
   const imageSrc = jellybeatImages[jellybeatVariant];
 
+  // Calculate pixel sizes
+  const pixelSize = size === "sm" ? 32 : size === "md" ? 40 : size === "lg" ? 48 : 64;
+
   if (variant === "icon") {
     return (
       <div className={cn("relative flex-shrink-0", sizeClasses.icon[size], className)}>
         <Image
           src={imageSrc}
           alt="Jellybeat mascot"
-          fill
+          width={pixelSize}
+          height={pixelSize}
           className="object-contain"
+          quality={100}
           priority
         />
       </div>
@@ -62,9 +67,10 @@ export default function Logo({
         <Image
           src={imageSrc}
           alt="Jellybeat mascot"
-          width={size === "sm" ? 32 : size === "md" ? 40 : size === "lg" ? 48 : 64}
-          height={size === "sm" ? 32 : size === "md" ? 40 : size === "lg" ? 48 : 64}
+          width={pixelSize}
+          height={pixelSize}
           className="object-contain"
+          quality={100}
           priority
         />
       </div>
