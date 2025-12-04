@@ -1,4 +1,5 @@
 import ParentDashboard from "../../components/ParentDashboard";
+import ResponsiveLayout from "../../components/ResponsiveLayout";
 
 export const dynamic = "force-dynamic";
 
@@ -7,7 +8,17 @@ export default function ParentPage() {
   // For this MVP we hard‑code parent_01.
   const parentId = "parent_01";
 
-  return <ParentDashboard parentId={parentId} />;
+  return (
+    <ResponsiveLayout
+      mobileHeader={{
+        title: "Chat",
+      }}
+      showMobileNav={true}
+      applyPadding={false}
+    >
+      <ParentDashboard parentId={parentId} />
+    </ResponsiveLayout>
+  );
 }
 
 
