@@ -1,0 +1,478 @@
+id,timestamp,text,context,classification,confidence,toxicity_score,toxicity_confidence,toxicity_label,primary_emotion,emotion_intensity,intent,detected_issues,has_feedback,feedback_message,processing_time_ms,used_llm
+1,2024-01-12 09:36:05,you should tell an adult,message,green,0.9,0.0,0.5,neither,anger,0.6323026418685913,neutral,,no,,99.17211532592773,no
+2,2024-01-17 08:48:54,why do i feel left out?,search,green,0.9,0.0,0.5,neither,sadness,0.8916389346122742,neutral,,no,,90.27719497680664,no
+3,2024-01-24 14:52:24,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,92.27490425109863,no
+4,2024-01-28 17:30:13,lying is never okay,message,green,0.9,0.0,0.5,neither,joy,0.9868255257606506,positive,,no,,94.97499465942383,no
+5,2024-01-02 13:42:11,youre the best friend ever,message,green,0.9,0.0,0.5,neither,joy,0.8967813849449158,positive,,no,,102.96893119812012,no
+6,2024-01-28 14:35:34,youre already very kind,message,green,0.9,0.0,0.5,neither,joy,0.5599386096000671,positive,,no,,96.09389305114746,no
+7,2024-01-03 20:24:55,youre amazing,message,green,0.9,0.0,0.5,neither,surprise,0.688075065612793,neutral,,no,,98.70219230651855,no
+8,2024-01-18 20:32:22,go off,message,green,0.9,0.0,0.5,neither,anger,0.8154372572898865,neutral,,no,,97.95308113098145,no
+9,2024-01-18 13:37:54,everyone makes mistakes sometimes,message,green,0.9,0.0,0.5,neither,sadness,0.9017521739006042,neutral,,no,,183.80117416381836,no
+10,2024-01-04 15:16:56,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,94.77496147155762,no
+11,2024-01-07 14:18:28,i love playing that game,message,green,0.9,0.0,0.5,neither,joy,0.516348123550415,positive,,no,,96.94099426269531,no
+12,2024-01-21 19:22:50,how to handle bullies,search,green,0.9,0.0,0.5,neither,anger,0.994350790977478,neutral,,no,,110.13984680175781,no
+13,2024-01-01 17:05:48,they dont hate you,message,yellow,0.75,0.6,0.9,offensive,anger,0.9885347485542297,personal_attack,,yes,"It sounds like something is really bothering you. Harsh criticism rarely helps. Specific, constructive feedback works better. Let's find a better way to express what you're feeling.",117.85292625427246,no
+14,2024-01-24 10:38:56,fr thats so cool,message,green,0.9,0.0,0.5,neither,joy,0.9986984729766846,positive,,no,,114.8381233215332,no
+15,2024-01-10 10:58:22,different is special,message,green,0.9,0.0,0.5,neither,joy,0.9485678672790527,positive,,no,,157.9298973083496,no
+16,2024-01-21 12:05:16,just be yourself always,message,green,0.9,0.0,0.5,neither,joy,0.9871180057525635,positive,,no,,151.81207656860352,no
+17,2024-01-11 15:23:47,why do i feel so sad?,search,green,0.9,0.0,0.5,neither,sadness,0.9990742206573486,neutral,,no,,112.4718189239502,no
+18,2024-01-18 18:35:39,what is Facebook?,search,green,0.9,0.0,0.5,neither,fear,0.5916630625724792,neutral,,no,,104.69293594360352,no
+19,2024-01-02 18:16:44,lying is never okay,message,green,0.9,0.0,0.5,neither,joy,0.9868255257606506,positive,,no,,1.0,no
+20,2024-01-15 18:13:39,youre already very kind,message,green,0.9,0.0,0.5,neither,joy,0.5599386096000671,positive,,no,,1.0,no
+21,2024-01-08 20:06:51,its perfectly okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9975487589836121,positive,,no,,101.34625434875488,no
+22,2024-01-24 14:17:26,talking things out helps,message,green,0.9,0.0,0.5,neither,anger,0.5931562185287476,neutral,,no,,89.96701240539551,no
+23,2024-01-12 13:34:22,thats a big mood,message,green,0.9,0.0,0.5,neither,joy,0.8838210701942444,positive,,no,,90.1329517364502,no
+24,2024-01-26 10:47:02,slay,message,green,0.9,0.0,0.5,neither,anger,0.8761805891990662,neutral,,no,,92.38910675048828,no
+25,2024-01-18 13:32:02,how to be more brave,search,green,0.9,0.0,0.5,neither,joy,0.995148241519928,positive,,no,,89.80393409729004,no
+26,2024-01-07 11:25:14,sure what subject?,message,green,0.9,0.0,0.5,neither,joy,0.9839358329772949,positive,,no,,93.31369400024414,no
+27,2024-01-26 11:30:52,bet,message,yellow,0.8,0.0,0.5,neither,anger,0.4414975047111511,neutral,age_inappropriate,yes,I can tell you're feeling really frustrated right now. Let's find a better way to express what you're feeling.,93.19615364074707,no
+28,2024-01-07 14:23:42,youre so annoying!,message,red,0.95,0.0,0.5,neither,anger,0.9962783455848694,personal_attack,bullying,yes,It sounds like something is really bothering you. Let's find a better way to express what you're feeling.,92.48113632202148,no
+29,2024-01-24 13:23:00,what is TikTok?,search,green,0.9,0.0,0.5,neither,fear,0.4979815185070038,neutral,,no,,90.37399291992188,no
+30,2024-01-28 19:05:24,what does fr mean,search,green,0.9,0.0,0.5,neither,anger,0.8034387230873108,neutral,,no,,90.09695053100586,no
+31,2024-01-17 17:56:36,how to be happier,search,green,0.9,0.0,0.5,neither,joy,0.9927515983581543,positive,,no,,97.10574150085449,no
+32,2024-01-28 17:26:57,you are really smart,message,green,0.9,0.0,0.5,neither,joy,0.9982101917266846,positive,,no,,90.18492698669434,no
+33,2024-01-01 15:57:34,how to make new friends,search,green,0.9,0.0,0.5,neither,joy,0.9873780608177185,positive,,no,,90.60311317443848,no
+34,2024-01-20 08:24:09,just be yourself always,message,green,0.9,0.0,0.5,neither,joy,0.9871180057525635,positive,,no,,1.0,no
+35,2024-01-18 20:26:23,everyone is beautiful in their own way,message,green,0.9,0.0,0.5,neither,joy,0.9940794706344604,positive,,no,,92.13781356811523,no
+36,2024-01-28 08:16:24,no cap,message,green,0.9,0.0,0.5,neither,anger,0.9811233878135681,neutral,,no,,94.79713439941406,no
+37,2024-01-18 08:15:17,how to be more confident,search,green,0.9,0.0,0.5,neither,joy,0.9974937438964844,positive,,no,,90.22188186645508,no
+38,2024-01-04 18:13:11,how to be more confident,search,green,0.9,0.0,0.5,neither,joy,0.9974937438964844,positive,,no,,1.0,no
+39,2024-01-24 17:24:17,do things that make you happy,message,green,0.9,0.0,0.5,neither,joy,0.9983437061309814,positive,,no,,91.47381782531738,no
+40,2024-02-01 14:03:30,no cap,message,green,0.9,0.0,0.5,neither,anger,0.9811233878135681,neutral,,no,,1.0,no
+41,2024-02-07 17:43:42,how to be happier,search,green,0.9,0.0,0.5,neither,joy,0.9927515983581543,positive,,no,,1.0,no
+42,2024-02-09 18:20:59,what is Twitter?,search,green,0.9,0.0,0.5,neither,anger,0.5341735482215881,neutral,,no,,97.88703918457031,no
+43,2024-02-14 13:15:06,talking things out helps,message,green,0.9,0.0,0.5,neither,anger,0.5931562185287476,neutral,,no,,1.0,no
+44,2024-02-07 10:58:39,what does lowkey mean,search,green,0.9,0.0,0.5,neither,anger,0.8571333289146423,neutral,,no,,91.86100959777832,no
+45,2024-02-24 17:41:20,bet,message,yellow,0.8,0.0,0.5,neither,anger,0.4414975047111511,neutral,age_inappropriate,yes,I can tell you're feeling really frustrated right now. Let's find a better way to express what you're feeling.,1.0,no
+46,2024-02-27 16:49:53,facts,message,green,0.9,0.0,0.5,neither,joy,0.44741013646125793,positive,,no,,93.51181983947754,no
+47,2024-02-16 08:50:29,talk to someone you trust,message,green,0.9,0.0,0.5,neither,anger,0.729866623878479,neutral,,no,,92.44489669799805,no
+48,2024-02-06 18:34:27,what does thats fire mean,search,green,0.9,0.0,0.5,neither,anger,0.9423449635505676,neutral,,no,,106.78863525390625,no
+49,2024-02-19 17:27:17,youre already a great person,message,green,0.9,0.0,0.5,neither,joy,0.9981924891471863,positive,,no,,102.93698310852051,no
+50,2024-02-09 10:59:09,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+51,2024-02-20 14:12:26,can we play together?,message,green,0.9,0.0,0.5,neither,joy,0.8052765727043152,positive,,no,,109.19976234436035,no
+52,2024-02-25 18:34:40,thats a big mood,message,green,0.9,0.0,0.5,neither,joy,0.8838210701942444,positive,,no,,1.0,no
+53,2024-02-09 13:46:33,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,64.31198120117188,no
+54,2024-02-24 17:19:02,how to become popular,search,green,0.9,0.0,0.5,neither,joy,0.9978671073913574,positive,,no,,106.7361831665039,no
+55,2024-02-12 15:35:13,how to stop feeling sad,search,green,0.9,0.0,0.5,neither,sadness,0.9990805387496948,neutral,,no,,94.95186805725098,no
+56,2024-02-05 20:25:19,what does go off mean,search,green,0.9,0.0,0.5,neither,anger,0.9334704875946045,neutral,,no,,90.9891128540039,no
+57,2024-02-28 17:39:49,tell a teacher or parent,message,green,0.9,0.0,0.5,neither,anger,0.7052763104438782,neutral,,no,,95.9017276763916,no
+58,2024-02-07 11:51:06,how to become popular,search,green,0.9,0.0,0.5,neither,joy,0.9978671073913574,positive,,no,,1.0,no
+59,2024-02-20 16:55:54,youre never alone,message,green,0.9,0.0,0.5,neither,sadness,0.9912753105163574,neutral,,no,,93.2929515838623,no
+60,2024-02-28 18:04:48,youre cool to me,message,green,0.9,0.0,0.5,neither,joy,0.99790358543396,positive,,no,,95.34788131713867,no
+61,2024-02-27 09:17:59,take breaks and breathe,message,green,0.9,0.0,0.5,neither,anger,0.549320638179779,neutral,,no,,103.60598564147949,no
+62,2024-02-17 13:47:22,what does ngl mean,search,green,0.9,0.0,0.5,neither,anger,0.8378891944885254,neutral,,no,,97.28097915649414,no
+63,2024-02-12 17:41:09,what does bet mean,search,yellow,0.8,0.0,0.5,neither,anger,0.6017076373100281,neutral,age_inappropriate,yes,I understand you're feeling upset. Let's find a better way to express what you're feeling.,95.99113464355469,no
+64,2024-02-20 16:45:20,how to control my anger,search,green,0.9,0.0,0.5,neither,anger,0.9926700592041016,neutral,,no,,97.02086448669434,no
+65,2024-02-24 14:16:41,how to be happy when sad,search,green,0.9,0.0,0.5,neither,joy,0.9962071180343628,positive,,no,,98.8008975982666,no
+66,2024-02-08 12:11:08,youre amazing,message,green,0.9,0.0,0.5,neither,surprise,0.688075065612793,neutral,,no,,1.0,no
+67,2024-02-20 11:22:44,thanks for being my friend,message,green,0.9,0.0,0.95,neither,joy,0.9647977948188782,positive,,no,,57.86299705505371,no
+68,2024-02-01 10:16:21,can you help me with homework?,message,green,0.9,0.0,0.95,neither,joy,0.9547252058982849,positive,,no,,60.33468246459961,no
+69,2024-02-17 17:39:05,what is Among Us?,search,green,0.9,0.0,0.5,neither,anger,0.6161777377128601,neutral,,no,,97.17988967895508,no
+70,2024-02-26 09:08:57,study hard and ask for help,message,green,0.9,0.0,0.5,neither,joy,0.9436673521995544,positive,,no,,97.00703620910645,no
+71,2024-02-14 12:32:13,youre already great at many things,message,green,0.9,0.0,0.5,neither,joy,0.9979117512702942,positive,,no,,98.12498092651367,no
+72,2024-02-18 17:34:51,thats a big mood,message,green,0.9,0.0,0.5,neither,joy,0.8838210701942444,positive,,no,,1.0,no
+73,2024-02-25 15:08:49,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,92.3311710357666,no
+74,2024-03-27 16:58:45,just be nice and friendly,message,green,0.9,0.0,0.5,neither,joy,0.9976664781570435,positive,,no,,91.42208099365234,no
+75,2024-03-18 20:07:40,take deep breaths and count,message,green,0.9,0.0,0.5,neither,joy,0.6218726634979248,positive,,no,,93.49679946899414,no
+76,2024-03-14 16:40:15,sorry i didnt mean that,message,green,0.9,0.0,0.5,neither,sadness,0.9591825008392334,neutral,,no,,93.08624267578125,no
+77,2024-03-13 13:58:12,youre amazing,message,green,0.9,0.0,0.5,neither,surprise,0.688075065612793,neutral,,no,,1.0,no
+78,2024-03-26 15:36:42,why do i feel so lonely?,search,green,0.9,0.0,0.5,neither,sadness,0.998924195766449,neutral,,no,,94.26307678222656,no
+79,2024-03-05 13:46:31,that really hurt my feelings,message,green,0.9,0.0,0.5,neither,sadness,0.9975858926773071,neutral,,no,,90.5752182006836,no
+80,2024-03-27 09:29:22,thats a mean word,message,green,0.9,0.0,0.5,neither,anger,0.9198216795921326,neutral,,no,,91.42017364501953,no
+81,2024-03-19 08:26:48,how to be a better person,search,green,0.9,0.0,0.5,neither,joy,0.9857418537139893,positive,,no,,96.72975540161133,no
+82,2024-03-10 19:24:44,that hits different,message,green,0.9,0.0,0.5,neither,joy,0.9804216027259827,positive,,no,,93.20211410522461,no
+83,2024-03-11 11:16:14,facts,message,green,0.9,0.0,0.5,neither,joy,0.44741013646125793,positive,,no,,1.0,no
+84,2024-03-01 13:59:14,we shouldnt use that word,message,green,0.9,0.0,0.5,neither,anger,0.9749132394790649,neutral,,no,,92.78512001037598,no
+85,2024-03-15 15:03:55,just keep practicing,message,green,0.9,0.0,0.5,neither,joy,0.9694777727127075,positive,,no,,92.26512908935547,no
+86,2024-03-12 14:44:57,what does periodt mean in text,search,green,0.9,0.0,0.5,neither,anger,0.5550392270088196,neutral,,no,,93.26887130737305,no
+87,2024-03-07 20:11:08,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,91.30406379699707,no
+88,2024-03-03 09:31:49,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,1.0,no
+89,2024-03-13 10:59:07,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+90,2024-03-28 14:14:35,youre already very kind,message,green,0.9,0.0,0.5,neither,joy,0.5599386096000671,positive,,no,,1.0,no
+91,2024-03-03 16:59:09,youre awesome and smart!,message,green,0.9,0.0,0.5,neither,joy,0.9982460737228394,positive,,no,,97.66769409179688,no
+92,2024-03-09 17:55:33,what does hate mean?,search,green,0.9,0.0,0.5,neither,anger,0.9849243760108948,neutral,,no,,90.6972885131836,no
+93,2024-03-27 14:21:01,can we play together?,message,green,0.9,0.0,0.5,neither,joy,0.8052765727043152,positive,,no,,1.0,no
+94,2024-03-02 08:22:49,youre already very kind,message,green,0.9,0.0,0.5,neither,joy,0.5599386096000671,positive,,no,,1.0,no
+95,2024-03-28 10:59:32,what does thats fire mean,search,green,0.9,0.0,0.5,neither,anger,0.9423449635505676,neutral,,no,,1.0,no
+96,2024-03-01 14:33:58,you look great today!,message,green,0.9,0.0,0.5,neither,joy,0.998360812664032,positive,,no,,90.00706672668457,no
+97,2024-03-01 15:09:30,what does tbh mean,search,green,0.9,0.0,0.5,neither,joy,0.8518626093864441,positive,,no,,110.88705062866211,no
+98,2024-03-21 18:50:24,i love playing that game,message,green,0.9,0.0,0.5,neither,joy,0.516348123550415,positive,,no,,1.0,no
+99,2024-03-16 09:27:31,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,1.0,no
+100,2024-03-15 14:48:54,dont worry about what they think,message,green,0.9,0.0,0.5,neither,anger,0.7219967842102051,neutral,,no,,93.36400032043457,no
+101,2024-03-28 09:10:39,youre already great at many things,message,green,0.9,0.0,0.5,neither,joy,0.9979117512702942,positive,,no,,1.0,no
+102,2024-03-09 08:55:14,vibe check,message,green,0.9,0.0,0.5,neither,joy,0.9603927135467529,positive,,no,,99.10202026367188,no
+103,2024-03-24 16:33:37,just be yourself,message,green,0.9,0.0,0.5,neither,joy,0.9598625898361206,positive,,no,,93.07312965393066,no
+104,2024-03-16 20:29:55,youre so annoying!,message,red,0.95,0.0,0.5,neither,anger,0.9962783455848694,personal_attack,bullying,yes,It sounds like something is really bothering you. Let's find a better way to express what you're feeling.,1.0,no
+105,2024-03-13 14:19:19,you should tell an adult,message,green,0.9,0.0,0.5,neither,anger,0.6323026418685913,neutral,,no,,1.0,no
+106,2024-03-25 13:38:16,its okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9920094013214111,positive,,no,,90.37494659423828,no
+107,2024-03-12 13:01:32,just be yourself,message,green,0.9,0.0,0.5,neither,joy,0.9598625898361206,positive,,no,,1.0,no
+108,2024-03-19 12:09:16,what is Minecraft?,search,green,0.9,0.0,0.5,neither,anger,0.48494166135787964,neutral,,no,,90.12293815612793,no
+109,2024-03-28 11:39:15,lying is never okay,message,green,0.9,0.0,0.5,neither,joy,0.9868255257606506,positive,,no,,1.0,no
+110,2024-03-16 15:33:12,just be yourself always,message,green,0.9,0.0,0.5,neither,joy,0.9871180057525635,positive,,no,,1.0,no
+111,2024-03-19 11:26:31,how to make people like me more,search,green,0.9,0.0,0.5,neither,joy,0.6741512417793274,positive,,no,,93.89591217041016,no
+112,2024-03-11 19:42:00,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,1.0,no
+113,2024-03-06 19:23:37,say less im totally in,message,green,0.9,0.0,0.5,neither,joy,0.9374328255653381,positive,,no,,94.92301940917969,no
+114,2024-03-05 14:33:15,what does ngl mean,search,green,0.9,0.0,0.5,neither,anger,0.8378891944885254,neutral,,no,,1.0,no
+115,2024-03-13 10:19:06,youre amazing,message,green,0.9,0.0,0.5,neither,surprise,0.688075065612793,neutral,,no,,1.0,no
+116,2024-03-05 09:12:08,why am i not good enough?,search,green,0.9,0.0,0.5,neither,joy,0.9917445778846741,positive,,no,,89.71190452575684,no
+117,2024-03-22 11:21:53,can we play together?,message,green,0.9,0.0,0.5,neither,joy,0.8052765727043152,positive,,no,,1.0,no
+118,2024-03-09 11:49:17,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+119,2024-03-09 20:32:18,what does puberty mean?,search,green,0.9,0.0,0.5,neither,fear,0.5329515337944031,neutral,,no,,97.60093688964844,no
+120,2024-03-05 20:53:02,why am i not good enough?,search,green,0.9,0.0,0.5,neither,joy,0.9917445778846741,positive,,no,,1.0,no
+121,2024-03-08 19:04:46,what does puberty mean?,search,green,0.9,0.0,0.5,neither,fear,0.5329515337944031,neutral,,no,,1.0,no
+122,2024-04-28 11:26:09,what is Snapchat?,search,green,0.9,0.0,0.5,neither,anger,0.5167417526245117,neutral,,no,,97.98383712768555,no
+123,2024-04-11 10:25:46,why do people judge me?,search,green,0.9,0.0,0.5,neither,anger,0.9856318235397339,neutral,,no,,91.04108810424805,no
+124,2024-04-25 09:08:24,youre never alone,message,green,0.9,0.0,0.5,neither,sadness,0.9912753105163574,neutral,,no,,1.0,no
+125,2024-04-05 11:20:42,how to be happy when sad,search,green,0.9,0.0,0.5,neither,joy,0.9962071180343628,positive,,no,,1.0,no
+126,2024-04-07 19:02:34,no cap,message,green,0.9,0.0,0.5,neither,anger,0.9811233878135681,neutral,,no,,1.0,no
+127,2024-04-14 10:48:47,how to make people like me more,search,green,0.9,0.0,0.5,neither,joy,0.6741512417793274,positive,,no,,1.0,no
+128,2024-04-13 18:10:36,everyone is beautiful,message,green,0.9,0.0,0.5,neither,joy,0.9959837198257446,positive,,no,,92.92960166931152,no
+129,2024-04-19 09:07:35,hate is a very strong feeling,message,green,0.9,0.0,0.5,neither,joy,0.979910135269165,positive,,no,,91.15386009216309,no
+130,2024-04-27 09:11:21,lowkey excited for the weekend,message,green,0.9,0.0,0.5,neither,joy,0.9816128015518188,positive,,no,,92.74101257324219,no
+131,2024-04-27 08:05:10,thats not nice to say,message,green,0.9,0.0,0.5,neither,anger,0.5415729880332947,neutral,,no,,96.93288803100586,no
+132,2024-04-27 10:30:48,what does stupid mean?,search,red,0.95,0.9396829605102539,0.9396829605102539,hate,sadness,0.876620352268219,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,91.18795394897461,no
+133,2024-04-18 14:58:08,how to stop feeling sad,search,green,0.9,0.0,0.5,neither,sadness,0.9990805387496948,neutral,,no,,1.0,no
+134,2024-04-19 20:18:33,what is Instagram?,search,green,0.9,0.0,0.5,neither,fear,0.6341772079467773,neutral,,no,,92.32783317565918,no
+135,2024-04-11 14:40:32,youre the best friend ever,message,green,0.9,0.0,0.5,neither,joy,0.8967813849449158,positive,,no,,1.0,no
+136,2024-04-03 15:02:11,go off,message,green,0.9,0.0,0.5,neither,anger,0.8154372572898865,neutral,,no,,1.0,no
+137,2024-04-17 10:11:06,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,1.0,no
+138,2024-04-13 15:01:41,take breaks and breathe,message,green,0.9,0.0,0.5,neither,anger,0.549320638179779,neutral,,no,,1.0,no
+139,2024-04-08 08:28:02,do things that make you smile,message,green,0.9,0.0,0.5,neither,joy,0.993217408657074,positive,,no,,92.06295013427734,no
+140,2024-04-18 17:14:14,take deep breaths and count,message,green,0.9,0.0,0.5,neither,joy,0.6218726634979248,positive,,no,,1.0,no
+141,2024-04-05 17:33:20,everyone makes mistakes sometimes,message,green,0.9,0.0,0.5,neither,sadness,0.9017521739006042,neutral,,no,,1.0,no
+142,2024-04-22 18:04:03,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,1.0,no
+143,2024-04-02 18:26:59,they dont hate you,message,yellow,0.75,0.6,0.9,offensive,anger,0.9885347485542297,personal_attack,,yes,"It sounds like something is really bothering you. Harsh criticism rarely helps. Specific, constructive feedback works better. Let's find a better way to express what you're feeling.",1.0,no
+144,2024-04-09 12:31:55,talking things out helps,message,green,0.9,0.0,0.5,neither,anger,0.5931562185287476,neutral,,no,,1.0,no
+145,2024-04-24 17:18:31,why do people judge me?,search,green,0.9,0.0,0.5,neither,anger,0.9856318235397339,neutral,,no,,1.0,no
+146,2024-04-25 11:10:25,how to make new friends,search,green,0.9,0.0,0.5,neither,joy,0.9873780608177185,positive,,no,,1.0,no
+147,2024-04-18 08:49:41,why am i not smart?,search,green,0.9,0.0,0.5,neither,joy,0.9960495829582214,positive,,no,,96.61102294921875,no
+148,2024-04-19 08:47:26,youre very brave already,message,green,0.9,0.0,0.5,neither,joy,0.9974179267883301,positive,,no,,90.4691219329834,no
+149,2024-04-19 10:17:51,what is Among Us?,search,green,0.9,0.0,0.5,neither,anger,0.6161777377128601,neutral,,no,,1.0,no
+150,2024-04-08 13:58:33,thats a big mood,message,green,0.9,0.0,0.5,neither,joy,0.8838210701942444,positive,,no,,1.0,no
+151,2024-04-03 19:15:57,im always here for you,message,green,0.9,0.0,0.5,neither,joy,0.9140889644622803,positive,,no,,96.60172462463379,no
+152,2024-04-28 14:32:39,weird is awesome and unique,message,green,0.9,0.0,0.5,neither,surprise,0.9455080628395081,neutral,,no,,93.73283386230469,no
+153,2024-04-05 12:01:11,what is Minecraft?,search,green,0.9,0.0,0.5,neither,anger,0.48494166135787964,neutral,,no,,1.0,no
+154,2024-04-08 20:33:59,how to be a better person,search,green,0.9,0.0,0.5,neither,joy,0.9857418537139893,positive,,no,,1.0,no
+155,2024-04-04 16:56:03,how to be popular in middle school,search,green,0.9,0.0,0.5,neither,joy,0.9982422590255737,positive,,no,,93.13368797302246,no
+156,2024-04-12 09:40:27,that slaps,message,green,0.9,0.0,0.5,neither,anger,0.9956603646278381,neutral,,no,,92.4828052520752,no
+157,2024-05-19 14:51:09,what does go off mean,search,green,0.9,0.0,0.5,neither,anger,0.9334704875946045,neutral,,no,,1.0,no
+158,2024-05-21 15:11:56,how to be happier,search,green,0.9,0.0,0.5,neither,joy,0.9927515983581543,positive,,no,,1.0,no
+159,2024-05-16 13:43:32,what does that hits different mean,search,green,0.9,0.0,0.5,neither,joy,0.430671364068985,positive,,no,,91.27306938171387,no
+160,2024-05-14 20:49:49,you look great today!,message,green,0.9,0.0,0.5,neither,joy,0.998360812664032,positive,,no,,1.0,no
+161,2024-05-15 13:03:45,what does loser mean?,search,red,0.95,0.9220999479293823,0.9220999479293823,hate,anger,0.8236897587776184,personal_attack,personal_attack,yes,It sounds like something is really bothering you. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,97.37873077392578,no
+162,2024-05-25 13:28:40,that was so fun fr,message,green,0.9,0.0,0.5,neither,joy,0.9910225868225098,positive,,no,,91.3841724395752,no
+163,2024-05-07 10:48:01,what does slay mean,search,green,0.9,0.0,0.5,neither,anger,0.9153602123260498,neutral,,no,,89.54501152038574,no
+164,2024-05-25 09:18:55,ngl that was amazing,message,green,0.9,0.0,0.5,neither,surprise,0.5630272030830383,neutral,,no,,92.41890907287598,no
+165,2024-05-09 15:42:26,youre amazing just as you are,message,green,0.9,0.0,0.5,neither,surprise,0.6144037246704102,neutral,,no,,90.87896347045898,no
+166,2024-05-04 10:05:52,weird is awesome and unique,message,green,0.9,0.0,0.5,neither,surprise,0.9455080628395081,neutral,,no,,1.0,no
+167,2024-05-03 14:05:27,youre already very kind,message,green,0.9,0.0,0.5,neither,joy,0.5599386096000671,positive,,no,,1.0,no
+168,2024-05-26 15:54:27,slay,message,green,0.9,0.0,0.5,neither,anger,0.8761805891990662,neutral,,no,,1.0,no
+169,2024-05-15 15:55:24,youre the best friend ever,message,green,0.9,0.0,0.5,neither,joy,0.8967813849449158,positive,,no,,1.0,no
+170,2024-05-17 18:26:27,just keep practicing,message,green,0.9,0.0,0.5,neither,joy,0.9694777727127075,positive,,no,,1.0,no
+171,2024-05-28 15:08:13,talking things out helps,message,green,0.9,0.0,0.5,neither,anger,0.5931562185287476,neutral,,no,,1.0,no
+172,2024-05-21 19:08:20,how to be better at things,search,green,0.9,0.0,0.5,neither,joy,0.9561251401901245,positive,,no,,98.09398651123047,no
+173,2024-05-10 16:29:32,its okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9920094013214111,positive,,no,,1.0,no
+174,2024-05-13 09:30:53,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,1.0,no
+175,2024-05-17 20:34:13,how to make friends in new school,search,green,0.9,0.0,0.5,neither,joy,0.9526489973068237,positive,,no,,91.85504913330078,no
+176,2024-05-11 16:51:20,weird is wonderful,message,green,0.9,0.0,0.5,neither,surprise,0.8901042938232422,neutral,,no,,92.37194061279297,no
+177,2024-05-20 19:23:43,just be nice and friendly,message,green,0.9,0.0,0.5,neither,joy,0.9976664781570435,positive,,no,,1.0,no
+178,2024-05-02 11:32:20,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,1.0,no
+179,2024-05-11 20:31:47,slay,message,green,0.9,0.0,0.5,neither,anger,0.8761805891990662,neutral,,no,,1.0,no
+180,2024-05-17 11:45:43,we shouldnt use that word,message,green,0.9,0.0,0.5,neither,anger,0.9749132394790649,neutral,,no,,1.0,no
+181,2024-05-16 15:38:47,fr thats so cool,message,green,0.9,0.0,0.5,neither,joy,0.9986984729766846,positive,,no,,1.0,no
+182,2024-05-09 15:08:17,vibe check,message,green,0.9,0.0,0.5,neither,joy,0.9603927135467529,positive,,no,,1.0,no
+183,2024-05-27 20:46:57,dont worry about what they think,message,green,0.9,0.0,0.5,neither,anger,0.7219967842102051,neutral,,no,,1.0,no
+184,2024-05-04 13:54:44,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,1.0,no
+185,2024-05-27 18:47:39,what does ngl mean,search,green,0.9,0.0,0.5,neither,anger,0.8378891944885254,neutral,,no,,1.0,no
+186,2024-05-21 11:51:35,no cap,message,green,0.9,0.0,0.5,neither,anger,0.9811233878135681,neutral,,no,,1.0,no
+187,2024-05-19 19:15:10,youre never alone,message,green,0.9,0.0,0.5,neither,sadness,0.9912753105163574,neutral,,no,,1.0,no
+188,2024-05-14 10:21:32,can we hang out this weekend?,message,green,0.9,0.0,0.5,neither,joy,0.7271365523338318,positive,,no,,91.97592735290527,no
+189,2024-05-04 13:00:58,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+190,2024-05-02 12:56:36,talking things out helps,message,green,0.9,0.0,0.5,neither,anger,0.5931562185287476,neutral,,no,,1.0,no
+191,2024-05-18 10:43:41,thats kinda sus,message,green,0.9,0.0,0.5,neither,anger,0.4616021513938904,neutral,,no,,97.64695167541504,no
+192,2024-05-01 16:33:57,facts,message,green,0.9,0.0,0.5,neither,joy,0.44741013646125793,positive,,no,,1.0,no
+193,2024-05-23 10:30:47,what does vibe mean,search,green,0.9,0.0,0.5,neither,joy,0.9665425419807434,positive,,no,,90.80386161804199,no
+194,2024-05-27 09:21:30,what does loser mean?,search,red,0.95,0.9220999479293823,0.9220999479293823,hate,anger,0.8236897587776184,personal_attack,personal_attack,yes,It sounds like something is really bothering you. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+195,2024-05-15 17:16:46,what does that slaps mean,search,green,0.9,0.0,0.5,neither,anger,0.9907535314559937,neutral,,no,,90.76213836669922,no
+196,2024-06-17 18:04:11,how to be better at things,search,green,0.9,0.0,0.5,neither,joy,0.9561251401901245,positive,,no,,1.0,no
+197,2024-06-11 12:55:38,vibe check,message,green,0.9,0.0,0.5,neither,joy,0.9603927135467529,positive,,no,,1.0,no
+198,2024-06-23 13:49:11,you look great today!,message,green,0.9,0.0,0.5,neither,joy,0.998360812664032,positive,,no,,1.0,no
+199,2024-06-28 20:11:58,we shouldnt use that word,message,green,0.9,0.0,0.5,neither,anger,0.9749132394790649,neutral,,no,,1.0,no
+200,2024-06-15 11:18:51,its totally okay to feel sad,message,green,0.9,0.0,0.5,neither,sadness,0.9990179538726807,neutral,,no,,90.65794944763184,no
+201,2024-06-14 17:29:31,lowkey nervous about that,message,green,0.9,0.0,0.5,neither,fear,0.9920045733451843,neutral,,no,,101.67098045349121,no
+202,2024-06-24 14:21:12,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+203,2024-06-06 20:13:04,fr thats so cool,message,green,0.9,0.0,0.5,neither,joy,0.9986984729766846,positive,,no,,1.0,no
+204,2024-06-12 17:45:20,youre already great at many things,message,green,0.9,0.0,0.5,neither,joy,0.9979117512702942,positive,,no,,1.0,no
+205,2024-06-09 14:38:02,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+206,2024-06-11 11:24:31,just keep practicing,message,green,0.9,0.0,0.5,neither,joy,0.9694777727127075,positive,,no,,1.0,no
+207,2024-06-21 13:46:52,take breaks and breathe,message,green,0.9,0.0,0.5,neither,anger,0.549320638179779,neutral,,no,,1.0,no
+208,2024-06-05 15:16:04,how to feel happy again,search,green,0.9,0.0,0.5,neither,joy,0.9988752007484436,positive,,no,,97.16510772705078,no
+209,2024-06-27 13:42:48,how to deal with mean people,search,green,0.9,0.0,0.5,neither,anger,0.9943085312843323,neutral,,no,,92.22102165222168,no
+210,2024-06-19 17:25:47,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+211,2024-06-06 15:52:58,thats a big mood,message,green,0.9,0.0,0.5,neither,joy,0.8838210701942444,positive,,no,,1.0,no
+212,2024-06-18 15:50:30,can we play together?,message,green,0.9,0.0,0.5,neither,joy,0.8052765727043152,positive,,no,,1.0,no
+213,2024-06-08 08:59:50,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+214,2024-06-27 19:39:37,what does big mood mean,search,green,0.9,0.0,0.5,neither,anger,0.692043662071228,neutral,,no,,98.3591079711914,no
+215,2024-06-04 11:52:03,weird is awesome and unique,message,green,0.9,0.0,0.5,neither,surprise,0.9455080628395081,neutral,,no,,1.0,no
+216,2024-06-23 16:42:21,how to be more confident,search,green,0.9,0.0,0.5,neither,joy,0.9974937438964844,positive,,no,,1.0,no
+217,2024-06-14 17:23:45,theyre completely wrong,message,green,0.9,0.0,0.5,neither,anger,0.9820418953895569,neutral,,no,,91.7668342590332,no
+218,2024-06-21 13:05:03,how to stop being scared,search,green,0.9,0.0,0.5,neither,fear,0.9976783394813538,neutral,,no,,89.61892127990723,no
+219,2024-06-25 12:33:16,tell a teacher or parent,message,green,0.9,0.0,0.5,neither,anger,0.7052763104438782,neutral,,no,,1.0,no
+220,2024-06-16 12:47:21,ngl i love that,message,green,0.9,0.0,0.5,neither,joy,0.38084933161735535,positive,,no,,91.05992317199707,no
+221,2024-06-21 15:10:00,what does loser mean?,search,red,0.95,0.9220999479293823,0.9220999479293823,hate,anger,0.8236897587776184,personal_attack,personal_attack,yes,It sounds like something is really bothering you. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+222,2024-06-10 19:53:00,tbh that sounds fun,message,green,0.9,0.0,0.5,neither,joy,0.9925669431686401,positive,,no,,98.1910228729248,no
+223,2024-06-13 13:37:54,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,1.0,no
+224,2024-06-12 18:13:12,what is Instagram?,search,green,0.9,0.0,0.5,neither,fear,0.6341772079467773,neutral,,no,,1.0,no
+225,2024-06-04 16:04:52,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,1.0,no
+226,2024-06-02 15:16:55,ngl i love that,message,green,0.9,0.0,0.5,neither,joy,0.38084933161735535,positive,,no,,1.0,no
+227,2024-06-27 11:40:51,thanks for being my friend,message,green,0.9,0.0,0.95,neither,joy,0.9647977948188782,positive,,no,,1.0,no
+228,2024-06-07 16:53:27,just be yourself always,message,green,0.9,0.0,0.5,neither,joy,0.9871180057525635,positive,,no,,1.0,no
+229,2024-06-04 19:36:17,youre never alone,message,green,0.9,0.0,0.5,neither,sadness,0.9912753105163574,neutral,,no,,1.0,no
+230,2024-06-08 17:01:15,im dead that was hilarious,message,green,0.9,0.0,0.5,neither,joy,0.842941164970398,positive,,no,,91.45116806030273,no
+231,2024-06-04 11:20:19,hate is a very strong word,message,green,0.9,0.0,0.5,neither,anger,0.8861933350563049,neutral,,no,,98.76465797424316,no
+232,2024-06-19 16:08:07,can you help me with homework?,message,green,0.9,0.0,0.95,neither,joy,0.9547252058982849,positive,,no,,1.0,no
+233,2024-06-20 09:12:55,how to become popular,search,green,0.9,0.0,0.5,neither,joy,0.9978671073913574,positive,,no,,1.0,no
+234,2024-06-25 11:30:18,youre cool to me,message,green,0.9,0.0,0.5,neither,joy,0.99790358543396,positive,,no,,1.0,no
+235,2024-06-23 14:05:30,what does dumb mean?,search,red,0.95,0.8995423316955566,0.8995423316955566,hate,sadness,0.9005410075187683,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,91.77899360656738,no
+236,2024-06-17 15:45:55,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+237,2024-06-03 11:24:27,lowkey excited for the weekend,message,green,0.9,0.0,0.5,neither,joy,0.9816128015518188,positive,,no,,1.0,no
+238,2024-06-03 12:21:22,tbh that sounds fun,message,green,0.9,0.0,0.5,neither,joy,0.9925669431686401,positive,,no,,1.0,no
+239,2024-06-21 12:14:33,dont worry about what they think,message,green,0.9,0.0,0.5,neither,anger,0.7219967842102051,neutral,,no,,1.0,no
+240,2024-06-16 10:09:33,what is TikTok?,search,green,0.9,0.0,0.5,neither,fear,0.4979815185070038,neutral,,no,,1.0,no
+241,2024-06-14 08:18:36,im always here for you,message,green,0.9,0.0,0.5,neither,joy,0.9140889644622803,positive,,no,,1.0,no
+242,2024-06-05 20:02:22,what does loser mean?,search,red,0.95,0.9220999479293823,0.9220999479293823,hate,anger,0.8236897587776184,personal_attack,personal_attack,yes,It sounds like something is really bothering you. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+243,2024-07-07 08:03:11,youre the best friend ever,message,green,0.9,0.0,0.5,neither,joy,0.8967813849449158,positive,,no,,1.0,no
+244,2024-07-24 20:37:25,what is Fortnite?,search,green,0.9,0.0,0.5,neither,anger,0.9075037240982056,neutral,,no,,99.98798370361328,no
+245,2024-07-10 15:15:37,that hits different,message,green,0.9,0.0,0.5,neither,joy,0.9804216027259827,positive,,no,,1.0,no
+246,2024-07-04 11:27:31,take deep breaths and count,message,green,0.9,0.0,0.5,neither,joy,0.6218726634979248,positive,,no,,1.0,no
+247,2024-07-11 11:00:14,vibe check,message,green,0.9,0.0,0.5,neither,joy,0.9603927135467529,positive,,no,,1.0,no
+248,2024-07-16 13:48:59,facts,message,green,0.9,0.0,0.5,neither,joy,0.44741013646125793,positive,,no,,1.0,no
+249,2024-07-13 12:47:22,why am i not popular?,search,green,0.9,0.0,0.5,neither,joy,0.9980752468109131,positive,,no,,92.61202812194824,no
+250,2024-07-20 20:02:24,youre the best friend ever,message,green,0.9,0.0,0.5,neither,joy,0.8967813849449158,positive,,no,,1.0,no
+251,2024-07-27 15:09:31,youre the best friend ever,message,green,0.9,0.0,0.5,neither,joy,0.8967813849449158,positive,,no,,1.0,no
+252,2024-07-20 15:24:23,lying is never okay,message,green,0.9,0.0,0.5,neither,joy,0.9868255257606506,positive,,no,,1.0,no
+253,2024-07-19 12:32:30,what is TikTok?,search,green,0.9,0.0,0.5,neither,fear,0.4979815185070038,neutral,,no,,1.0,no
+254,2024-07-16 19:55:14,youre amazing just as you are,message,green,0.9,0.0,0.5,neither,surprise,0.6144037246704102,neutral,,no,,1.0,no
+255,2024-07-19 08:24:41,that was so fun fr,message,green,0.9,0.0,0.5,neither,joy,0.9910225868225098,positive,,no,,1.0,no
+256,2024-07-19 17:22:24,youre amazing,message,green,0.9,0.0,0.5,neither,surprise,0.688075065612793,neutral,,no,,1.0,no
+257,2024-07-13 15:57:55,how to control my anger,search,green,0.9,0.0,0.5,neither,anger,0.9926700592041016,neutral,,no,,1.0,no
+258,2024-07-08 10:24:34,why do people judge me?,search,green,0.9,0.0,0.5,neither,anger,0.9856318235397339,neutral,,no,,1.0,no
+259,2024-07-24 14:04:16,being weird is actually cool,message,green,0.9,0.0,0.5,neither,joy,0.8722701668739319,positive,,no,,92.35405921936035,no
+260,2024-07-13 20:38:20,hate is a very strong word,message,green,0.9,0.0,0.5,neither,anger,0.8861933350563049,neutral,,no,,1.0,no
+261,2024-07-17 17:04:50,no cap,message,green,0.9,0.0,0.5,neither,anger,0.9811233878135681,neutral,,no,,1.0,no
+262,2024-07-04 15:08:28,what does stupid mean?,search,red,0.95,0.9396829605102539,0.9396829605102539,hate,sadness,0.876620352268219,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+263,2024-07-24 08:28:05,fr thats so cool,message,green,0.9,0.0,0.5,neither,joy,0.9986984729766846,positive,,no,,1.0,no
+264,2024-07-03 14:05:32,thats fire,message,green,0.9,0.0,0.5,neither,anger,0.9635554552078247,neutral,,no,,98.39797019958496,no
+265,2024-07-02 13:50:40,how to be happy when sad,search,green,0.9,0.0,0.5,neither,joy,0.9962071180343628,positive,,no,,1.0,no
+266,2024-07-27 15:09:07,do things that make you smile,message,green,0.9,0.0,0.5,neither,joy,0.993217408657074,positive,,no,,1.0,no
+267,2024-07-13 12:09:47,bet we can do that,message,yellow,0.8,0.0,0.5,neither,joy,0.9592639803886414,positive,age_inappropriate,yes,I see what you're trying to say. Let's find a better way to express what you're feeling.,91.35317802429199,no
+268,2024-07-24 18:38:31,go off,message,green,0.9,0.0,0.5,neither,anger,0.8154372572898865,neutral,,no,,1.0,no
+269,2024-07-24 14:39:58,what does dating mean?,search,green,0.9,0.0,0.5,neither,anger,0.8955055475234985,neutral,,no,,90.79599380493164,no
+270,2024-07-01 08:26:18,why am i so bad?,search,green,0.9,0.0,0.5,neither,sadness,0.9929506778717041,neutral,,no,,89.40410614013672,no
+271,2024-07-21 10:27:40,how to be popular in middle school,search,green,0.9,0.0,0.5,neither,joy,0.9982422590255737,positive,,no,,1.0,no
+272,2024-07-23 15:08:52,why am i not smart?,search,green,0.9,0.0,0.5,neither,joy,0.9960495829582214,positive,,no,,1.0,no
+273,2024-07-28 20:03:24,what does mean mean?,search,green,0.9,0.0,0.5,neither,anger,0.7891599535942078,neutral,,no,,97.06902503967285,no
+274,2024-07-06 11:35:42,what does ugly mean?,search,red,0.95,0.925091564655304,0.925091564655304,hate,sadness,0.9866734743118286,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,90.2409553527832,no
+275,2024-07-23 08:36:35,different is actually really good,message,green,0.9,0.0,0.5,neither,joy,0.99637371301651,positive,,no,,92.7269458770752,no
+276,2024-07-28 08:04:24,what is Among Us?,search,green,0.9,0.0,0.5,neither,anger,0.6161777377128601,neutral,,no,,1.0,no
+277,2024-07-14 08:59:20,highkey excited,message,green,0.9,0.0,0.5,neither,joy,0.9827166795730591,positive,,no,,92.91577339172363,no
+278,2024-07-14 17:48:35,youre already a great person,message,green,0.9,0.0,0.5,neither,joy,0.9981924891471863,positive,,no,,1.0,no
+279,2024-07-26 13:14:09,you should tell an adult,message,green,0.9,0.0,0.5,neither,anger,0.6323026418685913,neutral,,no,,1.0,no
+280,2024-07-04 11:46:54,thats not nice to say,message,green,0.9,0.0,0.5,neither,anger,0.5415729880332947,neutral,,no,,1.0,no
+281,2024-07-25 17:40:42,everyone is beautiful in their own way,message,green,0.9,0.0,0.5,neither,joy,0.9940794706344604,positive,,no,,1.0,no
+282,2024-07-02 11:09:27,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,1.0,no
+283,2024-07-18 12:28:56,im your friend always,message,green,0.9,0.0,0.5,neither,joy,0.5269923210144043,positive,,no,,96.38810157775879,no
+284,2024-07-10 18:48:39,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,1.0,no
+285,2024-07-06 19:54:00,why do people lie to me?,search,green,0.9,0.0,0.5,neither,anger,0.9875351190567017,neutral,,no,,91.47334098815918,no
+286,2024-08-18 10:19:55,can we play together sometime?,message,green,0.9,0.0,0.5,neither,joy,0.8730937838554382,positive,,no,,90.89922904968262,no
+287,2024-08-21 09:22:25,weird is wonderful,message,green,0.9,0.0,0.5,neither,surprise,0.8901042938232422,neutral,,no,,1.0,no
+288,2024-08-03 13:46:55,tbh im kinda stressed,message,green,0.9,0.0,0.5,neither,anger,0.926417350769043,neutral,,no,,91.70293807983398,no
+289,2024-08-15 10:04:56,vibe check,message,green,0.9,0.0,0.5,neither,joy,0.9603927135467529,positive,,no,,1.0,no
+290,2024-08-13 09:25:42,what does no cap mean,search,green,0.9,0.0,0.5,neither,anger,0.9447349905967712,neutral,,no,,90.25311470031738,no
+291,2024-08-17 20:51:01,how to be cool in 6th grade,search,green,0.9,0.0,0.5,neither,joy,0.9980047345161438,positive,,no,,99.70927238464355,no
+292,2024-08-28 13:30:15,how to become popular,search,green,0.9,0.0,0.5,neither,joy,0.9978671073913574,positive,,no,,1.0,no
+293,2024-08-22 20:44:42,different is special,message,green,0.9,0.0,0.5,neither,joy,0.9485678672790527,positive,,no,,1.0,no
+294,2024-08-17 17:16:29,how to deal with mean people,search,green,0.9,0.0,0.5,neither,anger,0.9943085312843323,neutral,,no,,1.0,no
+295,2024-08-08 09:38:10,im here with you always,message,green,0.9,0.0,0.5,neither,joy,0.952299177646637,positive,,no,,91.18103981018066,no
+296,2024-08-02 14:57:20,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,1.0,no
+297,2024-08-23 17:10:50,youre already a great person,message,green,0.9,0.0,0.5,neither,joy,0.9981924891471863,positive,,no,,1.0,no
+298,2024-08-03 19:25:39,say less im totally in,message,green,0.9,0.0,0.5,neither,joy,0.9374328255653381,positive,,no,,1.0,no
+299,2024-08-13 14:52:29,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+300,2024-08-24 17:53:33,ngl i love that,message,green,0.9,0.0,0.5,neither,joy,0.38084933161735535,positive,,no,,1.0,no
+301,2024-08-05 09:47:05,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+302,2024-08-04 12:28:00,you are really smart,message,green,0.9,0.0,0.5,neither,joy,0.9982101917266846,positive,,no,,1.0,no
+303,2024-08-22 16:29:05,ngl that was amazing,message,green,0.9,0.0,0.5,neither,surprise,0.5630272030830383,neutral,,no,,1.0,no
+304,2024-08-01 18:12:10,what does dating mean?,search,green,0.9,0.0,0.5,neither,anger,0.8955055475234985,neutral,,no,,1.0,no
+305,2024-08-14 16:15:23,study hard and ask for help,message,green,0.9,0.0,0.5,neither,joy,0.9436673521995544,positive,,no,,1.0,no
+306,2024-08-13 13:30:12,being weird is actually cool,message,green,0.9,0.0,0.5,neither,joy,0.8722701668739319,positive,,no,,1.0,no
+307,2024-08-27 10:47:45,what is Discord?,search,green,0.9,0.0,0.5,neither,anger,0.8324397206306458,neutral,,no,,96.92096710205078,no
+308,2024-08-15 12:40:54,what is Fortnite?,search,green,0.9,0.0,0.5,neither,anger,0.9075037240982056,neutral,,no,,1.0,no
+309,2024-08-08 14:32:15,ngl that was amazing,message,green,0.9,0.0,0.5,neither,surprise,0.5630272030830383,neutral,,no,,1.0,no
+310,2024-08-12 16:49:13,do things that make you happy,message,green,0.9,0.0,0.5,neither,joy,0.9983437061309814,positive,,no,,1.0,no
+311,2024-08-11 10:39:33,you should tell an adult,message,green,0.9,0.0,0.5,neither,anger,0.6323026418685913,neutral,,no,,1.0,no
+312,2024-08-17 14:35:00,why am i so ugly?,search,red,0.95,0.9446054100990295,0.9446054100990295,hate,sadness,0.9979002475738525,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,97.99814224243164,no
+313,2024-08-17 18:30:22,can we build something together?,message,green,0.9,0.0,0.5,neither,joy,0.7701008319854736,positive,,no,,1.0,no
+314,2024-08-14 08:07:38,its totally okay to feel sad,message,green,0.9,0.0,0.5,neither,sadness,0.9990179538726807,neutral,,no,,1.0,no
+315,2024-08-07 15:54:55,its okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9920094013214111,positive,,no,,1.0,no
+316,2024-08-24 15:25:28,im so bored,message,green,0.9,0.0,0.5,neither,anger,0.9592376351356506,neutral,,no,,93.40596199035645,no
+317,2024-08-07 11:27:11,how to get smarter,search,green,0.9,0.0,0.5,neither,joy,0.9828456044197083,positive,,no,,90.06190299987793,no
+318,2024-08-05 08:05:04,everyone is beautiful,message,green,0.9,0.0,0.5,neither,joy,0.9959837198257446,positive,,no,,1.0,no
+319,2024-09-02 11:44:46,youre already great at many things,message,green,0.9,0.0,0.5,neither,joy,0.9979117512702942,positive,,no,,1.0,no
+320,2024-09-13 17:54:03,how to be more brave,search,green,0.9,0.0,0.5,neither,joy,0.995148241519928,positive,,no,,1.0,no
+321,2024-09-19 11:45:13,theyre completely wrong,message,green,0.9,0.0,0.5,neither,anger,0.9820418953895569,neutral,,no,,1.0,no
+322,2024-09-09 18:07:10,that slaps,message,green,0.9,0.0,0.5,neither,anger,0.9956603646278381,neutral,,no,,1.0,no
+323,2024-09-06 16:08:17,everyone is beautiful in their own way,message,green,0.9,0.0,0.5,neither,joy,0.9940794706344604,positive,,no,,1.0,no
+324,2024-09-02 19:36:21,youre awesome and smart!,message,green,0.9,0.0,0.5,neither,joy,0.9982460737228394,positive,,no,,1.0,no
+325,2024-09-14 18:50:16,how to make people like me more,search,green,0.9,0.0,0.5,neither,joy,0.6741512417793274,positive,,no,,1.0,no
+326,2024-09-20 16:16:57,tbh im kinda stressed,message,green,0.9,0.0,0.5,neither,anger,0.926417350769043,neutral,,no,,1.0,no
+327,2024-09-16 17:26:49,can we play together sometime?,message,green,0.9,0.0,0.5,neither,joy,0.8730937838554382,positive,,no,,1.0,no
+328,2024-09-14 15:15:47,that slaps,message,green,0.9,0.0,0.5,neither,anger,0.9956603646278381,neutral,,no,,1.0,no
+329,2024-09-18 15:19:59,say less im totally in,message,green,0.9,0.0,0.5,neither,joy,0.9374328255653381,positive,,no,,1.0,no
+330,2024-09-12 10:56:33,just be nice and friendly,message,green,0.9,0.0,0.5,neither,joy,0.9976664781570435,positive,,no,,1.0,no
+331,2024-09-12 15:56:35,lowkey nervous about that,message,green,0.9,0.0,0.5,neither,fear,0.9920045733451843,neutral,,no,,1.0,no
+332,2024-09-20 10:30:07,why do people make fun of me?,search,green,0.9,0.0,0.5,neither,anger,0.9946957230567932,neutral,,no,,105.00669479370117,no
+333,2024-09-25 09:34:18,what is Fortnite?,search,green,0.9,0.0,0.5,neither,anger,0.9075037240982056,neutral,,no,,1.0,no
+334,2024-09-04 14:55:15,that slaps,message,green,0.9,0.0,0.5,neither,anger,0.9956603646278381,neutral,,no,,1.0,no
+335,2024-09-07 15:22:18,that hits different,message,green,0.9,0.0,0.5,neither,joy,0.9804216027259827,positive,,no,,1.0,no
+336,2024-09-05 10:14:43,just be nice and friendly,message,green,0.9,0.0,0.5,neither,joy,0.9976664781570435,positive,,no,,1.0,no
+337,2024-09-21 17:20:41,dont worry about what they think,message,green,0.9,0.0,0.5,neither,anger,0.7219967842102051,neutral,,no,,1.0,no
+338,2024-09-02 14:30:14,what does highkey mean,search,green,0.9,0.0,0.5,neither,anger,0.8048362731933594,neutral,,no,,94.86079216003418,no
+339,2024-09-26 16:55:22,just be yourself always,message,green,0.9,0.0,0.5,neither,joy,0.9871180057525635,positive,,no,,1.0,no
+340,2024-09-07 09:36:01,highkey excited,message,green,0.9,0.0,0.5,neither,joy,0.9827166795730591,positive,,no,,1.0,no
+341,2024-09-11 10:00:17,take breaks and breathe,message,green,0.9,0.0,0.5,neither,anger,0.549320638179779,neutral,,no,,1.0,no
+342,2024-09-19 16:53:58,take deep breaths and count,message,green,0.9,0.0,0.5,neither,joy,0.6218726634979248,positive,,no,,1.0,no
+343,2024-09-18 17:36:54,what is Roblox?,search,green,0.9,0.0,0.5,neither,fear,0.7407050728797913,neutral,,no,,98.4189510345459,no
+344,2024-09-28 19:46:11,its okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9920094013214111,positive,,no,,1.0,no
+345,2024-09-16 18:36:20,that was so fun fr,message,green,0.9,0.0,0.5,neither,joy,0.9910225868225098,positive,,no,,1.0,no
+346,2024-09-16 15:44:23,what does vibe mean,search,green,0.9,0.0,0.5,neither,joy,0.9665425419807434,positive,,no,,1.0,no
+347,2024-09-09 14:50:19,its perfectly okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9975487589836121,positive,,no,,1.0,no
+348,2024-09-09 18:36:19,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,1.0,no
+349,2024-09-03 08:23:59,ngl i love that,message,green,0.9,0.0,0.5,neither,joy,0.38084933161735535,positive,,no,,1.0,no
+350,2024-09-08 08:08:42,tbh that sounds fun,message,green,0.9,0.0,0.5,neither,joy,0.9925669431686401,positive,,no,,1.0,no
+351,2024-09-06 13:29:49,its totally okay to feel sad,message,green,0.9,0.0,0.5,neither,sadness,0.9990179538726807,neutral,,no,,1.0,no
+352,2024-09-09 20:54:57,talking things out helps,message,green,0.9,0.0,0.5,neither,anger,0.5931562185287476,neutral,,no,,1.0,no
+353,2024-09-05 12:43:27,why do i feel left out?,search,green,0.9,0.0,0.5,neither,sadness,0.8916389346122742,neutral,,no,,1.0,no
+354,2024-09-27 15:06:36,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+355,2024-09-27 16:48:37,just be yourself,message,green,0.9,0.0,0.5,neither,joy,0.9598625898361206,positive,,no,,1.0,no
+356,2024-09-27 12:30:42,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+357,2024-09-12 09:59:02,how to deal with mean people,search,green,0.9,0.0,0.5,neither,anger,0.9943085312843323,neutral,,no,,1.0,no
+358,2024-09-07 15:09:20,that was so fun fr,message,green,0.9,0.0,0.5,neither,joy,0.9910225868225098,positive,,no,,1.0,no
+359,2024-10-15 16:33:02,thats fire,message,green,0.9,0.0,0.5,neither,anger,0.9635554552078247,neutral,,no,,1.0,no
+360,2024-10-01 12:26:01,you are really smart,message,green,0.9,0.0,0.5,neither,joy,0.9982101917266846,positive,,no,,1.0,no
+361,2024-10-16 09:54:45,take breaks and breathe,message,green,0.9,0.0,0.5,neither,anger,0.549320638179779,neutral,,no,,1.0,no
+362,2024-10-01 09:24:38,tbh im kinda stressed,message,green,0.9,0.0,0.5,neither,anger,0.926417350769043,neutral,,no,,1.0,no
+363,2024-10-22 14:32:46,what does dating mean?,search,green,0.9,0.0,0.5,neither,anger,0.8955055475234985,neutral,,no,,1.0,no
+364,2024-10-23 13:53:53,im always here for you,message,green,0.9,0.0,0.5,neither,joy,0.9140889644622803,positive,,no,,1.0,no
+365,2024-10-03 16:24:01,say less im totally in,message,green,0.9,0.0,0.5,neither,joy,0.9374328255653381,positive,,no,,1.0,no
+366,2024-10-15 15:45:16,lowkey nervous about that,message,green,0.9,0.0,0.5,neither,fear,0.9920045733451843,neutral,,no,,1.0,no
+367,2024-10-03 10:56:11,dont worry about what they think,message,green,0.9,0.0,0.5,neither,anger,0.7219967842102051,neutral,,no,,1.0,no
+368,2024-10-01 13:33:06,what is Fortnite?,search,green,0.9,0.0,0.5,neither,anger,0.9075037240982056,neutral,,no,,1.0,no
+369,2024-10-26 18:32:41,that joke was so funny,message,green,0.9,0.0,0.5,neither,surprise,0.9367860555648804,neutral,,no,,99.13992881774902,no
+370,2024-10-12 08:05:50,what does dumb mean?,search,red,0.95,0.8995423316955566,0.8995423316955566,hate,sadness,0.9005410075187683,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+371,2024-10-25 18:45:40,we shouldnt use that word,message,green,0.9,0.0,0.5,neither,anger,0.9749132394790649,neutral,,no,,1.0,no
+372,2024-10-28 08:44:14,what does loser mean?,search,red,0.95,0.9220999479293823,0.9220999479293823,hate,anger,0.8236897587776184,personal_attack,personal_attack,yes,It sounds like something is really bothering you. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+373,2024-10-27 19:45:13,youre awesome and smart!,message,green,0.9,0.0,0.5,neither,joy,0.9982460737228394,positive,,no,,1.0,no
+374,2024-10-21 18:07:44,youre cool to me,message,green,0.9,0.0,0.5,neither,joy,0.99790358543396,positive,,no,,1.0,no
+375,2024-10-08 09:52:11,how to be cool in 6th grade,search,green,0.9,0.0,0.5,neither,joy,0.9980047345161438,positive,,no,,1.0,no
+376,2024-10-04 15:38:09,why am i so different?,search,green,0.9,0.0,0.5,neither,joy,0.4195244610309601,positive,,no,,97.26810455322266,no
+377,2024-10-12 19:47:18,im so bored,message,green,0.9,0.0,0.5,neither,anger,0.9592376351356506,neutral,,no,,1.0,no
+378,2024-10-27 12:43:44,why am i not popular?,search,green,0.9,0.0,0.5,neither,joy,0.9980752468109131,positive,,no,,1.0,no
+379,2024-10-09 10:26:58,different is special,message,green,0.9,0.0,0.5,neither,joy,0.9485678672790527,positive,,no,,1.0,no
+380,2024-10-26 19:42:07,do things that make you happy,message,green,0.9,0.0,0.5,neither,joy,0.9983437061309814,positive,,no,,1.0,no
+381,2024-10-05 12:23:48,bet we can do that,message,yellow,0.8,0.0,0.5,neither,joy,0.9592639803886414,positive,age_inappropriate,yes,I see what you're trying to say. Let's find a better way to express what you're feeling.,1.0,no
+382,2024-10-13 19:10:59,hate is a very strong word,message,green,0.9,0.0,0.5,neither,anger,0.8861933350563049,neutral,,no,,1.0,no
+383,2024-10-23 19:49:29,they dont hate you,message,yellow,0.75,0.6,0.9,offensive,anger,0.9885347485542297,personal_attack,,yes,"It sounds like something is really bothering you. Harsh criticism rarely helps. Specific, constructive feedback works better. Let's find a better way to express what you're feeling.",1.0,no
+384,2024-10-03 10:09:49,thats not nice to say,message,green,0.9,0.0,0.5,neither,anger,0.5415729880332947,neutral,,no,,1.0,no
+385,2024-10-12 13:41:40,slay,message,green,0.9,0.0,0.5,neither,anger,0.8761805891990662,neutral,,no,,1.0,no
+386,2024-10-27 15:15:27,no cap,message,green,0.9,0.0,0.5,neither,anger,0.9811233878135681,neutral,,no,,1.0,no
+387,2024-10-05 16:15:37,periodt,message,green,0.9,0.0,0.5,neither,anger,0.5051017999649048,neutral,,no,,1.0,no
+388,2024-10-12 15:25:13,different is actually really good,message,green,0.9,0.0,0.5,neither,joy,0.99637371301651,positive,,no,,1.0,no
+389,2024-10-23 14:20:55,youre already a great person,message,green,0.9,0.0,0.5,neither,joy,0.9981924891471863,positive,,no,,1.0,no
+390,2024-10-22 20:14:56,hate is a very strong feeling,message,green,0.9,0.0,0.5,neither,joy,0.979910135269165,positive,,no,,1.0,no
+391,2024-10-16 18:03:51,youre amazing,message,green,0.9,0.0,0.5,neither,surprise,0.688075065612793,neutral,,no,,1.0,no
+392,2024-10-04 17:45:09,sure what subject?,message,green,0.9,0.0,0.5,neither,joy,0.9839358329772949,positive,,no,,1.0,no
+393,2024-10-12 10:29:42,study hard and ask for help,message,green,0.9,0.0,0.5,neither,joy,0.9436673521995544,positive,,no,,1.0,no
+394,2024-10-02 11:16:12,why do i feel so alone?,search,green,0.9,0.0,0.5,neither,sadness,0.9987137317657471,neutral,,no,,100.46100616455078,no
+395,2024-10-14 19:30:04,tbh that sounds fun,message,green,0.9,0.0,0.5,neither,joy,0.9925669431686401,positive,,no,,1.0,no
+396,2024-11-06 08:28:10,how to stop crying so much,search,green,0.9,0.0,0.5,neither,sadness,0.9920696020126343,neutral,,no,,94.4368839263916,no
+397,2024-11-28 19:57:21,you should tell an adult,message,green,0.9,0.0,0.5,neither,anger,0.6323026418685913,neutral,,no,,1.0,no
+398,2024-11-06 10:14:16,its totally okay to feel sad,message,green,0.9,0.0,0.5,neither,sadness,0.9990179538726807,neutral,,no,,1.0,no
+399,2024-11-02 14:46:30,how to make people like me more,search,green,0.9,0.0,0.5,neither,joy,0.6741512417793274,positive,,no,,1.0,no
+400,2024-11-11 13:37:17,im here with you always,message,green,0.9,0.0,0.5,neither,joy,0.952299177646637,positive,,no,,1.0,no
+401,2024-11-06 20:32:21,tbh im kinda stressed,message,green,0.9,0.0,0.5,neither,anger,0.926417350769043,neutral,,no,,1.0,no
+402,2024-11-18 19:33:28,how to deal with mean people,search,green,0.9,0.0,0.5,neither,anger,0.9943085312843323,neutral,,no,,1.0,no
+403,2024-11-12 19:34:16,i love playing that game,message,green,0.9,0.0,0.5,neither,joy,0.516348123550415,positive,,no,,1.0,no
+404,2024-11-28 11:33:18,talk to someone you trust,message,green,0.9,0.0,0.5,neither,anger,0.729866623878479,neutral,,no,,1.0,no
+405,2024-11-08 20:23:40,can you help me with homework?,message,green,0.9,0.0,0.95,neither,joy,0.9547252058982849,positive,,no,,1.0,no
+406,2024-11-08 13:02:52,how to be more brave,search,green,0.9,0.0,0.5,neither,joy,0.995148241519928,positive,,no,,1.0,no
+407,2024-11-11 11:08:26,just be nice and friendly,message,green,0.9,0.0,0.5,neither,joy,0.9976664781570435,positive,,no,,1.0,no
+408,2024-11-12 18:38:23,sorry i didnt mean that,message,green,0.9,0.0,0.5,neither,sadness,0.9591825008392334,neutral,,no,,1.0,no
+409,2024-11-25 09:53:50,just be yourself,message,green,0.9,0.0,0.5,neither,joy,0.9598625898361206,positive,,no,,1.0,no
+410,2024-11-15 15:47:46,why am i not good enough?,search,green,0.9,0.0,0.5,neither,joy,0.9917445778846741,positive,,no,,1.0,no
+411,2024-11-21 19:54:24,lying is never okay,message,green,0.9,0.0,0.5,neither,joy,0.9868255257606506,positive,,no,,1.0,no
+412,2024-11-20 13:51:50,youre amazing just as you are,message,green,0.9,0.0,0.5,neither,surprise,0.6144037246704102,neutral,,no,,1.0,no
+413,2024-11-13 17:49:36,why am i so ugly?,search,red,0.95,0.9446054100990295,0.9446054100990295,hate,sadness,0.9979002475738525,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+414,2024-11-11 18:35:51,everyone is beautiful in their own way,message,green,0.9,0.0,0.5,neither,joy,0.9940794706344604,positive,,no,,1.0,no
+415,2024-11-06 15:28:20,what does thats fire mean,search,green,0.9,0.0,0.5,neither,anger,0.9423449635505676,neutral,,no,,1.0,no
+416,2024-11-05 11:17:56,how to be more brave,search,green,0.9,0.0,0.5,neither,joy,0.995148241519928,positive,,no,,1.0,no
+417,2024-11-11 17:12:42,how to become popular,search,green,0.9,0.0,0.5,neither,joy,0.9978671073913574,positive,,no,,1.0,no
+418,2024-11-16 08:41:02,what is Twitter?,search,green,0.9,0.0,0.5,neither,anger,0.5341735482215881,neutral,,no,,1.0,no
+419,2024-11-01 11:36:06,i really want to play that,message,green,0.9,0.0,0.5,neither,joy,0.8863266110420227,positive,,no,,1.0,no
+420,2024-11-26 19:45:14,hate is a very strong word,message,green,0.9,0.0,0.5,neither,anger,0.8861933350563049,neutral,,no,,1.0,no
+421,2024-11-11 14:08:14,how to become popular,search,green,0.9,0.0,0.5,neither,joy,0.9978671073913574,positive,,no,,1.0,no
+422,2024-11-19 20:18:56,its okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9920094013214111,positive,,no,,1.0,no
+423,2024-11-27 18:30:55,sure what subject?,message,green,0.9,0.0,0.5,neither,joy,0.9839358329772949,positive,,no,,1.0,no
+424,2024-11-13 08:17:35,youre never alone,message,green,0.9,0.0,0.5,neither,sadness,0.9912753105163574,neutral,,no,,1.0,no
+425,2024-11-05 19:19:59,dont worry about what they think,message,green,0.9,0.0,0.5,neither,anger,0.7219967842102051,neutral,,no,,1.0,no
+426,2024-11-03 09:42:26,can we play together?,message,green,0.9,0.0,0.5,neither,joy,0.8052765727043152,positive,,no,,1.0,no
+427,2024-11-06 17:18:00,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,1.0,no
+428,2024-11-14 20:12:58,youre so annoying!,message,red,0.95,0.0,0.5,neither,anger,0.9962783455848694,personal_attack,bullying,yes,It sounds like something is really bothering you. Let's find a better way to express what you're feeling.,1.0,no
+429,2024-11-24 16:42:25,why am i so ugly?,search,red,0.95,0.9446054100990295,0.9446054100990295,hate,sadness,0.9979002475738525,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+430,2024-11-06 08:20:57,its totally okay to feel sad,message,green,0.9,0.0,0.5,neither,sadness,0.9990179538726807,neutral,,no,,1.0,no
+431,2024-11-23 14:20:37,im your friend always,message,green,0.9,0.0,0.5,neither,joy,0.5269923210144043,positive,,no,,1.0,no
+432,2024-11-13 12:45:21,ngl i love that,message,green,0.9,0.0,0.5,neither,joy,0.38084933161735535,positive,,no,,1.0,no
+433,2024-11-18 18:50:48,how to stop feeling sad,search,green,0.9,0.0,0.5,neither,sadness,0.9990805387496948,neutral,,no,,1.0,no
+434,2024-11-13 11:54:10,can i download that app please?,message,green,0.9,0.0,0.95,neither,joy,0.8357806205749512,positive,,no,,1.0,no
+435,2024-11-08 14:44:44,weird is wonderful,message,green,0.9,0.0,0.5,neither,surprise,0.8901042938232422,neutral,,no,,1.0,no
+436,2024-11-10 20:47:54,its okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9920094013214111,positive,,no,,1.0,no
+437,2024-11-17 10:51:11,how to make friends in new school,search,green,0.9,0.0,0.5,neither,joy,0.9526489973068237,positive,,no,,1.0,no
+438,2024-11-02 09:18:48,no cap youre the best friend,message,green,0.9,0.0,0.5,neither,anger,0.7627076506614685,neutral,,no,,1.0,no
+439,2024-11-07 09:44:14,why do people get crushes?,search,green,0.9,0.0,0.5,neither,anger,0.9496251940727234,neutral,,no,,103.98387908935547,no
+440,2024-11-28 12:45:01,how to handle bullies at school,search,green,0.9,0.0,0.5,neither,anger,0.9970391988754272,neutral,,no,,95.48115730285645,no
+441,2024-12-24 15:38:37,im so bored,message,green,0.9,0.0,0.5,neither,anger,0.9592376351356506,neutral,,no,,1.0,no
+442,2024-12-25 12:09:16,thanks for helping me study,message,green,0.9,0.0,0.95,neither,joy,0.9865329265594482,positive,,no,,60.070037841796875,no
+443,2024-12-07 18:56:53,youre amazing just as you are,message,green,0.9,0.0,0.5,neither,surprise,0.6144037246704102,neutral,,no,,1.0,no
+444,2024-12-27 14:09:08,what does weird mean?,search,green,0.9,0.0,0.5,neither,fear,0.5626480579376221,neutral,,no,,92.3759937286377,no
+445,2024-12-24 20:27:43,what does highkey mean,search,green,0.9,0.0,0.5,neither,anger,0.8048362731933594,neutral,,no,,1.0,no
+446,2024-12-26 14:55:40,lowkey excited for the weekend,message,green,0.9,0.0,0.5,neither,joy,0.9816128015518188,positive,,no,,1.0,no
+447,2024-12-17 17:59:49,youre already great at many things,message,green,0.9,0.0,0.5,neither,joy,0.9979117512702942,positive,,no,,1.0,no
+448,2024-12-12 09:29:06,its perfectly okay to cry,message,green,0.9,0.0,0.5,neither,joy,0.9975487589836121,positive,,no,,1.0,no
+449,2024-12-23 16:40:58,what does lowkey mean,search,green,0.9,0.0,0.5,neither,anger,0.8571333289146423,neutral,,no,,1.0,no
+450,2024-12-07 13:19:50,thats fire,message,green,0.9,0.0,0.5,neither,anger,0.9635554552078247,neutral,,no,,1.0,no
+451,2024-12-17 15:22:04,why do people make fun of me?,search,green,0.9,0.0,0.5,neither,anger,0.9946957230567932,neutral,,no,,1.0,no
+452,2024-12-02 16:25:43,why do i feel left out?,search,green,0.9,0.0,0.5,neither,sadness,0.8916389346122742,neutral,,no,,1.0,no
+453,2024-12-10 14:32:49,ngl i love that,message,green,0.9,0.0,0.5,neither,joy,0.38084933161735535,positive,,no,,1.0,no
+454,2024-12-02 19:11:03,talk to someone you trust,message,green,0.9,0.0,0.5,neither,anger,0.729866623878479,neutral,,no,,1.0,no
+455,2024-12-13 09:41:21,what is Fortnite?,search,green,0.9,0.0,0.5,neither,anger,0.9075037240982056,neutral,,no,,1.0,no
+456,2024-12-11 19:00:36,what does highkey mean,search,green,0.9,0.0,0.5,neither,anger,0.8048362731933594,neutral,,no,,1.0,no
+457,2024-12-02 10:27:32,im dead that was hilarious,message,green,0.9,0.0,0.5,neither,joy,0.842941164970398,positive,,no,,1.0,no
+458,2024-12-08 11:44:28,what does stupid mean?,search,red,0.95,0.9396829605102539,0.9396829605102539,hate,sadness,0.876620352268219,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+459,2024-12-01 20:14:40,highkey excited,message,green,0.9,0.0,0.5,neither,joy,0.9827166795730591,positive,,no,,1.0,no
+460,2024-12-08 16:36:49,we shouldnt use that word,message,green,0.9,0.0,0.5,neither,anger,0.9749132394790649,neutral,,no,,1.0,no
+461,2024-12-13 12:00:59,what does dumb mean?,search,red,0.95,0.8995423316955566,0.8995423316955566,hate,sadness,0.9005410075187683,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+462,2024-12-28 17:45:06,that joke was so funny,message,green,0.9,0.0,0.5,neither,surprise,0.9367860555648804,neutral,,no,,1.0,no
+463,2024-12-22 10:34:18,what does dumb mean?,search,red,0.95,0.8995423316955566,0.8995423316955566,hate,sadness,0.9005410075187683,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+464,2024-12-28 08:33:29,just be nice and friendly,message,green,0.9,0.0,0.5,neither,joy,0.9976664781570435,positive,,no,,1.0,no
+465,2024-12-24 10:45:52,what does dumb mean?,search,red,0.95,0.8995423316955566,0.8995423316955566,hate,sadness,0.9005410075187683,criticism,personal_attack,yes,I see what you're trying to say. Attacking someone personally doesn't help solve problems - it just creates more. Let's find a better way to express what you're feeling.,1.0,no
+466,2024-12-14 19:46:45,highkey excited,message,green,0.9,0.0,0.5,neither,joy,0.9827166795730591,positive,,no,,1.0,no
+467,2024-12-28 11:34:53,youre amazing just as you are,message,green,0.9,0.0,0.5,neither,surprise,0.6144037246704102,neutral,,no,,1.0,no
+468,2024-12-11 09:57:11,why do i always get in trouble?,search,green,0.9,0.0,0.5,neither,anger,0.9705370664596558,neutral,,no,,103.01399230957031,no
+469,2024-12-05 18:57:45,you are really smart,message,green,0.9,0.0,0.5,neither,joy,0.9982101917266846,positive,,no,,1.0,no
+470,2024-12-02 19:26:16,youre amazing just as you are,message,green,0.9,0.0,0.5,neither,surprise,0.6144037246704102,neutral,,no,,1.0,no
+471,2024-12-25 10:56:01,how to deal with stress,search,green,0.9,0.0,0.5,neither,sadness,0.8139955401420593,neutral,,no,,95.64614295959473,no
+472,2024-12-21 17:40:43,how to build confidence,search,green,0.9,0.0,0.5,neither,joy,0.9959213733673096,positive,,no,,94.573974609375,no
+473,2024-12-23 14:41:59,im so bored,message,green,0.9,0.0,0.5,neither,anger,0.9592376351356506,neutral,,no,,1.0,no
+474,2024-12-03 13:19:51,that really hurt my feelings,message,green,0.9,0.0,0.5,neither,sadness,0.9975858926773071,neutral,,no,,1.0,no
+475,2024-12-04 14:28:27,you should tell an adult,message,green,0.9,0.0,0.5,neither,anger,0.6323026418685913,neutral,,no,,1.0,no
+476,2024-12-05 20:10:52,what is Facebook?,search,green,0.9,0.0,0.5,neither,fear,0.5916630625724792,neutral,,no,,1.0,no
+477,2024-12-08 09:20:32,different is actually really good,message,green,0.9,0.0,0.5,neither,joy,0.99637371301651,positive,,no,,1.0,no

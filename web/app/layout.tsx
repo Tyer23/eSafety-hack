@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { ReactNode } from "react";
+import ConditionalLayout from "@/components/ConditionalLayout";
 import type { Metadata } from "next";
 import Navigation from "../components/Navigation";
 import Logo from "../components/Logo";
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen text-gray-900">
+        <ConditionalLayout>{children}</ConditionalLayout>
         <div className="min-h-screen flex flex-col">
           {/* Desktop Header - hidden on mobile */}
           <header className="hidden md:block bg-white border-b border-gray-200">

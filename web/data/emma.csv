@@ -1,0 +1,478 @@
+id,timestamp,text,context
+1,2024-01-12 09:36:05,"you should tell an adult",message
+2,2024-01-17 08:48:54,"why do i feel left out?",search
+3,2024-01-24 14:52:24,"periodt",message
+4,2024-01-28 17:30:13,"lying is never okay",message
+5,2024-01-02 13:42:11,"youre the best friend ever",message
+6,2024-01-28 14:35:34,"youre already very kind",message
+7,2024-01-03 20:24:55,"youre amazing",message
+8,2024-01-18 20:32:22,"go off",message
+9,2024-01-18 13:37:54,"everyone makes mistakes sometimes",message
+10,2024-01-04 15:16:56,"no cap youre the best friend",message
+11,2024-01-07 14:18:28,"i love playing that game",message
+12,2024-01-21 19:22:50,"how to handle bullies",search
+13,2024-01-01 17:05:48,"they dont hate you",message
+14,2024-01-24 10:38:56,"fr thats so cool",message
+15,2024-01-10 10:58:22,"different is special",message
+16,2024-01-21 12:05:16,"just be yourself always",message
+17,2024-01-11 15:23:47,"why do i feel so sad?",search
+18,2024-01-18 18:35:39,"what is Facebook?",search
+19,2024-01-02 18:16:44,"lying is never okay",message
+20,2024-01-15 18:13:39,"youre already very kind",message
+21,2024-01-08 20:06:51,"its perfectly okay to cry",message
+22,2024-01-24 14:17:26,"talking things out helps",message
+23,2024-01-12 13:34:22,"thats a big mood",message
+24,2024-01-26 10:47:02,"slay",message
+25,2024-01-18 13:32:02,"how to be more brave",search
+26,2024-01-07 11:25:14,"sure what subject?",message
+27,2024-01-26 11:30:52,"bet",message
+28,2024-01-07 14:23:42,"youre so annoying!",message
+29,2024-01-24 13:23:00,"what is TikTok?",search
+30,2024-01-28 19:05:24,"what does fr mean",search
+31,2024-01-17 17:56:36,"how to be happier",search
+32,2024-01-28 17:26:57,"you are really smart",message
+33,2024-01-01 15:57:34,"how to make new friends",search
+34,2024-01-20 08:24:09,"just be yourself always",message
+35,2024-01-18 20:26:23,"everyone is beautiful in their own way",message
+36,2024-01-28 08:16:24,"no cap",message
+37,2024-01-18 08:15:17,"how to be more confident",search
+38,2024-01-04 18:13:11,"how to be more confident",search
+39,2024-01-24 17:24:17,"do things that make you happy",message
+40,2024-02-01 14:03:30,"no cap",message
+41,2024-02-07 17:43:42,"how to be happier",search
+42,2024-02-09 18:20:59,"what is Twitter?",search
+43,2024-02-14 13:15:06,"talking things out helps",message
+44,2024-02-07 10:58:39,"what does lowkey mean",search
+45,2024-02-24 17:41:20,"bet",message
+46,2024-02-27 16:49:53,"facts",message
+47,2024-02-16 08:50:29,"talk to someone you trust",message
+48,2024-02-06 18:34:27,"what does thats fire mean",search
+49,2024-02-19 17:27:17,"youre already a great person",message
+50,2024-02-09 10:59:09,"no cap youre the best friend",message
+51,2024-02-20 14:12:26,"can we play together?",message
+52,2024-02-25 18:34:40,"thats a big mood",message
+53,2024-02-09 13:46:33,"can i download that app please?",message
+54,2024-02-24 17:19:02,"how to become popular",search
+55,2024-02-12 15:35:13,"how to stop feeling sad",search
+56,2024-02-05 20:25:19,"what does go off mean",search
+57,2024-02-28 17:39:49,"tell a teacher or parent",message
+58,2024-02-07 11:51:06,"how to become popular",search
+59,2024-02-20 16:55:54,"youre never alone",message
+60,2024-02-28 18:04:48,"youre cool to me",message
+61,2024-02-27 09:17:59,"take breaks and breathe",message
+62,2024-02-17 13:47:22,"what does ngl mean",search
+63,2024-02-12 17:41:09,"what does bet mean",search
+64,2024-02-20 16:45:20,"how to control my anger",search
+65,2024-02-24 14:16:41,"how to be happy when sad",search
+66,2024-02-08 12:11:08,"youre amazing",message
+67,2024-02-20 11:22:44,"thanks for being my friend",message
+68,2024-02-01 10:16:21,"can you help me with homework?",message
+69,2024-02-17 17:39:05,"what is Among Us?",search
+70,2024-02-26 09:08:57,"study hard and ask for help",message
+71,2024-02-14 12:32:13,"youre already great at many things",message
+72,2024-02-18 17:34:51,"thats a big mood",message
+73,2024-02-25 15:08:49,"can we build something together?",message
+74,2024-03-27 16:58:45,"just be nice and friendly",message
+75,2024-03-18 20:07:40,"take deep breaths and count",message
+76,2024-03-14 16:40:15,"sorry i didnt mean that",message
+77,2024-03-13 13:58:12,"youre amazing",message
+78,2024-03-26 15:36:42,"why do i feel so lonely?",search
+79,2024-03-05 13:46:31,"that really hurt my feelings",message
+80,2024-03-27 09:29:22,"thats a mean word",message
+81,2024-03-19 08:26:48,"how to be a better person",search
+82,2024-03-10 19:24:44,"that hits different",message
+83,2024-03-11 11:16:14,"facts",message
+84,2024-03-01 13:59:14,"we shouldnt use that word",message
+85,2024-03-15 15:03:55,"just keep practicing",message
+86,2024-03-12 14:44:57,"what does periodt mean in text",search
+87,2024-03-07 20:11:08,"i really want to play that",message
+88,2024-03-03 09:31:49,"periodt",message
+89,2024-03-13 10:59:07,"no cap youre the best friend",message
+90,2024-03-28 14:14:35,"youre already very kind",message
+91,2024-03-03 16:59:09,"youre awesome and smart!",message
+92,2024-03-09 17:55:33,"what does hate mean?",search
+93,2024-03-27 14:21:01,"can we play together?",message
+94,2024-03-02 08:22:49,"youre already very kind",message
+95,2024-03-28 10:59:32,"what does thats fire mean",search
+96,2024-03-01 14:33:58,"you look great today!",message
+97,2024-03-01 15:09:30,"what does tbh mean",search
+98,2024-03-21 18:50:24,"i love playing that game",message
+99,2024-03-16 09:27:31,"periodt",message
+100,2024-03-15 14:48:54,"dont worry about what they think",message
+101,2024-03-28 09:10:39,"youre already great at many things",message
+102,2024-03-09 08:55:14,"vibe check",message
+103,2024-03-24 16:33:37,"just be yourself",message
+104,2024-03-16 20:29:55,"youre so annoying!",message
+105,2024-03-13 14:19:19,"you should tell an adult",message
+106,2024-03-25 13:38:16,"its okay to cry",message
+107,2024-03-12 13:01:32,"just be yourself",message
+108,2024-03-19 12:09:16,"what is Minecraft?",search
+109,2024-03-28 11:39:15,"lying is never okay",message
+110,2024-03-16 15:33:12,"just be yourself always",message
+111,2024-03-19 11:26:31,"how to make people like me more",search
+112,2024-03-11 19:42:00,"periodt",message
+113,2024-03-06 19:23:37,"say less im totally in",message
+114,2024-03-05 14:33:15,"what does ngl mean",search
+115,2024-03-13 10:19:06,"youre amazing",message
+116,2024-03-05 09:12:08,"why am i not good enough?",search
+117,2024-03-22 11:21:53,"can we play together?",message
+118,2024-03-09 11:49:17,"no cap youre the best friend",message
+119,2024-03-09 20:32:18,"what does puberty mean?",search
+120,2024-03-05 20:53:02,"why am i not good enough?",search
+121,2024-03-08 19:04:46,"what does puberty mean?",search
+122,2024-04-28 11:26:09,"what is Snapchat?",search
+123,2024-04-11 10:25:46,"why do people judge me?",search
+124,2024-04-25 09:08:24,"youre never alone",message
+125,2024-04-05 11:20:42,"how to be happy when sad",search
+126,2024-04-07 19:02:34,"no cap",message
+127,2024-04-14 10:48:47,"how to make people like me more",search
+128,2024-04-13 18:10:36,"everyone is beautiful",message
+129,2024-04-19 09:07:35,"hate is a very strong feeling",message
+130,2024-04-27 09:11:21,"lowkey excited for the weekend",message
+131,2024-04-27 08:05:10,"thats not nice to say",message
+132,2024-04-27 10:30:48,"what does stupid mean?",search
+133,2024-04-18 14:58:08,"how to stop feeling sad",search
+134,2024-04-19 20:18:33,"what is Instagram?",search
+135,2024-04-11 14:40:32,"youre the best friend ever",message
+136,2024-04-03 15:02:11,"go off",message
+137,2024-04-17 10:11:06,"periodt",message
+138,2024-04-13 15:01:41,"take breaks and breathe",message
+139,2024-04-08 08:28:02,"do things that make you smile",message
+140,2024-04-18 17:14:14,"take deep breaths and count",message
+141,2024-04-05 17:33:20,"everyone makes mistakes sometimes",message
+142,2024-04-22 18:04:03,"can we build something together?",message
+143,2024-04-02 18:26:59,"they dont hate you",message
+144,2024-04-09 12:31:55,"talking things out helps",message
+145,2024-04-24 17:18:31,"why do people judge me?",search
+146,2024-04-25 11:10:25,"how to make new friends",search
+147,2024-04-18 08:49:41,"why am i not smart?",search
+148,2024-04-19 08:47:26,"youre very brave already",message
+149,2024-04-19 10:17:51,"what is Among Us?",search
+150,2024-04-08 13:58:33,"thats a big mood",message
+151,2024-04-03 19:15:57,"im always here for you",message
+152,2024-04-28 14:32:39,"weird is awesome and unique",message
+153,2024-04-05 12:01:11,"what is Minecraft?",search
+154,2024-04-08 20:33:59,"how to be a better person",search
+155,2024-04-04 16:56:03,"how to be popular in middle school",search
+156,2024-04-12 09:40:27,"that slaps",message
+157,2024-05-19 14:51:09,"what does go off mean",search
+158,2024-05-21 15:11:56,"how to be happier",search
+159,2024-05-16 13:43:32,"what does that hits different mean",search
+160,2024-05-14 20:49:49,"you look great today!",message
+161,2024-05-15 13:03:45,"what does loser mean?",search
+162,2024-05-25 13:28:40,"that was so fun fr",message
+163,2024-05-07 10:48:01,"what does slay mean",search
+164,2024-05-25 09:18:55,"ngl that was amazing",message
+165,2024-05-09 15:42:26,"youre amazing just as you are",message
+166,2024-05-04 10:05:52,"weird is awesome and unique",message
+167,2024-05-03 14:05:27,"youre already very kind",message
+168,2024-05-26 15:54:27,"slay",message
+169,2024-05-15 15:55:24,"youre the best friend ever",message
+170,2024-05-17 18:26:27,"just keep practicing",message
+171,2024-05-28 15:08:13,"talking things out helps",message
+172,2024-05-21 19:08:20,"how to be better at things",search
+173,2024-05-10 16:29:32,"its okay to cry",message
+174,2024-05-13 09:30:53,"can i download that app please?",message
+175,2024-05-17 20:34:13,"how to make friends in new school",search
+176,2024-05-11 16:51:20,"weird is wonderful",message
+177,2024-05-20 19:23:43,"just be nice and friendly",message
+178,2024-05-02 11:32:20,"can we build something together?",message
+179,2024-05-11 20:31:47,"slay",message
+180,2024-05-17 11:45:43,"we shouldnt use that word",message
+181,2024-05-16 15:38:47,"fr thats so cool",message
+182,2024-05-09 15:08:17,"vibe check",message
+183,2024-05-27 20:46:57,"dont worry about what they think",message
+184,2024-05-04 13:54:44,"can we build something together?",message
+185,2024-05-27 18:47:39,"what does ngl mean",search
+186,2024-05-21 11:51:35,"no cap",message
+187,2024-05-19 19:15:10,"youre never alone",message
+188,2024-05-14 10:21:32,"can we hang out this weekend?",message
+189,2024-05-04 13:00:58,"no cap youre the best friend",message
+190,2024-05-02 12:56:36,"talking things out helps",message
+191,2024-05-18 10:43:41,"thats kinda sus",message
+192,2024-05-01 16:33:57,"facts",message
+193,2024-05-23 10:30:47,"what does vibe mean",search
+194,2024-05-27 09:21:30,"what does loser mean?",search
+195,2024-05-15 17:16:46,"what does that slaps mean",search
+196,2024-06-17 18:04:11,"how to be better at things",search
+197,2024-06-11 12:55:38,"vibe check",message
+198,2024-06-23 13:49:11,"you look great today!",message
+199,2024-06-28 20:11:58,"we shouldnt use that word",message
+200,2024-06-15 11:18:51,"its totally okay to feel sad",message
+201,2024-06-14 17:29:31,"lowkey nervous about that",message
+202,2024-06-24 14:21:12,"i really want to play that",message
+203,2024-06-06 20:13:04,"fr thats so cool",message
+204,2024-06-12 17:45:20,"youre already great at many things",message
+205,2024-06-09 14:38:02,"i really want to play that",message
+206,2024-06-11 11:24:31,"just keep practicing",message
+207,2024-06-21 13:46:52,"take breaks and breathe",message
+208,2024-06-05 15:16:04,"how to feel happy again",search
+209,2024-06-27 13:42:48,"how to deal with mean people",search
+210,2024-06-19 17:25:47,"i really want to play that",message
+211,2024-06-06 15:52:58,"thats a big mood",message
+212,2024-06-18 15:50:30,"can we play together?",message
+213,2024-06-08 08:59:50,"i really want to play that",message
+214,2024-06-27 19:39:37,"what does big mood mean",search
+215,2024-06-04 11:52:03,"weird is awesome and unique",message
+216,2024-06-23 16:42:21,"how to be more confident",search
+217,2024-06-14 17:23:45,"theyre completely wrong",message
+218,2024-06-21 13:05:03,"how to stop being scared",search
+219,2024-06-25 12:33:16,"tell a teacher or parent",message
+220,2024-06-16 12:47:21,"ngl i love that",message
+221,2024-06-21 15:10:00,"what does loser mean?",search
+222,2024-06-10 19:53:00,"tbh that sounds fun",message
+223,2024-06-13 13:37:54,"periodt",message
+224,2024-06-12 18:13:12,"what is Instagram?",search
+225,2024-06-04 16:04:52,"can i download that app please?",message
+226,2024-06-02 15:16:55,"ngl i love that",message
+227,2024-06-27 11:40:51,"thanks for being my friend",message
+228,2024-06-07 16:53:27,"just be yourself always",message
+229,2024-06-04 19:36:17,"youre never alone",message
+230,2024-06-08 17:01:15,"im dead that was hilarious",message
+231,2024-06-04 11:20:19,"hate is a very strong word",message
+232,2024-06-19 16:08:07,"can you help me with homework?",message
+233,2024-06-20 09:12:55,"how to become popular",search
+234,2024-06-25 11:30:18,"youre cool to me",message
+235,2024-06-23 14:05:30,"what does dumb mean?",search
+236,2024-06-17 15:45:55,"no cap youre the best friend",message
+237,2024-06-03 11:24:27,"lowkey excited for the weekend",message
+238,2024-06-03 12:21:22,"tbh that sounds fun",message
+239,2024-06-21 12:14:33,"dont worry about what they think",message
+240,2024-06-16 10:09:33,"what is TikTok?",search
+241,2024-06-14 08:18:36,"im always here for you",message
+242,2024-06-05 20:02:22,"what does loser mean?",search
+243,2024-07-07 08:03:11,"youre the best friend ever",message
+244,2024-07-24 20:37:25,"what is Fortnite?",search
+245,2024-07-10 15:15:37,"that hits different",message
+246,2024-07-04 11:27:31,"take deep breaths and count",message
+247,2024-07-11 11:00:14,"vibe check",message
+248,2024-07-16 13:48:59,"facts",message
+249,2024-07-13 12:47:22,"why am i not popular?",search
+250,2024-07-20 20:02:24,"youre the best friend ever",message
+251,2024-07-27 15:09:31,"youre the best friend ever",message
+252,2024-07-20 15:24:23,"lying is never okay",message
+253,2024-07-19 12:32:30,"what is TikTok?",search
+254,2024-07-16 19:55:14,"youre amazing just as you are",message
+255,2024-07-19 08:24:41,"that was so fun fr",message
+256,2024-07-19 17:22:24,"youre amazing",message
+257,2024-07-13 15:57:55,"how to control my anger",search
+258,2024-07-08 10:24:34,"why do people judge me?",search
+259,2024-07-24 14:04:16,"being weird is actually cool",message
+260,2024-07-13 20:38:20,"hate is a very strong word",message
+261,2024-07-17 17:04:50,"no cap",message
+262,2024-07-04 15:08:28,"what does stupid mean?",search
+263,2024-07-24 08:28:05,"fr thats so cool",message
+264,2024-07-03 14:05:32,"thats fire",message
+265,2024-07-02 13:50:40,"how to be happy when sad",search
+266,2024-07-27 15:09:07,"do things that make you smile",message
+267,2024-07-13 12:09:47,"bet we can do that",message
+268,2024-07-24 18:38:31,"go off",message
+269,2024-07-24 14:39:58,"what does dating mean?",search
+270,2024-07-01 08:26:18,"why am i so bad?",search
+271,2024-07-21 10:27:40,"how to be popular in middle school",search
+272,2024-07-23 15:08:52,"why am i not smart?",search
+273,2024-07-28 20:03:24,"what does mean mean?",search
+274,2024-07-06 11:35:42,"what does ugly mean?",search
+275,2024-07-23 08:36:35,"different is actually really good",message
+276,2024-07-28 08:04:24,"what is Among Us?",search
+277,2024-07-14 08:59:20,"highkey excited",message
+278,2024-07-14 17:48:35,"youre already a great person",message
+279,2024-07-26 13:14:09,"you should tell an adult",message
+280,2024-07-04 11:46:54,"thats not nice to say",message
+281,2024-07-25 17:40:42,"everyone is beautiful in their own way",message
+282,2024-07-02 11:09:27,"can we build something together?",message
+283,2024-07-18 12:28:56,"im your friend always",message
+284,2024-07-10 18:48:39,"can we build something together?",message
+285,2024-07-06 19:54:00,"why do people lie to me?",search
+286,2024-08-18 10:19:55,"can we play together sometime?",message
+287,2024-08-21 09:22:25,"weird is wonderful",message
+288,2024-08-03 13:46:55,"tbh im kinda stressed",message
+289,2024-08-15 10:04:56,"vibe check",message
+290,2024-08-13 09:25:42,"what does no cap mean",search
+291,2024-08-17 20:51:01,"how to be cool in 6th grade",search
+292,2024-08-28 13:30:15,"how to become popular",search
+293,2024-08-22 20:44:42,"different is special",message
+294,2024-08-17 17:16:29,"how to deal with mean people",search
+295,2024-08-08 09:38:10,"im here with you always",message
+296,2024-08-02 14:57:20,"can i download that app please?",message
+297,2024-08-23 17:10:50,"youre already a great person",message
+298,2024-08-03 19:25:39,"say less im totally in",message
+299,2024-08-13 14:52:29,"i really want to play that",message
+300,2024-08-24 17:53:33,"ngl i love that",message
+301,2024-08-05 09:47:05,"i really want to play that",message
+302,2024-08-04 12:28:00,"you are really smart",message
+303,2024-08-22 16:29:05,"ngl that was amazing",message
+304,2024-08-01 18:12:10,"what does dating mean?",search
+305,2024-08-14 16:15:23,"study hard and ask for help",message
+306,2024-08-13 13:30:12,"being weird is actually cool",message
+307,2024-08-27 10:47:45,"what is Discord?",search
+308,2024-08-15 12:40:54,"what is Fortnite?",search
+309,2024-08-08 14:32:15,"ngl that was amazing",message
+310,2024-08-12 16:49:13,"do things that make you happy",message
+311,2024-08-11 10:39:33,"you should tell an adult",message
+312,2024-08-17 14:35:00,"why am i so ugly?",search
+313,2024-08-17 18:30:22,"can we build something together?",message
+314,2024-08-14 08:07:38,"its totally okay to feel sad",message
+315,2024-08-07 15:54:55,"its okay to cry",message
+316,2024-08-24 15:25:28,"im so bored",message
+317,2024-08-07 11:27:11,"how to get smarter",search
+318,2024-08-05 08:05:04,"everyone is beautiful",message
+319,2024-09-02 11:44:46,"youre already great at many things",message
+320,2024-09-13 17:54:03,"how to be more brave",search
+321,2024-09-19 11:45:13,"theyre completely wrong",message
+322,2024-09-09 18:07:10,"that slaps",message
+323,2024-09-06 16:08:17,"everyone is beautiful in their own way",message
+324,2024-09-02 19:36:21,"youre awesome and smart!",message
+325,2024-09-14 18:50:16,"how to make people like me more",search
+326,2024-09-20 16:16:57,"tbh im kinda stressed",message
+327,2024-09-16 17:26:49,"can we play together sometime?",message
+328,2024-09-14 15:15:47,"that slaps",message
+329,2024-09-18 15:19:59,"say less im totally in",message
+330,2024-09-12 10:56:33,"just be nice and friendly",message
+331,2024-09-12 15:56:35,"lowkey nervous about that",message
+332,2024-09-20 10:30:07,"why do people make fun of me?",search
+333,2024-09-25 09:34:18,"what is Fortnite?",search
+334,2024-09-04 14:55:15,"that slaps",message
+335,2024-09-07 15:22:18,"that hits different",message
+336,2024-09-05 10:14:43,"just be nice and friendly",message
+337,2024-09-21 17:20:41,"dont worry about what they think",message
+338,2024-09-02 14:30:14,"what does highkey mean",search
+339,2024-09-26 16:55:22,"just be yourself always",message
+340,2024-09-07 09:36:01,"highkey excited",message
+341,2024-09-11 10:00:17,"take breaks and breathe",message
+342,2024-09-19 16:53:58,"take deep breaths and count",message
+343,2024-09-18 17:36:54,"what is Roblox?",search
+344,2024-09-28 19:46:11,"its okay to cry",message
+345,2024-09-16 18:36:20,"that was so fun fr",message
+346,2024-09-16 15:44:23,"what does vibe mean",search
+347,2024-09-09 14:50:19,"its perfectly okay to cry",message
+348,2024-09-09 18:36:19,"can i download that app please?",message
+349,2024-09-03 08:23:59,"ngl i love that",message
+350,2024-09-08 08:08:42,"tbh that sounds fun",message
+351,2024-09-06 13:29:49,"its totally okay to feel sad",message
+352,2024-09-09 20:54:57,"talking things out helps",message
+353,2024-09-05 12:43:27,"why do i feel left out?",search
+354,2024-09-27 15:06:36,"i really want to play that",message
+355,2024-09-27 16:48:37,"just be yourself",message
+356,2024-09-27 12:30:42,"no cap youre the best friend",message
+357,2024-09-12 09:59:02,"how to deal with mean people",search
+358,2024-09-07 15:09:20,"that was so fun fr",message
+359,2024-10-15 16:33:02,"thats fire",message
+360,2024-10-01 12:26:01,"you are really smart",message
+361,2024-10-16 09:54:45,"take breaks and breathe",message
+362,2024-10-01 09:24:38,"tbh im kinda stressed",message
+363,2024-10-22 14:32:46,"what does dating mean?",search
+364,2024-10-23 13:53:53,"im always here for you",message
+365,2024-10-03 16:24:01,"say less im totally in",message
+366,2024-10-15 15:45:16,"lowkey nervous about that",message
+367,2024-10-03 10:56:11,"dont worry about what they think",message
+368,2024-10-01 13:33:06,"what is Fortnite?",search
+369,2024-10-26 18:32:41,"that joke was so funny",message
+370,2024-10-12 08:05:50,"what does dumb mean?",search
+371,2024-10-25 18:45:40,"we shouldnt use that word",message
+372,2024-10-28 08:44:14,"what does loser mean?",search
+373,2024-10-27 19:45:13,"youre awesome and smart!",message
+374,2024-10-21 18:07:44,"youre cool to me",message
+375,2024-10-08 09:52:11,"how to be cool in 6th grade",search
+376,2024-10-04 15:38:09,"why am i so different?",search
+377,2024-10-12 19:47:18,"im so bored",message
+378,2024-10-27 12:43:44,"why am i not popular?",search
+379,2024-10-09 10:26:58,"different is special",message
+380,2024-10-26 19:42:07,"do things that make you happy",message
+381,2024-10-05 12:23:48,"bet we can do that",message
+382,2024-10-13 19:10:59,"hate is a very strong word",message
+383,2024-10-23 19:49:29,"they dont hate you",message
+384,2024-10-03 10:09:49,"thats not nice to say",message
+385,2024-10-12 13:41:40,"slay",message
+386,2024-10-27 15:15:27,"no cap",message
+387,2024-10-05 16:15:37,"periodt",message
+388,2024-10-12 15:25:13,"different is actually really good",message
+389,2024-10-23 14:20:55,"youre already a great person",message
+390,2024-10-22 20:14:56,"hate is a very strong feeling",message
+391,2024-10-16 18:03:51,"youre amazing",message
+392,2024-10-04 17:45:09,"sure what subject?",message
+393,2024-10-12 10:29:42,"study hard and ask for help",message
+394,2024-10-02 11:16:12,"why do i feel so alone?",search
+395,2024-10-14 19:30:04,"tbh that sounds fun",message
+396,2024-11-06 08:28:10,"how to stop crying so much",search
+397,2024-11-28 19:57:21,"you should tell an adult",message
+398,2024-11-06 10:14:16,"its totally okay to feel sad",message
+399,2024-11-02 14:46:30,"how to make people like me more",search
+400,2024-11-11 13:37:17,"im here with you always",message
+401,2024-11-06 20:32:21,"tbh im kinda stressed",message
+402,2024-11-18 19:33:28,"how to deal with mean people",search
+403,2024-11-12 19:34:16,"i love playing that game",message
+404,2024-11-28 11:33:18,"talk to someone you trust",message
+405,2024-11-08 20:23:40,"can you help me with homework?",message
+406,2024-11-08 13:02:52,"how to be more brave",search
+407,2024-11-11 11:08:26,"just be nice and friendly",message
+408,2024-11-12 18:38:23,"sorry i didnt mean that",message
+409,2024-11-25 09:53:50,"just be yourself",message
+410,2024-11-15 15:47:46,"why am i not good enough?",search
+411,2024-11-21 19:54:24,"lying is never okay",message
+412,2024-11-20 13:51:50,"youre amazing just as you are",message
+413,2024-11-13 17:49:36,"why am i so ugly?",search
+414,2024-11-11 18:35:51,"everyone is beautiful in their own way",message
+415,2024-11-06 15:28:20,"what does thats fire mean",search
+416,2024-11-05 11:17:56,"how to be more brave",search
+417,2024-11-11 17:12:42,"how to become popular",search
+418,2024-11-16 08:41:02,"what is Twitter?",search
+419,2024-11-01 11:36:06,"i really want to play that",message
+420,2024-11-26 19:45:14,"hate is a very strong word",message
+421,2024-11-11 14:08:14,"how to become popular",search
+422,2024-11-19 20:18:56,"its okay to cry",message
+423,2024-11-27 18:30:55,"sure what subject?",message
+424,2024-11-13 08:17:35,"youre never alone",message
+425,2024-11-05 19:19:59,"dont worry about what they think",message
+426,2024-11-03 09:42:26,"can we play together?",message
+427,2024-11-06 17:18:00,"can i download that app please?",message
+428,2024-11-14 20:12:58,"youre so annoying!",message
+429,2024-11-24 16:42:25,"why am i so ugly?",search
+430,2024-11-06 08:20:57,"its totally okay to feel sad",message
+431,2024-11-23 14:20:37,"im your friend always",message
+432,2024-11-13 12:45:21,"ngl i love that",message
+433,2024-11-18 18:50:48,"how to stop feeling sad",search
+434,2024-11-13 11:54:10,"can i download that app please?",message
+435,2024-11-08 14:44:44,"weird is wonderful",message
+436,2024-11-10 20:47:54,"its okay to cry",message
+437,2024-11-17 10:51:11,"how to make friends in new school",search
+438,2024-11-02 09:18:48,"no cap youre the best friend",message
+439,2024-11-07 09:44:14,"why do people get crushes?",search
+440,2024-11-28 12:45:01,"how to handle bullies at school",search
+441,2024-12-24 15:38:37,"im so bored",message
+442,2024-12-25 12:09:16,"thanks for helping me study",message
+443,2024-12-07 18:56:53,"youre amazing just as you are",message
+444,2024-12-27 14:09:08,"what does weird mean?",search
+445,2024-12-24 20:27:43,"what does highkey mean",search
+446,2024-12-26 14:55:40,"lowkey excited for the weekend",message
+447,2024-12-17 17:59:49,"youre already great at many things",message
+448,2024-12-12 09:29:06,"its perfectly okay to cry",message
+449,2024-12-23 16:40:58,"what does lowkey mean",search
+450,2024-12-07 13:19:50,"thats fire",message
+451,2024-12-17 15:22:04,"why do people make fun of me?",search
+452,2024-12-02 16:25:43,"why do i feel left out?",search
+453,2024-12-10 14:32:49,"ngl i love that",message
+454,2024-12-02 19:11:03,"talk to someone you trust",message
+455,2024-12-13 09:41:21,"what is Fortnite?",search
+456,2024-12-11 19:00:36,"what does highkey mean",search
+457,2024-12-02 10:27:32,"im dead that was hilarious",message
+458,2024-12-08 11:44:28,"what does stupid mean?",search
+459,2024-12-01 20:14:40,"highkey excited",message
+460,2024-12-08 16:36:49,"we shouldnt use that word",message
+461,2024-12-13 12:00:59,"what does dumb mean?",search
+462,2024-12-28 17:45:06,"that joke was so funny",message
+463,2024-12-22 10:34:18,"what does dumb mean?",search
+464,2024-12-28 08:33:29,"just be nice and friendly",message
+465,2024-12-24 10:45:52,"what does dumb mean?",search
+466,2024-12-14 19:46:45,"highkey excited",message
+467,2024-12-28 11:34:53,"youre amazing just as you are",message
+468,2024-12-11 09:57:11,"why do i always get in trouble?",search
+469,2024-12-05 18:57:45,"you are really smart",message
+470,2024-12-02 19:26:16,"youre amazing just as you are",message
+471,2024-12-25 10:56:01,"how to deal with stress",search
+472,2024-12-21 17:40:43,"how to build confidence",search
+473,2024-12-23 14:41:59,"im so bored",message
+474,2024-12-03 13:19:51,"that really hurt my feelings",message
+475,2024-12-04 14:28:27,"you should tell an adult",message
+476,2024-12-05 20:10:52,"what is Facebook?",search
+477,2024-12-08 09:20:32,"different is actually really good",message
