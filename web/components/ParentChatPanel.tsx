@@ -138,7 +138,7 @@ export default function ParentChatPanel() {
             onKeyDown={handleKeyDown}
             rows={2}
             className="w-full resize-none rounded-xl border border-gray-200 bg-white px-3 py-3 md:px-4 text-body text-gray-800 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-blurple focus:ring-offset-2 focus:border-blurple transition-colors"
-            placeholder="Ask a question..."
+            placeholder="Ask about Emma's week..."
           />
           <div className="flex items-center justify-between gap-2">
             <span className="hidden md:inline text-[11px] text-gray-500">
