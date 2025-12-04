@@ -16,6 +16,7 @@ export default function ChildBrowserPage() {
   
   const [user, setUser] = useState<User | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Get user from sessionStorage
@@ -33,26 +34,79 @@ export default function ChildBrowserPage() {
     }
   }, [kidId, router]);
 
-  const handleSearch = (e?: React.FormEvent) => {
+  const handleSearch = async (e?: React.FormEvent) => {
     if (e) {
       e.preventDefault();
     }
-    if (searchQuery.trim()) {
-      // Track which child this text is from - kidId is available from params
-      const dataToSend = {
-        kidId: kidId, // e.g., "kid_01" or "kid_02"
-        username: user?.username, // Also store username for reference
-        text: searchQuery.trim(),
+    
+    const text = searchQuery.trim();
+    if (!text || isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Determine age range based on kidId
+      // kid_01 = Jamie (9 years old) -> "8-10"
+      // kid_02 = Emma (11 years old) -> "11-13"
+      const ageRange = kidId === "kid_01" ? "8-10" : "11-13";
+
+      // Prepare data to send to ML backend
+      const mlRequest = {
+        message: text,
+        age_range: ageRange
+      };
+
+      console.log("📤 Sending to ML Model:", {
+        kidId: kidId,
+        text: text,
+        ageRange: ageRange,
+        timestamp: new Date().toISOString()
+      });
+
+      // Call ML backend API via Next.js proxy (avoids CORS issues)
+      const response = await fetch("/api/ml/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(mlRequest),
+      });
+
+      if (!response.ok) {
+        throw new Error(`ML API error: ${response.status} ${response.statusText}`);
+      }
+
+      const mlResult = await response.json();
+
+      // Console log the full ML response
+      console.log("📥 ML Model Response:", mlResult);
+      console.log("📊 Classification:", mlResult.classification);
+      console.log("🎯 Confidence:", mlResult.confidence);
+      console.log("💬 Feedback:", mlResult.feedback);
+      console.log("📈 Analysis:", mlResult.analysis);
+      console.log("📝 Detected Issues:", mlResult.analysis?.detected_issues);
+      console.log("😊 Primary Emotion:", mlResult.analysis?.emotion?.primary_emotion);
+      console.log("⚠️ Toxicity Score:", mlResult.analysis?.toxicity?.score);
+
+      // Store the result with kidId for parent dashboard (future use)
+      const dataToStore = {
+        kidId: kidId,
+        username: user?.username,
+        text: text,
         timestamp: new Date().toISOString(),
-        context: "search" // or "message" depending on where it's used
+        context: "search",
+        mlResult: mlResult
       };
       
-      // In a real app, this would send to backend API for ML analysis
-      // Example: await fetch('/api/analyze', { method: 'POST', body: JSON.stringify(dataToSend) })
-      console.log("Data to send to ML backend:", dataToSend);
-      
-      // For demo: this will be sent to backend/CSV later
-      // The kidId ensures we can track which child's data this is
+      console.log("💾 Data to store for parent dashboard:", dataToStore);
+
+    } catch (error) {
+      console.error("❌ Error calling ML model:", error);
+      console.error("Error details:", error instanceof Error ? error.message : String(error));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -182,10 +236,11 @@ export default function ChildBrowserPage() {
                     e.preventDefault();
                     handleSearch();
                   }}
-                  className="px-3 py-1.5 bg-[#4285f4] text-white text-sm font-medium rounded-md hover:bg-[#357ae8] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4285f4] focus:ring-offset-2"
+                  disabled={isLoading || !searchQuery.trim()}
+                  className="px-3 py-1.5 bg-[#4285f4] text-white text-sm font-medium rounded-md hover:bg-[#357ae8] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4285f4] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Submit search"
                 >
-                  Enter
+                  {isLoading ? "..." : "Enter"}
                 </button>
               </div>
             </div>
