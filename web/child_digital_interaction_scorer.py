@@ -1,92 +1,145 @@
 import json
+import os
 import re
+from pathlib import Path
 from typing import Any, Dict
 
+from openai import OpenAI, OpenAIError
 
-def clamp(value: Any, low: int = 0, high: int = 100) -> int:
+PROMPT_TEMPLATE = """
+You are an evaluator of digital communication written by or directed at CHILDREN.
+
+Analyse the message and produce three scores between 0 and 100, plus a brief explanation.
+
+Return ONLY valid JSON, nothing else:
+{{
+  "kindness_score": <int 0-100>,
+  "privacy_awareness_score": <int 0-100>,
+  "digital_wellbeing_score": <int 0-100>,
+  "explanation": "<brief reasoning>"
+}}
+
+Message: {text}
+"""
+
+
+def _load_env_api_key() -> None:
+  """Load OPENAI_API_KEY from .env if not already present."""
+  if os.getenv("OPENAI_API_KEY"):
+    return
+  env_path = Path(".env")
+  if not env_path.exists():
+    return
+  for line in env_path.read_text().splitlines():
+    if line.strip().startswith("#") or "=" not in line:
+      continue
+    key, _, value = line.partition("=")
+    if key.strip() == "OPENAI_API_KEY":
+      os.environ["OPENAI_API_KEY"] = value.strip().strip('"').strip("'")
+      break
+
+
+def _safe_json_parse(text: str) -> Dict[str, Any]:
+  try:
+    return json.loads(text)
+  except json.JSONDecodeError:
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+    if match:
+      try:
+        return json.loads(match.group(0))
+      except json.JSONDecodeError:
+        pass
+  return {}
+
+
+def _clamp_score(value: Any) -> int:
   try:
     num = int(float(value))
   except Exception:
     num = 0
-  return max(low, min(high, num))
+  return max(0, min(100, num))
 
 
 class ChildDigitalInteractionScorer:
   """
-  Lightweight, dependency-free scorer that uses simple heuristics.
-  This avoids heavyweight model downloads and works fully offline.
+  OpenAI-based scorer using chat completions.
+  Requires OPENAI_API_KEY to be set (loaded from .env if present).
   """
 
-  def __init__(self) -> None:
-    # Keyword lists are intentionally small and easy to tweak.
-    self.negative_kindness = {"dumb", "stupid", "hate", "idiot", "loser", "kill", "bully", "ugly"}
-    self.positive_kindness = {"thank", "thanks", "great", "good job", "awesome", "nice", "love", "happy", "kind"}
+  def __init__(self, model: str = "gpt-4o-mini") -> None:
+    _load_env_api_key()
+    self.client = OpenAI()
+    self.model = model
 
-    self.privacy_risky_terms = {"phone", "number", "address", "email", "location"}
-    self.phone_pattern = re.compile(r"\b\d{5,}\b")
-    self.us_phone_pattern = re.compile(r"\b\d{3}[- ]?\d{3}[- ]?\d{4}\b")
-    self.email_pattern = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
-
-    self.wellbeing_negative = {"ignored", "alone", "sad", "upset", "anxious", "tired", "add me", "spam"}
-    self.wellbeing_positive = {"balance", "break", "rest", "healthy", "good day", "fun", "enjoy"}
-
-  def _score_kindness(self, text: str) -> int:
+  @staticmethod
+  def _fallback_scores(text: str, raw_output: str) -> Dict[str, Any]:
+    """Heuristic backup when the model output is unusable."""
     lower = text.lower()
-    score = 60
-    if any(word in lower for word in self.negative_kindness):
-      score -= 40
-    if any(word in lower for word in self.positive_kindness):
-      score += 20
-    return clamp(score)
 
-  def _score_privacy(self, text: str) -> int:
-    lower = text.lower()
-    score = 85
-    if self.phone_pattern.search(text) or self.us_phone_pattern.search(text):
-      score -= 50
-    if self.email_pattern.search(text):
-      score -= 50
-    if any(term in lower for term in self.privacy_risky_terms):
-      score -= 20
-    return clamp(score)
+    kindness = 60
+    if any(word in lower for word in ["dumb", "stupid", "hate", "idiot", "loser", "bully", "kill"]):
+      kindness -= 40
+    if any(word in lower for word in ["thank", "thanks", "great", "good job", "awesome", "nice", "love", "happy", "kind"]):
+      kindness += 20
+    kindness = _clamp_score(kindness)
 
-  def _score_wellbeing(self, text: str) -> int:
-    lower = text.lower()
-    score = 70
-    if any(word in lower for word in self.wellbeing_negative):
-      score -= 25
-    if any(word in lower for word in self.wellbeing_positive):
-      score += 15
-    return clamp(score)
+    privacy = 85
+    if re.search(r"\b\d{5,}\b", text) or re.search(r"\b\d{3}[- ]?\d{3}[- ]?\d{4}\b", text):
+      privacy -= 50
+    if re.search(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", text):
+      privacy -= 50
+    if any(term in lower for term in ["phone", "number", "address", "email", "location"]):
+      privacy -= 20
+    privacy = _clamp_score(privacy)
 
-  def score(self, text: str) -> Dict[str, Any]:
-    kindness = self._score_kindness(text)
-    privacy = self._score_privacy(text)
-    wellbeing = self._score_wellbeing(text)
+    wellbeing = 70
+    if any(word in lower for word in ["ignored", "alone", "sad", "upset", "anxious", "tired"]):
+      wellbeing -= 25
+    if any(word in lower for word in ["balance", "break", "rest", "healthy", "good day", "fun", "enjoy"]):
+      wellbeing += 15
+    wellbeing = _clamp_score(wellbeing)
 
-    explanation_parts = []
-    if kindness < 50:
-      explanation_parts.append("Detected unfriendly language.")
-    elif kindness > 70:
-      explanation_parts.append("Detected positive/supportive language.")
-
-    if privacy < 70:
-      explanation_parts.append("Detected potential personal information.")
-
-    if wellbeing < 60:
-      explanation_parts.append("Detected negative wellbeing indicators.")
-    elif wellbeing > 80:
-      explanation_parts.append("Detected healthy/balanced tone.")
-
-    if not explanation_parts:
-      explanation_parts.append("No strong signals detected; neutral assessment.")
-
+    explanation = f"Heuristic fallback applied because model output was invalid ({raw_output!r})."
     return {
       "kindness_score": kindness,
       "privacy_awareness_score": privacy,
       "digital_wellbeing_score": wellbeing,
-      "explanation": " ".join(explanation_parts),
+      "explanation": explanation,
+      "raw": raw_output.strip(),
     }
+
+  def score(self, text: str) -> Dict[str, Any]:
+    prompt = PROMPT_TEMPLATE.format(text=text)
+    try:
+      response = self.client.chat.completions.create(
+        model=self.model,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0,
+        response_format={"type": "json_object"},
+      )
+      raw_output = response.choices[0].message.content or ""
+    except OpenAIError as e:
+      return self._fallback_scores(text, f"OpenAI error: {e}")
+
+    parsed = _safe_json_parse(raw_output)
+    if not isinstance(parsed, dict):
+      return self._fallback_scores(text, raw_output)
+
+    result = {
+      "kindness_score": _clamp_score(parsed.get("kindness_score")),
+      "privacy_awareness_score": _clamp_score(parsed.get("privacy_awareness_score")),
+      "digital_wellbeing_score": _clamp_score(parsed.get("digital_wellbeing_score")),
+      "explanation": (parsed.get("explanation") or "").strip() or raw_output.strip(),
+      "raw": raw_output.strip(),
+    }
+
+    if (
+      not parsed
+      or sum(result[k] for k in ["kindness_score", "privacy_awareness_score", "digital_wellbeing_score"]) == 0
+    ):
+      return self._fallback_scores(text, raw_output)
+
+    return result
 
 
 if __name__ == "__main__":
@@ -98,7 +151,6 @@ if __name__ == "__main__":
     "Everyone ignored me in the group chat today.",
     "You are so dumb, why would you say that?",
     "I hope you're having a good day :)",
-    "Text me at 555-123-9876",
   ]
 
   for sample in test_samples:
