@@ -19,6 +19,7 @@ Return ONLY valid JSON, nothing else:
   "explanation": "<brief reasoning>"
 }}
 
+Context: {context}
 Message: {text}
 """
 
@@ -108,8 +109,8 @@ class ChildDigitalInteractionScorer:
       "raw": raw_output.strip(),
     }
 
-  def score(self, text: str) -> Dict[str, Any]:
-    prompt = PROMPT_TEMPLATE.format(text=text)
+  def score(self, text: str, context: str = "message") -> Dict[str, Any]:
+    prompt = PROMPT_TEMPLATE.format(text=text, context=context)
     try:
       response = self.client.chat.completions.create(
         model=self.model,
