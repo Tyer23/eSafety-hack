@@ -146,6 +146,8 @@ export default function ChildBrowserPage() {
         }
       } catch (jellybeatError) {
         console.error("Jellybeat agent error:", jellybeatError);
+        setFeedbackMessage("I'm here if you need me! 🌊");
+        setShowTooltip(true);
       }
 
     } catch (error) {
