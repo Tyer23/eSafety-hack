@@ -5,7 +5,7 @@ from pathlib import Path
 from statistics import mean
 
 INPUT_FILE = Path("web/data/children_scored.csv")
-OUTPUT_FILE = Path("web/data/children_summary.csv")
+OUTPUT_FILE = Path("web/data/child_behaviour.csv")
 
 
 def parse_date(dt_str: str) -> datetime:
@@ -47,7 +47,6 @@ def build_summary(rows):
     "positive_progress",
     "gentle_flags",
     "day_statuses",
-    "video_prompt",
   ]
 
   grouped = defaultdict(list)
@@ -101,8 +100,6 @@ def build_summary(rows):
       gentle_flags.append("Check in on mood and balance")
     gentle_flags = ";".join(gentle_flags) if gentle_flags else "None noted"
 
-    video_prompt = "Celebrate kind posts and remind about privacy pauses"
-
     summaries.append(
       {
         "child_id": child_id,
@@ -119,7 +116,6 @@ def build_summary(rows):
         "positive_progress": positive_progress,
         "gentle_flags": gentle_flags,
         "day_statuses": day_statuses,
-        "video_prompt": video_prompt,
       }
     )
 
