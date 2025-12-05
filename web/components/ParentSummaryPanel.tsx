@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import type { LucideIcon } from 'lucide-react'
+import { useMemo, useState } from 'react'
 import { Badge, Button, Icon } from '@/components/ui'
 import {
   ShieldIcon,
@@ -9,103 +8,35 @@ import {
   LocateIcon,
   FlagIcon,
 } from '@/components/ui/icons'
-
-interface ChildInfo {
-  id: string
-  name: string
-}
+import { ParentBehaviourData } from '@/lib/types'
 
 interface ParentSummaryPanelProps {
-  children: ChildInfo[]
+  data: ParentBehaviourData
 }
 
 export default function ParentSummaryPanel({
-  children,
+  data,
 }: ParentSummaryPanelProps) {
   const [selectedChild, setSelectedChild] = useState<string>(
-    children[0]?.id || ''
+    data.children[0]?.id || ''
   )
+  const child = data.children.find((item) => item.id === selectedChild) || data.children[0]
+  const stats = child?.stats ?? []
 
-  // Static demo data – will be wired to an API / ML summaries later.
-  const weeklySummary =
-    'This week, Jamie and Emma showed mostly kind and curious behaviour online. ' +
-    'There were a few moments of unkind language and one near‑miss with sharing personal information, ' +
-    'but they responded well after a gentle nudge from the guardian.'
+  const toneBadge = useMemo(() => {
+    const trend = child?.overallTrend?.toLowerCase() ?? 'steady'
+    if (trend.includes('improv')) return { label: 'Improving', variant: 'success' as const }
+    if (trend.includes('watch')) return { label: 'Keep watch', variant: 'default' as const }
+    return { label: 'Steady', variant: 'default' as const }
+  }, [child?.overallTrend])
 
   // Icon mapping for stats
-  const statIcons: Record<string, LucideIcon> = {
-    'Kind Interactions': HeartHandshakeIcon,
-    'Digital Wellbeing': ShieldIcon,
-    'Privacy Warnings': LocateIcon,
-    'Potential Risk Moments': FlagIcon,
+  const statIcons: Record<string, typeof HeartHandshakeIcon> = {
+    'Kind interactions': HeartHandshakeIcon,
+    'Digital wellbeing': ShieldIcon,
+    'Privacy warnings': LocateIcon,
+    'Potential risk moments': FlagIcon,
   }
-
-  // Stats data for each child
-  const childStats: Record<
-    string,
-    Array<{
-      label: string
-      value: string
-      trend: string
-      tone: 'positive' | 'neutral'
-    }>
-  > = {
-    kid_01: [
-      {
-        label: 'Kind Interactions',
-        value: '18',
-        trend: '+4',
-        tone: 'positive',
-      },
-      {
-        label: 'Potential Risk Moments',
-        value: '5',
-        trend: '-2',
-        tone: 'neutral',
-      },
-      {
-        label: 'Privacy Warnings',
-        value: '1',
-        trend: '0',
-        tone: 'neutral',
-      },
-      {
-        label: 'Digital Wellbeing',
-        value: 'Balanced',
-        trend: '',
-        tone: 'positive',
-      },
-    ],
-    kid_02: [
-      {
-        label: 'Kind Interactions',
-        value: '22',
-        trend: '+6',
-        tone: 'positive',
-      },
-      {
-        label: 'Potential Risk Moments',
-        value: '2',
-        trend: '-3',
-        tone: 'neutral',
-      },
-      {
-        label: 'Privacy Warnings',
-        value: '0',
-        trend: '-1',
-        tone: 'neutral',
-      },
-      {
-        label: 'Digital Wellbeing',
-        value: 'Excellent',
-        trend: '',
-        tone: 'positive',
-      },
-    ],
-  }
-
-  const stats =
-    childStats[selectedChild] || childStats[children[0]?.id || ''] || []
 
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
@@ -119,15 +50,15 @@ export default function ParentSummaryPanel({
               High‑level themes across all your children&apos;s online activity.
             </p>
           </div>
-          <Badge variant="success">
+          <Badge variant={toneBadge.variant}>
             <span className="flex items-center gap-1.5">
               <Icon icon={ShieldIcon} size="sm" className="text-inherit" />
-              <span>Healthy Overall</span>
+              <span>{toneBadge.label}</span>
             </span>
           </Badge>
         </div>
         <p className="text-subhead text-gray-800 leading-relaxed">
-          {weeklySummary}
+          {data.weeklySummary}
         </p>
         <div className="mt-4 text-[11px] text-gray-500">
           You see{' '}
@@ -141,15 +72,15 @@ export default function ParentSummaryPanel({
       <div className="space-y-4">
         {/* Toggle buttons */}
         <div className="flex gap-3">
-          {children.map((child) => (
+          {data.children.map((childOption) => (
             <Button
-              key={child.id}
-              onClick={() => setSelectedChild(child.id)}
-              variant={selectedChild === child.id ? 'default' : 'secondary'}
+              key={childOption.id}
+              onClick={() => setSelectedChild(childOption.id)}
+              variant={selectedChild === childOption.id ? 'default' : 'secondary'}
               size="sm"
               className="flex-1"
             >
-              {child.name}
+              {childOption.name}
             </Button>
           ))}
         </div>
@@ -176,7 +107,11 @@ export default function ParentSummaryPanel({
                   {stat.trend && (
                     <div
                       className={`text-[11px] font-medium ${
-                        stat.tone === 'positive' ? 'text-safe' : 'text-caution'
+                        stat.tone === 'positive'
+                          ? 'text-safe'
+                          : stat.tone === 'caution'
+                            ? 'text-caution'
+                            : 'text-gray-500'
                       }`}
                     >
                       {stat.trend}
@@ -185,12 +120,40 @@ export default function ParentSummaryPanel({
                 </div>
                 {stat.trend && (
                   <div className="text-[10px] text-gray-400 mt-1">
-                    {stat.tone === 'positive' ? 'vs last week' : 'to watch'}
+                    {stat.tone === 'positive'
+                      ? 'vs last week'
+                      : stat.tone === 'caution'
+                        ? 'to watch'
+                        : 'vs last week'}
                   </div>
                 )}
               </div>
             )
           })}
+        </div>
+
+        <div className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm">
+          <div className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">
+            Positive progress
+          </div>
+          <ul className="list-disc pl-4 text-sm text-gray-800 space-y-1">
+            {child?.positiveProgress?.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm">
+          <div className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">
+            Gentle flags
+          </div>
+          <ul className="list-disc pl-4 text-sm text-gray-800 space-y-1">
+            {child?.gentleFlags?.length ? (
+              child.gentleFlags.map((item) => <li key={item}>{item}</li>)
+            ) : (
+              <li className="text-gray-500">No flags noted this week.</li>
+            )}
+          </ul>
         </div>
       </div>
     </section>

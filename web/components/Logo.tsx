@@ -77,7 +77,7 @@ export default function Logo({
       <div className="flex flex-col">
         <div
           className={cn(
-            "font-semibold tracking-tight text-gray-900",
+            "font-semibold tracking-tight text-blurple",
             size === "sm" && "text-base",
             size === "md" && "text-lg",
             size === "lg" && "text-xl",
@@ -86,11 +86,6 @@ export default function Logo({
         >
           KindNet
         </div>
-        {size !== "sm" && (
-          <div className="text-footnote text-gray-500 leading-tight">
-            Growth-minded, trust-first
-          </div>
-        )}
       </div>
     </div>
   );

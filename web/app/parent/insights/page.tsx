@@ -2,12 +2,11 @@ import ParentSummaryPanel from "../../../components/ParentSummaryPanel";
 import ThemeTrendsGraph from "../../../components/ThemeTrendsGraph";
 import ActivityCalendar from "../../../components/ActivityCalendar";
 import ResponsiveLayout from "../../../components/ResponsiveLayout";
+import { getParentBehaviourData } from "@/lib/behaviourData";
 
 export default function InsightsPage() {
-  const children = [
-    { id: "kid_01", name: "Jamie" },
-    { id: "kid_02", name: "Emma" }
-  ];
+  const data = getParentBehaviourData();
+  const primaryChild = data.children[0];
 
   return (
     <ResponsiveLayout
@@ -36,7 +35,7 @@ export default function InsightsPage() {
           single scary moments.
         </p>
 
-        <ParentSummaryPanel children={children} />
+        <ParentSummaryPanel data={data} />
 
         {/* Theme Trends Graph - Full width */}
         <div>
@@ -45,7 +44,10 @@ export default function InsightsPage() {
 
         {/* Calendar and Quick Stats Grid - mobile-first stacking */}
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
-          <ActivityCalendar />
+          <ActivityCalendar
+            dayStatuses={primaryChild.dayStatuses}
+            childName={primaryChild.name}
+          />
           <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
             <h3 className="text-subhead font-semibold text-gray-900 mb-6">
               Quick Stats
@@ -54,19 +56,19 @@ export default function InsightsPage() {
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">This week&apos;s focus</span>
                 <span className="font-semibold text-blurple">
-                  Kindness
+                  {data.focusTheme}
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">Best day</span>
                 <span className="font-semibold text-safe">
-                  Monday
+                  {data.bestDay}
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">Overall trend</span>
                 <span className="font-semibold text-safe">
-                  Improving
+                  {data.overallTrend}
                 </span>
               </div>
             </div>
