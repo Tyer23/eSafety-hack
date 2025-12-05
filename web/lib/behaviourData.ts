@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ChildBehaviour, DayStatus, ParentBehaviourData, ChildStatsItem } from "./types";
+import { getChildScores } from "./classificationAggregator";
 
 const CSV_PATH = path.join(process.cwd(), "data", "child_behaviour.csv");
 
@@ -110,7 +111,18 @@ function loadFromCsv(): ParentBehaviourData {
       videoPrompt,
     };
 
-    return { ...base, stats: toStats(base) };
+    const childWithStats = { ...base, stats: toStats(base) };
+    
+    // Enrich with ML-based scores from classification data
+    try {
+      const mlScores = getChildScores(childId, true);
+      childWithStats.mlScores = mlScores;
+    } catch (error) {
+      console.warn(`Failed to load ML scores for ${childId}:`, error);
+      // Continue without ML scores if classification data is unavailable
+    }
+    
+    return childWithStats;
   });
 
   const focusTheme = children[0]?.focusTheme || "Kindness";

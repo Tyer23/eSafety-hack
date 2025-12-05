@@ -24,6 +24,18 @@ export interface ChildBehaviour {
   dayStatuses: Record<string, DayStatus>;
   videoPrompt: string;
   stats: ChildStatsItem[];
+  // ML-based scores (calculated from classification data)
+  mlScores?: {
+    kindnessScore: number;
+    positivityScore: number;
+    privacyAwarenessScore: number;
+    digitalWellbeingScore: number;
+    overallEmotion: {
+      primary: string;
+      distribution: Record<string, number>;
+    };
+    themes: string[];
+  };
 }
 
 export interface ParentBehaviourData {

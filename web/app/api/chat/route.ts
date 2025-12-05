@@ -5,9 +5,10 @@ import { runParentAgent } from "@/lib/parentAgent";
 const ESAFETY_GUARDRAILS = [
   "Lead with reassurance; celebrate strengths before raising flags.",
   "Use plain language about privacy: avoid sharing addresses, schools, schedules.",
-  "Invite parents to coach, not punish: model calm questions like “What felt tricky?”",
+  "Invite parents to coach, not punish: model calm questions like 'What felt tricky?'",
   "Encourage breaks after tense chats and check in on feelings.",
-  "Keep next steps small and doable (one or two actions)."
+  "Keep next steps small and doable (one or two actions).",
+  "CRITICAL: Never reveal exact messages, search queries, or specific text children typed. Only share patterns, themes, and behavioral insights.",
 ];
 
 function shouldGenerateVideo(message: string): boolean {
@@ -16,7 +17,7 @@ function shouldGenerateVideo(message: string): boolean {
 }
 
 export async function POST(request: Request) {
-  const { message, childId } = await request.json();
+  const { message, childId, sessionId } = await request.json();
 
   if (!message || typeof message !== "string") {
     return NextResponse.json({ error: "Message is required." }, { status: 400 });
@@ -29,11 +30,40 @@ export async function POST(request: Request) {
   const systemPrompt = [
     "You are KindNet, an eSafety-aligned parenting assistant.",
     "Follow eSafety.gov.au spirit: reassure first, plain language, privacy-first, coaching over punishment.",
+    "",
+    "CRITICAL PRIVACY RULE: NEVER reveal exact messages, search queries, or specific text that children typed.",
+    "This is about letting children learn privately. Only share:",
+    "- Patterns and themes (e.g., 'curious about friendships', 'exploring emotions')",
+    "- General categories (e.g., 'searched about social situations', 'messaged friends')",
+    "- Behavioral insights (e.g., 'showed kindness', 'paused before sharing')",
+    "- Emotional patterns (e.g., 'mostly positive emotions', 'some frustration')",
+    "NEVER say: 'They searched for X' or 'They typed Y' or quote exact words.",
+    "",
+    "RESPONSE GUIDELINES:",
+    "1. Answer the specific question asked - don't repeat previous responses.",
+    "2. Use available data to answer:",
+    "   - If asked 'what is he into?' or 'what are they interested in?' → Use themes, overallEmotion, and focusTheme",
+    "   - If asked about emotions/feelings → Use overallEmotion and positivityScore",
+    "   - If asked about behavior → Use kindnessScore, positiveProgress, gentleFlags",
+    "   - If asked about concerns → Reference gentleFlags and potentialRisks",
+    "3. Keep responses conversational, 2-4 sentences.",
+    "4. ALWAYS end with a helpful follow-up prompt like:",
+    "   - 'Would you like me to give you a summary of [child]'s recent themes?'",
+    "   - 'Do you need help with this? I can suggest conversation starters.'",
+    "   - 'Would you like articles that help you have a talk with your kids about this?'",
+    "   - 'Would you like more details on any specific area?'",
+    "   Rotate these prompts naturally based on context.",
+    "",
     "Return concise JSON with keys:",
-    "- reply: empathetic, 3-6 sentences.",
+    "- reply: Natural, conversational response that answers the question. Include helpful follow-up prompt at end.",
     "- highlights: weeklySummary, focusTheme, positiveProgress (list), gentleFlags (list).",
     "- videoPlan (optional only if video_requested=true): title, prompt, status='mocked', note.",
-    "Avoid hallucinating specifics; use provided child data only.",
+    "",
+    "ML-based scores are available in child.mlScores:",
+    "- kindnessScore (0-100), positivityScore (0-100), privacyAwarenessScore (0-100), digitalWellbeingScore (0-100)",
+    "- overallEmotion: Primary emotion and distribution (use this for 'what are they into?' questions)",
+    "- themes: Key themes detected (use this for interests and patterns)",
+    "Reference these naturally when relevant to answer the question.",
   ].join(" ");
 
   const userPayload = {
@@ -52,6 +82,15 @@ export async function POST(request: Request) {
       positiveProgress: child.positiveProgress,
       gentleFlags: child.gentleFlags,
       videoPrompt: child.videoPrompt,
+      // ML-based scores calculated from classification data
+      mlScores: child.mlScores ? {
+        kindnessScore: child.mlScores.kindnessScore,
+        positivityScore: child.mlScores.positivityScore,
+        privacyAwarenessScore: child.mlScores.privacyAwarenessScore,
+        digitalWellbeingScore: child.mlScores.digitalWellbeingScore,
+        overallEmotion: child.mlScores.overallEmotion,
+        themes: child.mlScores.themes,
+      } : undefined,
     },
     esafety_guardrails: ESAFETY_GUARDRAILS,
   };
