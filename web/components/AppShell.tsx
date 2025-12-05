@@ -15,7 +15,7 @@ export default function AppShell({ children }: AppShellProps) {
 
   // Routes that should NOT show the navbar/shell
   const isLoginPage = pathname === "/";
-  const isChildRoute = pathname?.startsWith("/child/");
+  const isChildRoute = pathname.startsWith("/child/");
   const hideShell = isLoginPage || isChildRoute;
 
   // For login and child routes, render without header/footer
