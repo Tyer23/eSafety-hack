@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Logo from "@/components/Logo";
+import { Button } from "@/components/ui/button";
 
 interface User {
   username: string;
@@ -17,6 +19,10 @@ export default function ChildBrowserPage() {
   const [user, setUser] = useState<User | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [mascotColor, setMascotColor] = useState<"rainbow" | "green" | "amber" | "red">("rainbow");
+  const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+  const [previousFeedback, setPreviousFeedback] = useState<string>("");
 
   useEffect(() => {
     // Get user from sessionStorage
@@ -101,6 +107,46 @@ export default function ChildBrowserPage() {
       };
       
       console.log("💾 Data to store for parent dashboard:", dataToStore);
+
+      // Update mascot color based on classification
+      const classification = mlResult.classification?.toLowerCase();
+      if (classification === "red") {
+        setMascotColor("red");
+      } else if (classification === "yellow") {
+        setMascotColor("amber");
+      } else if (classification === "green") {
+        setMascotColor("green");
+      } else {
+        setMascotColor("rainbow");
+      }
+
+      // Call Jellybeat agent to generate kid-friendly feedback
+      try {
+        const jellybeatResponse = await fetch("/api/jellybeat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: text,
+            classification: mlResult.classification,
+            detectedIssues: mlResult.analysis?.detected_issues || [],
+            toxicityScore: mlResult.analysis?.toxicity?.score || 0,
+            emotion: mlResult.analysis?.emotion?.primary_emotion || "neutral",
+            ageRange: ageRange,
+            previousResponse: previousFeedback,
+          }),
+        });
+
+        if (jellybeatResponse.ok) {
+          const jellybeatData = await jellybeatResponse.json();
+          setFeedbackMessage(jellybeatData.feedback);
+          setPreviousFeedback(jellybeatData.feedback);
+          setShowTooltip(true);
+        }
+      } catch (jellybeatError) {
+        console.error("Jellybeat agent error:", jellybeatError);
+      }
 
     } catch (error) {
       console.error("❌ Error calling ML model:", error);
@@ -259,6 +305,43 @@ export default function ChildBrowserPage() {
             I&apos;m Feeling Lucky
           </button>
         </div>
+
+        {/* Footer */}
+        <div className="absolute bottom-6 text-center">
+          <p className="text-xs text-gray-400 mb-2">
+            Built for first-time phone parents · This is a demo, not a real safety product.
+          </p>
+          <button
+            onClick={() => {
+              sessionStorage.removeItem("user");
+              router.push("/");
+            }}
+            className="text-xs text-gray-400 hover:text-gray-600 underline transition-colors"
+          >
+            Log out
+          </button>
+        </div>
+      </div>
+
+      {/* Floating Jellybeat Button */}
+      <div className="fixed right-6 top-1/4 z-50 flex flex-col items-end gap-2">
+        {/* Tooltip */}
+        {showTooltip && (
+          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2 duration-200">
+            <p className="text-sm text-gray-700">
+              {feedbackMessage || "Hi! I'm Jellybeat, your digital buddy. I'm here to help you stay safe online!"}
+            </p>
+          </div>
+        )}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setShowTooltip(!showTooltip)}
+          className="w-16 h-16 rounded-full shadow-lg hover:shadow-xl"
+          aria-label="Jellybeat helper"
+        >
+          <Logo variant="icon" jellybeatVariant={mascotColor} size="lg" />
+        </Button>
       </div>
     </div>
   );
