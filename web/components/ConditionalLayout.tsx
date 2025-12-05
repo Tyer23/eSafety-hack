@@ -48,11 +48,6 @@ export default function ConditionalLayout({ children }: { children: ReactNode })
         </div>
       </main>
 
-      {/* Footer - appears above mobile nav on mobile, at bottom on desktop */}
-      <footer className="border-t border-gray-200 text-footnote text-gray-500 py-3 text-center bg-white/40 backdrop-blur-sm pb-20 md:mb-0">
-        Built for first‑time phone parents · This is a demo, not a real
-        safety product.
-      </footer>
     </div>
   );
 }
