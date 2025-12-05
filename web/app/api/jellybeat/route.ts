@@ -45,10 +45,11 @@ export async function POST(request: Request) {
       )
     }
 
-    // Basic sanitization: remove control characters and excessive whitespace
+    // Basic sanitization: remove dangerous control characters while preserving normal whitespace
+    // Remove only the most dangerous control characters, preserving spaces, tabs, and newlines
     const sanitizedMessage = message
-      .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
-      .replace(/\s+/g, ' ') // Normalize whitespace
+      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Remove control chars except \t, \n
+      .replace(/\s+/g, ' ') // Normalize all whitespace to single spaces
       .trim()
 
     // Build the prompt for the Jellybeat agent - focused on understanding the child
