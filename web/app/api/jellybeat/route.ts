@@ -25,6 +25,32 @@ export async function POST(request: Request) {
       previousResponse,
     } = data
 
+    // Input validation and sanitization
+    if (!message || typeof message !== 'string') {
+      return NextResponse.json(
+        { feedback: "I'm here if you need me! 🌊" },
+        { status: 400 }
+      )
+    }
+
+    // Maximum message length (500 characters) to prevent abuse
+    const MAX_MESSAGE_LENGTH = 500
+    if (message.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json(
+        {
+          feedback:
+            "That's a lot to say at once! Try sending a shorter message so I can help you better 💙",
+        },
+        { status: 400 }
+      )
+    }
+
+    // Basic sanitization: remove control characters and excessive whitespace
+    const sanitizedMessage = message
+      .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+      .replace(/\s+/g, ' ') // Normalize whitespace
+      .trim()
+
     // Build the prompt for the Jellybeat agent - focused on understanding the child
     const systemPrompt = `You are Jellybeat, a friendly jellyfish buddy for kids ages 8-12. Children look up to you like a trusted teacher or mentor.
 
@@ -80,7 +106,7 @@ EXAMPLES OF BAD RESPONSES (NEVER DO THIS):
 
 Analyze the message yourself - the ML classification may be wrong.`
 
-    const userPrompt = `Kid typed: "${message}"
+    const userPrompt = `Kid typed: "${sanitizedMessage}"
 
 Respond in 1-2 short sentences max. No asterisks, no roleplay actions.${
       previousResponse ? ` Don't repeat: "${previousResponse}"` : ''
@@ -121,7 +147,7 @@ Respond in 1-2 short sentences max. No asterisks, no roleplay actions.${
     const feedback = getFallbackFeedback(
       classification,
       detectedIssues,
-      message,
+      sanitizedMessage,
       previousResponse
     )
     return NextResponse.json({ feedback })
