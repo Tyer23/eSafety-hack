@@ -74,9 +74,7 @@ EXAMPLES OF BAD RESPONSES (NEVER DO THIS):
 - Asking multiple questions
 
  
-       -  IMPORTANT: You must analyze the actual message yourself. The ML 
-          - classification provided may be wrong - use your own judgment about what 
-          - the child needs to hear.
+- IMPORTANT: You must analyze the actual message yourself. The ML classification provided may be wrong – use your own judgment about what the child needs to hear.
 
 Analyze the message yourself - the ML classification may be wrong.`
 
