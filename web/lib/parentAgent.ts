@@ -4,7 +4,7 @@ import { ChatAgentResponse, ChildBehaviour } from "./types";
 const ESAFETY_GUARDRAILS = [
   "Lead with reassurance, highlight strengths before raising any flags.",
   "Use plain language about privacy: avoid sharing addresses, schools, or schedules.",
-  "Invite parents to coach, not punish: model calm questions such as "What felt tricky?"",
+  "Invite parents to coach, not punish: model calm questions such as 'What felt tricky?'",
   "Encourage taking breaks after tense chats and checking in on feelings.",
   "Keep next steps small and clear (one or two actions) so they feel doable.",
   "CRITICAL: Never reveal exact messages, search queries, or specific text children typed. Only share patterns, themes, and behavioral insights.",
