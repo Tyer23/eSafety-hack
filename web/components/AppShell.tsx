@@ -29,7 +29,7 @@ export default function AppShell({ children }: AppShellProps) {
       {/* Desktop Header - hidden on mobile */}
       <header className="hidden md:block bg-white border-b border-gray-200">
         <div className="mx-auto max-w-6xl px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Logo variant="horizontal" size="md" />
+          <Logo variant="horizontal" size="md" jellybeatVariant="kindnet" />
           <Navigation />
         </div>
       </header>

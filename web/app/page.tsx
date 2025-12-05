@@ -59,7 +59,7 @@ export default function HomePage() {
         <section className="space-y-5 md:space-y-6">
           {/* Logo - centered on mobile, left-aligned on desktop */}
           <div className="flex justify-center md:justify-start mb-2">
-            <Logo variant="horizontal" size="lg" />
+            <Logo variant="horizontal" size="lg" jellybeatVariant="kindnet" />
           </div>
 
           <Badge variant="outline" className="inline-flex items-center gap-2">

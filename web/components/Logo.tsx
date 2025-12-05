@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-type JellybeatVariant = "rainbow" | "green" | "amber" | "red";
+type JellybeatVariant = "rainbow" | "green" | "amber" | "red" | "kindnet";
 type LogoVariant = "icon" | "horizontal";
 
 interface LogoProps {
@@ -27,10 +27,11 @@ const sizeClasses = {
 };
 
 const jellybeatImages: Record<JellybeatVariant, string> = {
-  rainbow: "/images/kindnet-logo.png",
+  rainbow: "/images/jellybeat-rainbow-full.png",
   green: "/images/jellybeat-green-full.png",
   amber: "/images/jellybeat-amber-full.png",
   red: "/images/jellybeat-red-full.png",
+  kindnet: "/images/kindnet-logo.png",
 };
 
 export default function Logo({
