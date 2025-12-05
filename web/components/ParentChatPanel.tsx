@@ -492,7 +492,7 @@ export default function ParentChatPanel() {
                   timestamp={message.timestamp}
                   avatarUrl={
                     message.from === 'assistant'
-                      ? '/images/jellybeat-rainbow-full.png'
+                      ? '/images/kindnet-logo.png'
                       : undefined
                   }
                 />

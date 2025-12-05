@@ -27,7 +27,7 @@ const sizeClasses = {
 };
 
 const jellybeatImages: Record<JellybeatVariant, string> = {
-  rainbow: "/images/jellybeat-rainbow-full.png",
+  rainbow: "/images/kindnet-logo.png",
   green: "/images/jellybeat-green-full.png",
   amber: "/images/jellybeat-amber-full.png",
   red: "/images/jellybeat-red-full.png",

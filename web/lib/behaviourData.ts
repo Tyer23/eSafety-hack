@@ -74,7 +74,8 @@ function loadFromCsv(): ParentBehaviourData {
   const lines = raw.trim().split(/\r?\n/);
   const [, ...rows] = lines; // skip header
 
-  const children: ChildBehaviour[] = rows.map((line) => {
+  // Parse all rows into child records
+  const allRecords = rows.map((line) => {
     const [
       childId,
       childName,
@@ -112,7 +113,7 @@ function loadFromCsv(): ParentBehaviourData {
     };
 
     const childWithStats = { ...base, stats: toStats(base) };
-    
+
     // Enrich with ML-based scores from classification data
     try {
       const mlScores = getChildScores(childId, true);
@@ -121,9 +122,19 @@ function loadFromCsv(): ParentBehaviourData {
       console.warn(`Failed to load ML scores for ${childId}:`, error);
       // Continue without ML scores if classification data is unavailable
     }
-    
+
     return childWithStats;
   });
+
+  // Deduplicate by child ID - keep the most recent week for each child
+  const childMap = new Map<string, ChildBehaviour>();
+  for (const record of allRecords) {
+    const existing = childMap.get(record.id);
+    if (!existing || record.weekOf > existing.weekOf) {
+      childMap.set(record.id, record);
+    }
+  }
+  const children: ChildBehaviour[] = Array.from(childMap.values());
 
   const focusTheme = children[0]?.focusTheme || "Kindness";
   const bestDay = children[0]?.bestDay || "Monday";
