@@ -35,6 +35,8 @@ Thumbs.db
 web/.next/
 web/out/
 web/.env*.local
+web/.eslintrc.json
+web/tsconfig.tsbuildinfo
 
 # Logs
 *.log

@@ -329,7 +329,12 @@ export default function ChildBrowserPage() {
       <div className="fixed right-6 top-1/4 z-50 flex flex-col items-end gap-2">
         {/* Tooltip */}
         {showTooltip && (
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2 duration-200">
+          <div 
+            id="jellybeat-tooltip"
+            role="tooltip"
+            aria-live="polite"
+            className="bg-white rounded-xl shadow-lg border border-gray-200 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2 duration-200"
+          >
             <p className="text-sm text-gray-700">
               {feedbackMessage || "Hi! I'm Jellybeat, your digital buddy. I'm here to help you stay safe online!"}
             </p>
@@ -341,6 +346,7 @@ export default function ChildBrowserPage() {
           onClick={() => setShowTooltip(!showTooltip)}
           className="w-16 h-16 rounded-full shadow-lg hover:shadow-xl"
           aria-label="Jellybeat helper"
+          aria-describedby={showTooltip ? "jellybeat-tooltip" : undefined}
         >
           <Logo variant="icon" jellybeatVariant={mascotColor} size="lg" />
         </Button>
