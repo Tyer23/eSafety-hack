@@ -9,65 +9,57 @@ const config = {
     extend: {
       // COLORS - KindNet iOS 18 Palette (from Figma)
       colors: {
-        // Brand Colors
+        // Brand Colors - Reference CSS variables from globals.css
         blurple: {
-          DEFAULT: '#6B7FFF',
-          light: '#E8EBFF',
-          dark: '#4A5FCC',
+          DEFAULT: 'var(--blurple)',
+          light: 'var(--blurple-light)',
+          dark: 'var(--blurple-dark)',
         },
 
-        // Traffic Light System (Jellybeat Mascot)
+        // Traffic Light System - Reference CSS variables
         safe: {
-          DEFAULT: '#7ED957',
-          dark: '#5FB839',
+          DEFAULT: 'var(--safe)',
+          dark: 'var(--safe-dark)',
         },
         caution: {
-          DEFAULT: '#FF9F40',
-          dark: '#E8843A',
+          DEFAULT: 'var(--caution)',
+          dark: 'var(--caution-dark)',
         },
         alert: {
-          DEFAULT: '#FF6B6B',
-          dark: '#E85555',
+          DEFAULT: 'var(--alert)',
+          dark: 'var(--alert-dark)',
         },
 
-        // iOS System Colors
-        ios: {
-          blue: '#007AFF',
-          green: '#34C759',
-          orange: '#FF9500',
-          red: '#FF3B30',
-        },
-
-        // Neutral Colors (iOS 18) - using gray scale
+        // Neutral Colors (iOS 18) - Reference CSS variables
         gray: {
-          50: '#F9F9F9',   // bg-secondary
-          100: '#F2F2F7',  // bg-tertiary, divider-subtle
-          200: '#E5E5EA',  // divider, borders
-          300: '#D1D1D6',
-          400: '#C6C6C8',
-          500: '#8E8E93',  // text-tertiary, icons
-          600: '#48484A',  // text-secondary
-          700: '#3C3C43',
-          800: '#1C1C1E',  // text-primary
-          900: '#000000',
+          50: 'var(--gray-50)',
+          100: 'var(--gray-100)',
+          200: 'var(--gray-200)',
+          300: 'var(--gray-300)',
+          400: 'var(--gray-400)',
+          500: 'var(--gray-500)',
+          600: 'var(--gray-600)',
+          700: 'var(--gray-700)',
+          800: 'var(--gray-800)',
+          900: 'var(--gray-900)',
         },
 
-        // Semantic Colors
+        // Semantic Colors - Reference CSS variables
         success: {
-          DEFAULT: '#34C759',
-          bg: '#E8F9EE',
+          DEFAULT: 'var(--success)',
+          bg: 'var(--success-bg)',
         },
         warning: {
-          DEFAULT: '#FF9500',
-          bg: '#FFF4E5',
+          DEFAULT: 'var(--warning)',
+          bg: 'var(--warning-bg)',
         },
         error: {
-          DEFAULT: '#FF3B30',
-          bg: '#FFE5E5',
+          DEFAULT: 'var(--error)',
+          bg: 'var(--error-bg)',
         },
         info: {
-          DEFAULT: '#007AFF',
-          bg: '#E5F2FF',
+          DEFAULT: 'var(--info)',
+          bg: 'var(--info-bg)',
         },
 
         // Radix UI compatibility colors
