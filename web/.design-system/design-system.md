@@ -178,23 +178,23 @@ Ensure `tsconfig.json` has path aliases:
 --gray-900: #1C1C1E;
 ```
 
-#### Semantic Colors
+#### Semantic Colors (Use Traffic Light System)
 ```css
-/* Success/Positive */
---success: #34C759;              /* Apple System Green */
+/* Success/Positive - same as safe */
+--success: #7ED957;
 --success-bg: #E8F9EE;
 
-/* Warning */
---warning: #FF9500;              /* Apple System Orange */
+/* Warning - same as caution */
+--warning: #FF9F40;
 --warning-bg: #FFF4E5;
 
-/* Error */
---error: #FF3B30;                /* Apple System Red */
+/* Error - same as alert */
+--error: #FF6B6B;
 --error-bg: #FFE5E5;
 
-/* Info */
---info: #007AFF;                 /* Apple System Blue */
---info-bg: #E5F2FF;
+/* Info - same as blurple */
+--info: #6B7FFF;
+--info-bg: #E8EBFF;
 ```
 
 #### Tailwind Classes
