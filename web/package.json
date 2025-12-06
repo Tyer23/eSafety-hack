@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "dev:webpack": "next dev",
-    "dev:clean": "pkill -f 'next dev' 2>/dev/null; rm -rf .next node_modules/.cache && npm run dev",
+    "dev:clean": "pkill -f 'next dev' 2>/dev/null; rm -rf .next node_modules/.cache",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
