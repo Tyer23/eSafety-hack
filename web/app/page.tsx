@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import Logo from "@/components/Logo";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const router = useRouter();
@@ -51,33 +51,123 @@ export default function HomePage() {
     }
   };
 
+  const scrollToLogin = () => {
+    const loginSection = document.getElementById('login-section');
+    if (loginSection) {
+      loginSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <div className="min-h-screen px-4 py-6 md:px-0 md:py-0 bg-gray-50">
-      {/* Mobile-first: single column, stacked layout */}
-      <div className="flex flex-col gap-6 md:grid md:gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
-        {/* Main Login Section */}
-        <section className="space-y-5 md:space-y-6">
-          {/* Logo - centered on mobile, left-aligned on desktop */}
-          <div className="flex justify-center md:justify-start mb-2">
-            <Logo variant="horizontal" size="lg" jellybeatVariant="kindnet" />
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-4">
+          <Logo variant="horizontal" size="md" jellybeatVariant="kindnet" />
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="flex-1 flex flex-col items-center justify-center px-4 py-24 md:px-8 lg:px-16 mt-20">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          {/* Video with circular mask and float shadow */}
+          <div className="flex justify-center">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-float">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="/images/jellybeat-traffic-vid.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
 
-          <Badge variant="outline" className="inline-flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-blurple animate-pulse" />
-            MVP prototype · Local-only demo
-          </Badge>
-
-          <div className="space-y-3">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight text-gray-900">
-              Welcome to <span className="text-blurple">KindNet</span>
+          {/* Heading */}
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900">
+              KindNet
             </h1>
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-xl">
-              Log in as a parent to see your child&apos;s digital patterns, or as a child to explore safely online.
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Being safe, being kind, asking for help, and making good choices.
             </p>
           </div>
 
-          {/* Login Form - iOS 18 design system */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 max-w-md shadow-card">
+          {/* Login Button */}
+          <button
+            onClick={scrollToLogin}
+            className="inline-flex items-center justify-center rounded-xl h-14 px-8 text-lg font-semibold text-white bg-gray-900 shadow-float transition-all hover:bg-gray-800 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+          >
+            Sign In
+          </button>
+        </div>
+      </section>
+
+      {/* Login and Info Sections */}
+      <section id="login-section" className="px-4 py-12 md:px-8 lg:px-16 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Two Cards Side by Side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {/* Card 1: For Parents */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-float space-y-4">
+              <div className="space-y-3">
+                <Badge variant="default">For Parents</Badge>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900">
+                  Pattern-Based Insights
+                </h2>
+                <p className="text-body text-gray-600 leading-relaxed">
+                  See behavioral themes, not individual messages. We help you understand your child&apos;s digital world while respecting their privacy.
+                </p>
+              </div>
+              <ul className="space-y-2 text-subhead text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-safe mt-0.5">✓</span>
+                  <span>AI-powered conversation starters</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-safe mt-0.5">✓</span>
+                  <span>Weekly summaries of digital habits</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-safe mt-0.5">✓</span>
+                  <span>Privacy-first pattern detection</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 2: For Children */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-float space-y-4">
+              <div className="space-y-3">
+                <Badge variant="default">For Children</Badge>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900">
+                  Learn As You Explore
+                </h2>
+                <p className="text-body text-gray-600 leading-relaxed">
+                  A friendly guardian helps you make kind, safe choices online. Learn digital literacy through real-time guidance.
+                </p>
+              </div>
+              <ul className="space-y-2 text-subhead text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-safe mt-0.5">✓</span>
+                  <span>Real-time safety guidance</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-safe mt-0.5">✓</span>
+                  <span>Learn kindness and digital citizenship</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-safe mt-0.5">✓</span>
+                  <span>Build healthy online habits</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Login Form - Centered Below Cards */}
+          <div className="mt-12 max-w-md mx-auto rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-float">
             <form className="space-y-4" onSubmit={handleSubmit}>
               {/* Role Selection */}
               <div className="space-y-2">
@@ -172,67 +262,10 @@ export default function HomePage() {
               </button>
             </form>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Info Section - iOS 18 light design */}
-        <section className="space-y-3 rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-card">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <h2 className="text-subhead font-semibold text-gray-900">
-              How this MVP maps to the spec
-            </h2>
-            <Badge variant="secondary" className="self-start md:self-auto">
-              {role === "parent" ? "Parent dashboard" : "Child interface"}
-            </Badge>
-          </div>
-          <ul className="space-y-2.5 text-footnote md:text-subhead text-gray-600">
-            {role === "parent" ? (
-              <>
-                <li>
-                  <span className="font-semibold text-blurple">
-                    Pattern view:
-                  </span>{" "}
-                  parents see themes (e.g. cyberbullying, personal info) rather than
-                  raw messages.
-                </li>
-                <li>
-                  <span className="font-semibold text-blurple">
-                    AI chat placeholder:
-                  </span>{" "}
-                  a chat panel ready for ML integration in the next step.
-                </li>
-                <li>
-                  <span className="font-semibold text-blurple">
-                    Local JSON "DB":
-                  </span>{" "}
-                  fake parents, kids, and their risky words are stored in files, no
-                  real backend yet.
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <span className="font-semibold text-blurple">
-                    Browser-like interface:
-                  </span>{" "}
-                  children can search and type messages in a safe, guided environment.
-                </li>
-                <li>
-                  <span className="font-semibold text-blurple">
-                    Real-time feedback:
-                  </span>{" "}
-                  the guardian mascot provides gentle guidance as children type.
-                </li>
-                <li>
-                  <span className="font-semibold text-blurple">
-                    Personalized experience:
-                  </span>{" "}
-                  each child sees their own customized interface.
-                </li>
-              </>
-            )}
-          </ul>
-        </section>
-      </div>
+      <Footer />
     </div>
   );
 }
