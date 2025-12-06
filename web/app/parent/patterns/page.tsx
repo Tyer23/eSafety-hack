@@ -86,7 +86,7 @@ export default function PatternsPage() {
         </div>
 
         {/* Mobile description - only shown on mobile */}
-        <p className="md:hidden text-sm text-gray-600 leading-relaxed">
+        <p className="md:hidden text-footnote text-gray-600 leading-relaxed">
           Pattern-based insights to start conversations with your child.
         </p>
 
@@ -98,40 +98,36 @@ export default function PatternsPage() {
             return (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-card"
+                className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-card flex flex-col justify-between min-h-[140px]"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1">
-                    <div className="mb-2 flex items-center gap-2">
-                      <span
-                        className={`text-footnote font-medium ${
-                          stat.trend === 'up' ? 'text-safe' : 'text-caution'
-                        }`}
-                      >
-                        {stat.change}
-                      </span>
-                    </div>
-                    <div
-                      className={`text-2xl md:text-title-1 font-bold ${stat.color}`}
-                    >
-                      {stat.value}
-                    </div>
-                    <div className="mt-2 text-footnote font-medium text-gray-700 leading-tight flex items-center gap-1.5">
-                      {StatIcon && (
-                        <Icon icon={StatIcon} size="sm" className="text-gray-400" />
-                      )}
-                      <span>{stat.label}</span>
-                    </div>
+                {/* Top row: Label on left, change on right */}
+                <div className="flex items-start justify-between">
+                  <div className="text-footnote font-medium text-gray-700 leading-tight flex items-center gap-1.5">
+                    {StatIcon && (
+                      <Icon icon={StatIcon} size="sm" className="text-gray-400" />
+                    )}
+                    <span>{stat.label}</span>
                   </div>
-                  <div className="flex-shrink-0">
-                    <Image
-                      src={`/images/${jellybeatIcon}`}
-                      alt={`${stat.label} mascot`}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 md:w-14 md:h-14"
-                    />
-                  </div>
+                  <span
+                    className={`text-footnote font-medium ${
+                      stat.trend === 'up' ? 'text-safe' : 'text-caution'
+                    }`}
+                  >
+                    {stat.change}
+                  </span>
+                </div>
+                {/* Bottom row: Large stat on left, icon on right */}
+                <div className="flex items-end justify-between mt-2">
+                  <span className={`text-title-1 md:text-large-title font-bold ${stat.color}`}>
+                    {stat.value}
+                  </span>
+                  <Image
+                    src={`/images/${jellybeatIcon}`}
+                    alt={`${stat.label} mascot`}
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 md:w-12 md:h-12"
+                  />
                 </div>
               </div>
             )
