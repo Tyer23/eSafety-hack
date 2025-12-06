@@ -2,6 +2,7 @@ import ParentSummaryPanel from "../../../components/ParentSummaryPanel";
 import ThemeTrendsGraph from "../../../components/ThemeTrendsGraph";
 import ActivityCalendar from "../../../components/ActivityCalendar";
 import ResponsiveLayout from "../../../components/ResponsiveLayout";
+import QuickStatsPanel from "../../../components/QuickStatsPanel";
 import { getParentBehaviourData } from "@/lib/behaviourData";
 
 export default function InsightsPage() {
@@ -48,31 +49,11 @@ export default function InsightsPage() {
             dayStatuses={primaryChild.dayStatuses}
             childName={primaryChild.name}
           />
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
-            <h3 className="text-subhead font-semibold text-gray-900 mb-6">
-              Quick Stats
-            </h3>
-            <div className="space-y-5 text-subhead">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">This week&apos;s focus</span>
-                <span className="font-semibold text-blurple">
-                  {data.focusTheme}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">Best day</span>
-                <span className="font-semibold text-safe">
-                  {data.bestDay}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">Overall trend</span>
-                <span className="font-semibold text-safe">
-                  {data.overallTrend}
-                </span>
-              </div>
-            </div>
-          </div>
+          <QuickStatsPanel
+            focusTheme={data.focusTheme}
+            bestDay={data.bestDay}
+            overallTrend={data.overallTrend}
+          />
         </div>
       </div>
     </ResponsiveLayout>

@@ -98,7 +98,7 @@ export default function PatternsPage() {
             return (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-float"
+                className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-card"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
