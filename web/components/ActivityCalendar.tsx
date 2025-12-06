@@ -90,12 +90,14 @@ export default function ActivityCalendar({ dayStatuses, childName }: ActivityCal
                 <button
                   onClick={goToPreviousMonth}
                   className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
+                  aria-label="Previous month"
                 >
                   ←
                 </button>
                 <button
                   onClick={goToNextMonth}
                   className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
+                  aria-label="Next month"
                 >
                   →
                 </button>
