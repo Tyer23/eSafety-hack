@@ -287,7 +287,7 @@ export default function ParentChatPanel() {
                       <div className="text-footnote font-medium text-gray-900 mb-1">
                         {session.title}
                       </div>
-                      <div className="text-[11px] text-gray-500 truncate">
+                      <div className="text-caption text-gray-500 truncate">
                         {session.lastMessage}
                       </div>
                     </button>
@@ -413,7 +413,7 @@ export default function ParentChatPanel() {
                 <select
                   value={selectedChildId}
                   onChange={(event) => setSelectedChildId(event.target.value)}
-                  className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blurple"
+                  className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-footnote text-gray-800 focus:outline-none focus:ring-2 focus:ring-blurple"
                 >
                   {parentData.children.map((child) => (
                     <option key={child.id} value={child.id}>
@@ -583,32 +583,32 @@ export default function ParentChatPanel() {
                 <div className="flex-1 overflow-y-auto">
                   {latestVideoPlan ? (
                     <>
-                      <p className="text-sm text-gray-700 leading-relaxed">
+                      <p className="text-footnote text-gray-700 leading-relaxed">
                         Ready to send to OpenAI Sora once connected. Currently
                         returning a mock prompt only.
                       </p>
-                      <div className="mt-3 space-y-2 text-sm text-gray-800">
+                      <div className="mt-3 space-y-2 text-footnote text-gray-800">
                         <div>
-                          <div className="text-[11px] uppercase tracking-wide text-gray-500">
+                          <div className="text-caption uppercase tracking-wide text-gray-500">
                             Title
                           </div>
                           <div className="font-semibold">{latestVideoPlan.title}</div>
                         </div>
                         <div>
-                          <div className="text-[11px] uppercase tracking-wide text-gray-500">
+                          <div className="text-caption uppercase tracking-wide text-gray-500">
                             Prompt
                           </div>
                           <div className="text-gray-800">{latestVideoPlan.prompt}</div>
                         </div>
                         {latestVideoPlan.note && (
-                          <div className="text-[11px] text-gray-500">
+                          <div className="text-caption text-gray-500">
                             {latestVideoPlan.note}
                           </div>
                         )}
                       </div>
                     </>
                   ) : (
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-footnote text-gray-700 leading-relaxed">
                       Ask for a video (e.g., "Can you draft a Sora video for this?")
                       and we will prep a prompt here.
                     </p>
@@ -640,32 +640,32 @@ export default function ParentChatPanel() {
                 <div className="flex-1 overflow-y-auto">
                   {latestVideoPlan ? (
                     <>
-                      <p className="text-sm text-gray-700 leading-relaxed">
+                      <p className="text-footnote text-gray-700 leading-relaxed">
                         Ready to send to OpenAI Sora once connected. Currently
                         returning a mock prompt only.
                       </p>
-                      <div className="mt-3 space-y-2 text-sm text-gray-800">
+                      <div className="mt-3 space-y-2 text-footnote text-gray-800">
                         <div>
-                          <div className="text-[11px] uppercase tracking-wide text-gray-500">
+                          <div className="text-caption uppercase tracking-wide text-gray-500">
                             Title
                           </div>
                           <div className="font-semibold">{latestVideoPlan.title}</div>
                         </div>
                         <div>
-                          <div className="text-[11px] uppercase tracking-wide text-gray-500">
+                          <div className="text-caption uppercase tracking-wide text-gray-500">
                             Prompt
                           </div>
                           <div className="text-gray-800">{latestVideoPlan.prompt}</div>
                         </div>
                         {latestVideoPlan.note && (
-                          <div className="text-[11px] text-gray-500">
+                          <div className="text-caption text-gray-500">
                             {latestVideoPlan.note}
                           </div>
                         )}
                       </div>
                     </>
                   ) : (
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-footnote text-gray-700 leading-relaxed">
                       Ask for a video (e.g., "Can you draft a Sora video for this?")
                       and we will prep a prompt here.
                     </p>

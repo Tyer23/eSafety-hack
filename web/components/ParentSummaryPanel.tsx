@@ -60,7 +60,7 @@ export default function ParentSummaryPanel({
         <p className="text-subhead text-gray-800 leading-relaxed">
           {data.weeklySummary}
         </p>
-        <div className="mt-4 text-[11px] text-gray-500">
+        <div className="mt-4 text-caption text-gray-500">
           You see{' '}
           <span className="font-semibold text-gray-900">
             behaviours and patterns
@@ -94,7 +94,7 @@ export default function ParentSummaryPanel({
                 key={stat.label}
                 className="rounded-2xl border border-gray-100 bg-white px-4 py-5 shadow-sm"
               >
-                <div className="text-[11px] text-gray-500 flex items-center gap-1.5 mb-3">
+                <div className="text-caption text-gray-500 flex items-center gap-1.5 mb-3">
                   {StatIcon && (
                     <Icon icon={StatIcon} size="sm" className="text-gray-400" />
                   )}
@@ -106,7 +106,7 @@ export default function ParentSummaryPanel({
                   </div>
                   {stat.trend && (
                     <div
-                      className={`text-[11px] font-medium ${
+                      className={`text-caption font-medium ${
                         stat.tone === 'positive'
                           ? 'text-safe'
                           : stat.tone === 'caution'
@@ -119,7 +119,7 @@ export default function ParentSummaryPanel({
                   )}
                 </div>
                 {stat.trend && (
-                  <div className="text-[10px] text-gray-400 mt-1">
+                  <div className="text-caption text-gray-400 mt-1">
                     {stat.tone === 'positive'
                       ? 'vs last week'
                       : stat.tone === 'caution'
@@ -133,10 +133,10 @@ export default function ParentSummaryPanel({
         </div>
 
         <div className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm">
-          <div className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">
+          <div className="text-caption uppercase tracking-wide text-gray-500 mb-1">
             Positive progress
           </div>
-          <ul className="list-disc pl-4 text-sm text-gray-800 space-y-1">
+          <ul className="list-disc pl-4 text-footnote text-gray-800 space-y-1">
             {child?.positiveProgress?.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -144,10 +144,10 @@ export default function ParentSummaryPanel({
         </div>
 
         <div className="rounded-2xl border border-gray-100 bg-white px-3 py-3 shadow-sm">
-          <div className="text-[11px] uppercase tracking-wide text-gray-500 mb-1">
+          <div className="text-caption uppercase tracking-wide text-gray-500 mb-1">
             Gentle flags
           </div>
-          <ul className="list-disc pl-4 text-sm text-gray-800 space-y-1">
+          <ul className="list-disc pl-4 text-footnote text-gray-800 space-y-1">
             {child?.gentleFlags?.length ? (
               child.gentleFlags.map((item) => <li key={item}>{item}</li>)
             ) : (

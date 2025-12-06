@@ -1,6 +1,7 @@
 'use client'
 
 import type { LucideIcon } from 'lucide-react'
+import Image from 'next/image'
 import ParentWordsPanel from '../../../components/ParentWordsPanel'
 import ResponsiveLayout from '../../../components/ResponsiveLayout'
 import { Icon } from '@/components/ui'
@@ -23,6 +24,14 @@ export default function PatternsPage() {
     'Digital Wellbeing': ShieldIcon,
     'Privacy Warnings': LocateIcon,
     'Risk Moments': FlagIcon,
+  }
+
+  // Jellybeat variants for each stat
+  const jellybeatVariants: Record<string, string> = {
+    'Kind Interactions': 'jellybeat-green-full.png',
+    'Privacy Warnings': 'jellybeat-amber-full.png',
+    'Digital Wellbeing': 'jellybeat-rainbow-full.png',
+    'Risk Moments': 'jellybeat-red-full.png',
   }
 
   // Stats cards moved from main dashboard
@@ -68,49 +77,57 @@ export default function PatternsPage() {
         {/* Header - hidden on mobile (shown in MobileHeader instead) */}
         <div className="hidden md:block">
           <h1 className="text-title-2 font-semibold tracking-tight text-gray-900">
-            Patterns &amp; data
+            Behavioral Patterns
           </h1>
-          <p className="mt-2 text-subhead text-gray-600 max-w-xl">
-            When you want to peek under the hood, this view organises{' '}
-            <span className="font-semibold">themes, example phrases,</span> and
-            other signals into clear sections.
+          <p className="mt-2 text-subhead text-gray-600 max-w-2xl">
+            Pattern-based insights show themes in your child&apos;s digital behavior—not individual messages.
+            Use these to start conversations and build understanding together.
           </p>
         </div>
 
         {/* Mobile description - only shown on mobile */}
-        <p className="md:hidden text-sm text-gray-600 leading-relaxed">
-          Themes, example phrases, and other signals organized into clear
-          sections.
+        <p className="md:hidden text-footnote text-gray-600 leading-relaxed">
+          Pattern-based insights to start conversations with your child.
         </p>
 
-        {/* Stats Grid - mobile-first: 2 columns, desktop: 4 columns */}
-        <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
+        {/* Stats Grid - mobile-first: 2 columns, desktop: 2 columns */}
+        <div className="grid grid-cols-2 gap-3 md:gap-4">
           {stats.map((stat) => {
             const StatIcon = statIcons[stat.label]
+            const jellybeatIcon = jellybeatVariants[stat.label]
             return (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4 shadow-sm"
+                className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-card flex flex-col justify-between min-h-[140px]"
               >
-                <div className="mb-2 flex items-center justify-end">
+                {/* Top row: Label on left, change on right */}
+                <div className="flex items-start justify-between">
+                  <div className="text-footnote font-medium text-gray-700 leading-tight flex items-center gap-1.5">
+                    {StatIcon && (
+                      <Icon icon={StatIcon} size="sm" className="text-gray-400" />
+                    )}
+                    <span>{stat.label}</span>
+                  </div>
                   <span
-                    className={`text-[11px] md:text-footnote font-medium ${
+                    className={`text-footnote font-medium ${
                       stat.trend === 'up' ? 'text-safe' : 'text-caution'
                     }`}
                   >
                     {stat.change}
                   </span>
                 </div>
-                <div
-                  className={`text-xl md:text-title-2 font-bold ${stat.color}`}
-                >
-                  {stat.value}
-                </div>
-                <div className="mt-1 text-[11px] md:text-footnote font-medium text-gray-700 leading-tight flex items-center gap-1.5">
-                  {StatIcon && (
-                    <Icon icon={StatIcon} size="sm" className="text-gray-400" />
-                  )}
-                  <span>{stat.label}</span>
+                {/* Bottom row: Large stat on left, icon on right */}
+                <div className="flex items-end justify-between mt-2">
+                  <span className={`text-title-1 md:text-large-title font-bold ${stat.color}`}>
+                    {stat.value}
+                  </span>
+                  <Image
+                    src={`/images/${jellybeatIcon}`}
+                    alt={`${stat.label} mascot`}
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 md:w-12 md:h-12"
+                  />
                 </div>
               </div>
             )

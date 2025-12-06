@@ -18,5 +18,7 @@ export type { ChatBubbleProps } from "./chat-bubble"
 export { Icon } from "./icon"
 export type { IconProps, IconSize } from "./icon"
 
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./accordion"
+
 // Re-export all commonly used icons
 export * from "./icons"

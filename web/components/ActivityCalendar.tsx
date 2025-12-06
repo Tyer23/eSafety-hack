@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DayStatus } from "@/lib/types";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui";
 
 interface ActivityCalendarProps {
   dayStatuses: Record<string, DayStatus>;
@@ -70,98 +71,108 @@ export default function ActivityCalendar({ dayStatuses, childName }: ActivityCal
   };
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h3 className="text-subhead font-semibold text-gray-900">
-            {monthNames[currentMonth]} {currentYear}
-          </h3>
-          <p className="text-footnote text-gray-500">
-            Daily activity overview{childName ? ` for ${childName}` : ""}
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <button
-            onClick={goToPreviousMonth}
-            className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
-          >
-            ←
-          </button>
-          <button
-            onClick={goToNextMonth}
-            className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-7 gap-1">
-        {/* Week day headers */}
-        {weekDays.map((day) => (
-          <div
-            key={day}
-            className="py-2 text-center text-[10px] font-medium text-gray-500"
-          >
-            {day}
-          </div>
-        ))}
-
-        {/* Empty cells for days before month starts */}
-        {Array.from({ length: firstDayOfMonth }).map((_, i) => (
-          <div key={`empty-${i}`} className="aspect-square" />
-        ))}
-
-        {/* Days of the month */}
-        {Array.from({ length: daysInMonth }).map((_, i) => {
-          const date = i + 1;
-          const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(date).padStart(2, "0")}`;
-          const status = dayStatuses[dateKey] || "neutral";
-
-          return (
-            <div
-              key={date}
-              className="relative flex aspect-square items-center justify-center"
-            >
-              {status !== "neutral" ? (
-                <div
-                  className={`h-8 w-8 rounded-full ${getStatusColor(
-                    status
-                  )} flex items-center justify-center text-footnote font-medium text-gray-800 shadow-sm backdrop-blur-sm`}
-                >
-                  {date}
-                </div>
-              ) : (
-                <div
-                  className={`h-8 w-8 flex items-center justify-center text-footnote text-gray-600 ${
-                    isToday(date)
-                      ? "rounded-full border-2 border-blurple font-semibold"
-                      : ""
-                  }`}
-                >
-                  {date}
-                </div>
-              )}
+    <section className="rounded-2xl border border-gray-200 bg-white shadow-card">
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="calendar" className="border-0">
+          <AccordionTrigger className="px-4 sm:px-5 hover:no-underline">
+            <div className="text-left">
+              <h2 className="text-subhead font-semibold text-gray-900">
+                Daily Activity Over Time
+              </h2>
+              <p className="text-footnote text-gray-500 mt-1">
+                {childName ? `${childName}'s activity calendar` : "Activity calendar"} for {monthNames[currentMonth]} {currentYear}
+              </p>
             </div>
-          );
-        })}
-      </div>
+          </AccordionTrigger>
+          <AccordionContent className="px-4 sm:px-5 pb-5">
+            <div className="mb-4 flex items-center justify-end">
+              <div className="flex gap-2">
+                <button
+                  onClick={goToPreviousMonth}
+                  className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
+                  aria-label="Previous month"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={goToNextMonth}
+                  className="rounded-lg border border-gray-200 bg-white px-2 py-1 text-footnote text-gray-600 hover:bg-gray-50"
+                  aria-label="Next month"
+                >
+                  →
+                </button>
+              </div>
+            </div>
 
-      {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-4 text-footnote">
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-safe/60" />
-          <span className="text-gray-700">Excellent day</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-blurple/60" />
-          <span className="text-gray-700">Good day</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-caution/60" />
-          <span className="text-gray-700">Needs attention</span>
-        </div>
-      </div>
-    </div>
+            <div className="grid grid-cols-7 gap-1">
+              {/* Week day headers */}
+              {weekDays.map((day) => (
+                <div
+                  key={day}
+                  className="py-2 text-center text-caption font-medium text-gray-500"
+                >
+                  {day}
+                </div>
+              ))}
+
+              {/* Empty cells for days before month starts */}
+              {Array.from({ length: firstDayOfMonth }).map((_, i) => (
+                <div key={`empty-${i}`} className="aspect-square" />
+              ))}
+
+              {/* Days of the month */}
+              {Array.from({ length: daysInMonth }).map((_, i) => {
+                const date = i + 1;
+                const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(date).padStart(2, "0")}`;
+                const status = dayStatuses[dateKey] || "neutral";
+
+                return (
+                  <div
+                    key={date}
+                    className="relative flex aspect-square items-center justify-center"
+                  >
+                    {status !== "neutral" ? (
+                      <div
+                        className={`h-8 w-8 rounded-full ${getStatusColor(
+                          status
+                        )} flex items-center justify-center text-footnote font-medium text-gray-800 shadow-sm backdrop-blur-sm`}
+                      >
+                        {date}
+                      </div>
+                    ) : (
+                      <div
+                        className={`h-8 w-8 flex items-center justify-center text-footnote text-gray-600 ${
+                          isToday(date)
+                            ? "rounded-full border-2 border-blurple font-semibold"
+                            : ""
+                        }`}
+                      >
+                        {date}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Legend */}
+            <div className="mt-4 flex flex-wrap gap-4 text-footnote">
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-full bg-safe/60" />
+                <span className="text-gray-700">Excellent day</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-full bg-blurple/60" />
+                <span className="text-gray-700">Good day</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-3 w-3 rounded-full bg-caution/60" />
+                <span className="text-gray-700">Needs attention</span>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </section>
   );
 }
