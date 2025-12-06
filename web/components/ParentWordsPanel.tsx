@@ -112,7 +112,7 @@ export default function ParentWordsPanel({
               <AccordionTrigger className="px-4 sm:px-5 hover:no-underline">
                 <div className="text-left">
                   <h2 className="text-subhead font-semibold text-gray-900">
-                    {patternsOpen === "patterns" ? "Hide" : "Show"} Pattern Themes for {childPattern.name}
+                    Pattern Themes for {childPattern.name}
                   </h2>
                   <p className="text-footnote text-gray-500 mt-1">
                     Behavioral patterns detected in digital activity · Updated {childPattern.lastUpdated}
@@ -210,7 +210,7 @@ export default function ParentWordsPanel({
             <AccordionTrigger className="px-4 sm:px-5 hover:no-underline">
               <div className="text-left">
                 <h2 className="text-subhead font-semibold text-gray-900">
-                  {scriptsOpen === "conversations" ? "Hide" : "Show"} Conversation Scripts
+                  Conversation Scripts
                 </h2>
                 <p className="text-footnote text-gray-500 mt-1">
                   Based on eSafety Commissioner guidance for parents
@@ -311,6 +311,8 @@ function ScriptCard({ script }: { script: ConversationScript }) {
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full text-left"
+        aria-expanded={expanded}
+        aria-label={`${expanded ? 'Collapse' : 'Expand'} ${script.title}`}
       >
         <div className="flex items-start justify-between gap-2">
           <div>
