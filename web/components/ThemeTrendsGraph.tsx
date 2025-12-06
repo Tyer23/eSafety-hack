@@ -193,7 +193,7 @@ export default function ThemeTrendsGraph() {
         <div className="flex-1 relative">
           {/* Graph Container with dotted background */}
           <div
-            className="relative rounded-lg border border-slate-200"
+            className="relative rounded-lg border border-gray-200"
             style={{
               height: `${graphHeight}px`,
               backgroundImage: `radial-gradient(circle, #cbd5e1 1px, transparent 1px)`,
@@ -208,7 +208,7 @@ export default function ThemeTrendsGraph() {
               viewBox={`0 0 ${graphWidth} ${graphHeight}`}
               preserveAspectRatio="xMidYMid meet"
             >
-              {/* Grid lines */}
+              {/* Grid lines - using gray-200 equivalent (#E5E5EA) */}
               {[0, 25, 50, 75, 100].map((value) => {
                 const y = getY(value);
                 return (
@@ -218,34 +218,34 @@ export default function ThemeTrendsGraph() {
                     y1={y}
                     x2={graphWidth - padding}
                     y2={y}
-                    stroke="#e2e8f0"
+                    stroke="#E5E5EA"
                     strokeWidth="1"
                     strokeDasharray="2 2"
                   />
                 );
               })}
 
-              {/* Jamie's Line (Alert Red) */}
+              {/* Jamie's Line - using alert color (#FF6B6B) from design system */}
               <path
                 d={jamiePath}
                 fill="none"
-                stroke="#FF6B6B"
+                stroke="var(--alert)"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
 
-              {/* Emma's Line (Blurple) */}
+              {/* Emma's Line - using blurple color (#6B7FFF) from design system */}
               <path
                 d={emmaPath}
                 fill="none"
-                stroke="#6B7FFF"
+                stroke="var(--blurple)"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
 
-              {/* Data points for Jamie */}
+              {/* Data points for Jamie - using alert color */}
               {data.map((d, i) => {
                 const x = getX(i);
                 const y = getY(d.jamie);
@@ -255,13 +255,13 @@ export default function ThemeTrendsGraph() {
                     cx={x}
                     cy={y}
                     r="4"
-                    fill="#FF6B6B"
+                    fill="var(--alert)"
                     className="drop-shadow-sm"
                   />
                 );
               })}
 
-              {/* Data points for Emma */}
+              {/* Data points for Emma - using blurple color */}
               {data.map((d, i) => {
                 const x = getX(i);
                 const y = getY(d.emma);
@@ -271,7 +271,7 @@ export default function ThemeTrendsGraph() {
                     cx={x}
                     cy={y}
                     r="4"
-                    fill="#6B7FFF"
+                    fill="var(--blurple)"
                     className="drop-shadow-sm"
                   />
                 );

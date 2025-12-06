@@ -107,7 +107,7 @@ export default function ActivityCalendar({ dayStatuses, childName }: ActivityCal
               {weekDays.map((day) => (
                 <div
                   key={day}
-                  className="py-2 text-center text-[10px] font-medium text-gray-500"
+                  className="py-2 text-center text-caption font-medium text-gray-500"
                 >
                   {day}
                 </div>

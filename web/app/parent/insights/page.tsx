@@ -30,7 +30,7 @@ export default function InsightsPage() {
         </div>
 
         {/* Mobile description - only shown on mobile */}
-        <p className="md:hidden text-sm text-gray-600 leading-relaxed">
+        <p className="md:hidden text-footnote text-gray-600 leading-relaxed">
           A calm overview of how things are going online, focused on{" "}
           <span className="font-semibold">trends and strengths</span>, not
           single scary moments.
