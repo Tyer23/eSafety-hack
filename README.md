@@ -182,9 +182,18 @@ eSafety-hack/
 
 ## 📚 Documentation
 
+- **[Documentation Index](docs/README.md)** - Central documentation hub
+- **[AI Safety Guide](docs/AI-SAFETY-GUIDE.md)** - Product vision & philosophy
+- **[Backend Docs](backend/docs/)** - ML API documentation
+  - [Startup Guide](backend/docs/STARTUP.md)
+  - [Hugging Face Setup](backend/docs/HUGGINGFACE_SETUP.md)
+  - [Data Pipeline](backend/docs/DATA_PIPELINE.md)
+  - [Testing](backend/docs/TESTING.md)
+- **[Frontend Docs](web/docs/)** - Web app documentation
+  - [Chat System](web/docs/CHAT_SYSTEM.md)
+  - [Data Flow](web/docs/CURRENT_DATA_FLOW.md)
+  - [ML Integration](web/docs/ML_INTEGRATION_SUMMARY.md)
 - **[Design System](web/.design-system/design-system.md)** - UI components, tokens, patterns
-- **[Backend Setup](backend/README_STARTUP.md)** - ML API startup guide
-- **[AI Safety Guide](AI%20Safety%20Guide%20for%20Children.md)** - Product vision & philosophy
 - **[API Docs](http://localhost:8000/docs)** - Interactive API documentation (when backend is running)
 
 ## 🧪 Testing

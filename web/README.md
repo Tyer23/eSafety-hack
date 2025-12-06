@@ -350,7 +350,15 @@ npm run build
 - Verify API response types match backend
 ```
 
-## 📚 Demo Pages
+## 📚 Additional Documentation
+
+- **[Chat System](docs/CHAT_SYSTEM.md)** - Parent chat interface and session management
+- **[Data Flow](docs/CURRENT_DATA_FLOW.md)** - How data flows through the application
+- **[ML Integration](docs/ML_INTEGRATION_SUMMARY.md)** - ML scores integration details
+- **[ML Algorithms](docs/ML_SCORES_ALGORITHMS.md)** - Score calculation algorithms
+- **[Design System](. design-system/design-system.md)** - Complete design system guide
+
+## 📱 Demo Pages
 
 - `/` - Login page with hero section
 - `/parent` - Chat interface with AI assistant
