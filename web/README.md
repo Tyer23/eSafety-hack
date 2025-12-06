@@ -356,7 +356,7 @@ npm run build
 - **[Data Flow](docs/CURRENT_DATA_FLOW.md)** - How data flows through the application
 - **[ML Integration](docs/ML_INTEGRATION_SUMMARY.md)** - ML scores integration details
 - **[ML Algorithms](docs/ML_SCORES_ALGORITHMS.md)** - Score calculation algorithms
-- **[Design System](. design-system/design-system.md)** - Complete design system guide
+- **[Design System](.design-system/design-system.md)** - Complete design system guide
 
 ## 📱 Demo Pages
 
