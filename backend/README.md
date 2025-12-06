@@ -1,75 +1,214 @@
-# 🛡️ Kid Message Safety & Communication Coach
+# KindNet ML Backend
 
-> **"We help you say it better, not stop you from saying it."**
+> Python FastAPI backend providing AI-powered message analysis and feedback for children
 
-AI-powered system helping children (ages 8-13) improve their digital communication by detecting harmful messages and providing constructive, age-appropriate feedback using Hugging Face LLM.
-
-## ✨ Features
-
-- **🔍 Smart Detection**: Catches profanity, threats, insults, and toxic patterns
-- **🚦 Three-Tier Classification**: GREEN (safe), YELLOW (needs work), RED (harmful)
-- **💬 Personalized Feedback**: Uses Hugging Face LLM for constructive, tailored responses
-- **👶 Age-Appropriate**: Tailored for ages 8-10 and 11-13
-- **⚡ Fast & Private**: Works locally, no data storage
+Real-time text classification and educational feedback system using Hugging Face transformers and pattern-based analysis.
 
 ## 🚀 Quick Start
 
 ```bash
-# 1. Install dependencies
-pip install -r requirements.txt
+# Start the server (recommended)
+cd backend
+./start.sh
 
-# 2. Set up Hugging Face API key (get free token from https://huggingface.co/settings/tokens)
-# Create a .env file in the project root:
-echo "HF_API_KEY=your_token_here" > .env
-
-# 3. Run interactive mode
-python main.py
-
-# Or run demo
-python main.py --demo
-
-# Or start API server
-python main.py --api
+# Expected output:
+# ✅ Started server on http://0.0.0.0:8000
+# 📚 API docs: http://localhost:8000/docs
 ```
 
-## 📊 Example Output
+The server will be available at **http://localhost:8000**
+
+## 📋 Prerequisites
+
+- **Python** 3.8+
+- **pip** (Python package manager)
+- **Optional**: Hugging Face API key for better AI responses
+
+## 🎨 What This Does
+
+The backend analyzes children's messages and provides:
+
+- **Three-tier classification**: 🟢 GREEN (safe), 🟡 YELLOW (caution), 🔴 RED (harmful)
+- **Real-time feedback**: Age-appropriate guidance on improving language
+- **Pattern detection**: Profanity, toxicity, bullying, threats, privacy risks
+- **Emotion analysis**: Joy, anger, sadness, fear, surprise
+- **Intent recognition**: Positive, negative, questions, sharing
+
+## 🏗️ Architecture
 
 ```
-📝 Message: fuck you go die
-
-🚫 Classification: RED
-
-💬 I can tell you're feeling really frustrated right now. Those words 
-   can be really hurtful and aren't okay to use, even when we're upset.
-   Let's find a better way to express what you're feeling.
-
-💡 Better ways to say this:
-   • I'm really frustrated right now
-   • This is making me upset
-   • I need to take a break
+┌─────────────────────────────────────────────────────────┐
+│                   KindNet ML Backend                    │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  FastAPI Server (Port 8000)                            │
+│  ├── /analyze     - Full message analysis              │
+│  ├── /classify    - Quick classification only          │
+│  ├── /health      - Health check                       │
+│  └── /docs        - Interactive API docs               │
+│                                                         │
+│  MessageProcessor (Core Pipeline)                      │
+│  ├── Preprocessor      - Text cleaning                │
+│  ├── Analyzers                                         │
+│  │   ├── Toxicity      - Profanity, hate speech       │
+│  │   ├── Patterns      - Threats, bullying, privacy   │
+│  │   └── Emotion       - Emotional state              │
+│  ├── Classifier        - GREEN/YELLOW/RED decision    │
+│  ├── FeedbackGenerator - AI-powered responses         │
+│  └── ResponseCache     - Performance optimization     │
+│                                                         │
+│  Hugging Face Integration (Optional)                  │
+│  └── LLM for personalized feedback                    │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
 ```
 
-## 🔌 REST API
+## 📁 Project Structure
+
+```
+backend/
+├── main.py                    # Entry point (CLI, demo, API modes)
+├── requirements.txt           # Python dependencies
+├── start.sh                   # Quick start script
+│
+├── src/
+│   ├── pipeline.py            # MessageProcessor (core)
+│   ├── preprocessor.py        # Text cleaning
+│   ├── models.py              # Data models & types
+│   │
+│   ├── analyzer/              # Analysis modules
+│   │   ├── toxicity.py        # Profanity & hate detection
+│   │   ├── patterns.py        # Threat, bullying patterns
+│   │   └── emotion.py         # Emotion & intent analysis
+│   │
+│   ├── classifier/            # Classification logic
+│   │   └── decision_engine.py # GREEN/YELLOW/RED rules
+│   │
+│   ├── feedback/              # Feedback generation
+│   │   ├── generator.py       # Main feedback logic
+│   │   ├── hf_llm_generator.py # Hugging Face LLM
+│   │   └── templates.py       # Fallback templates
+│   │
+│   ├── api/                   # FastAPI application
+│   │   └── app.py             # API routes & endpoints
+│   │
+│   └── utils/                 # Utilities
+│       ├── config.py          # Configuration
+│       └── logger.py          # Logging
+│
+├── tests/                     # Test suite
+│   ├── test_classification.py
+│   ├── test_pipeline.py
+│   └── ...
+│
+├── examples/                  # Usage examples
+│   ├── basic_usage.py         # Direct pipeline usage
+│   └── api_demo.py            # API client example
+│
+└── docs/                      # Documentation
+    ├── STARTUP.md             # Detailed startup guide
+    ├── HUGGINGFACE_SETUP.md   # LLM integration setup
+    ├── DATA_PIPELINE.md       # Pipeline architecture
+    └── TESTING.md             # Testing guide
+```
+
+## 🔌 API Endpoints
+
+### POST /analyze
+Full analysis with classification and feedback.
+
+**Request:**
+```json
+{
+  "message": "You're so stupid",
+  "age_range": "8-10"
+}
+```
+
+**Response:**
+```json
+{
+  "classification": "RED",
+  "confidence": 0.95,
+  "feedback": "Those words can hurt someone's feelings...",
+  "analysis": {
+    "toxicity": {
+      "score": 0.87,
+      "has_profanity": false,
+      "severity": "high"
+    },
+    "detected_issues": ["personal_attack", "harsh_criticism"],
+    "emotion": {
+      "primary_emotion": "anger",
+      "intensity": "high"
+    },
+    "intent": "negative"
+  },
+  "metadata": {
+    "processing_time_ms": 234,
+    "cached": false
+  }
+}
+```
+
+### POST /classify
+Quick classification only (no feedback).
+
+**Request:**
+```json
+{
+  "message": "Hello friend!"
+}
+```
+
+**Response:**
+```json
+{
+  "classification": "GREEN",
+  "confidence": 0.98
+}
+```
+
+### GET /health
+Health check endpoint.
+
+**Response:**
+```json
+{
+  "status": "healthy"
+}
+```
+
+### Interactive Docs
+Visit **http://localhost:8000/docs** when server is running for full API documentation with try-it-out functionality.
+
+## 🎯 Classification Rules
+
+| Level | Criteria | Example Messages |
+|-------|----------|------------------|
+| 🟢 **GREEN** | Safe, constructive, positive | "Hello!", "Can we try again?", "That's cool!" |
+| 🟡 **YELLOW** | Dismissive, mild criticism, needs improvement | "Whatever", "This is boring", "You're annoying" |
+| 🔴 **RED** | Profanity, threats, attacks, harmful content | "You're stupid", "I hate you", "Go die" |
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create `.env` file in `backend/` directory:
 
 ```bash
-# Start server
-python main.py --api
+# Optional: Hugging Face API key for better AI responses
+# Get free token: https://huggingface.co/settings/tokens
+HF_API_KEY=your_token_here
 
-# Or use uvicorn directly
-uvicorn src.api.app:app --reload
-
-# Analyze a message
-curl -X POST http://localhost:8000/analyze \
-  -H "Content-Type: application/json" \
-  -d '{"message": "You are stupid"}'
-
-# Quick classify
-curl -X POST http://localhost:8000/classify \
-  -H "Content-Type: application/json" \
-  -d '{"message": "fuck off"}'
+# Optional: Override defaults
+HF_MODEL_ID=mistralai/Mistral-7B-Instruct-v0.2  # LLM model to use
+API_PORT=8000                                    # Server port
+DEVICE=cpu                                       # cpu or cuda
+DEFAULT_AGE_RANGE=8-10                          # 8-10 or 11-13
 ```
 
-API docs: http://localhost:8000/docs
+**Note**: The system works without `HF_API_KEY` using template-based feedback.
 
 ## 🧪 Testing
 
@@ -82,78 +221,154 @@ python -m pytest tests/test_classification.py -v
 
 # With coverage
 python -m pytest tests/ --cov=src
+
+# Quick verification
+python main.py --demo
 ```
 
-## 📁 Project Structure
+See [docs/TESTING.md](docs/TESTING.md) for detailed testing guide.
 
-```
-kids_helper/
-├── src/
-│   ├── analyzer/        # Toxicity, emotion, pattern detection
-│   ├── classifier/      # Decision engine (GREEN/YELLOW/RED)
-│   ├── feedback/        # Feedback generation
-│   ├── api/             # FastAPI REST interface
-│   ├── utils/           # Config, logging
-│   ├── models.py        # Data models
-│   ├── pipeline.py      # Main processor
-│   └── preprocessor.py  # Text cleaning
-├── tests/               # Test suite
-├── examples/            # Usage examples
-├── main.py              # Entry point
-└── requirements.txt
-```
+## 💻 Usage Examples
 
-## 🎯 Classification Rules
-
-| Level | Triggers | Examples |
-|-------|----------|----------|
-| 🟢 GREEN | Safe, constructive | "Hello!", "Can we try again?" |
-| 🟡 YELLOW | Dismissive, mild criticism | "Whatever", "This is boring" |
-| 🔴 RED | Profanity, threats, attacks | "fuck you", "go die", "you're stupid" |
-
-## ⚙️ Configuration
-
-Environment variables (create `.env` file):
+### CLI Interactive Mode
 ```bash
-# Required: Hugging Face API key (get from https://huggingface.co/settings/tokens)
-HF_API_KEY=your_token_here
-
-# Optional: Override default model
-HF_MODEL_ID=mistralai/Mistral-7B-Instruct-v0.2
-
-# Optional: Other settings
-DEVICE=cpu              # cpu or cuda
-DEFAULT_AGE_RANGE=8-10  # 8-10 or 11-13
-API_PORT=8000
+python main.py
 ```
 
-**Note**: If `HF_API_KEY` is not set, the system will automatically fall back to template-based feedback.
+### Demo Mode
+```bash
+python main.py --demo
+```
 
-## 🤖 Hugging Face LLM
+### API Server
+```bash
+python main.py --api
+# or
+./start.sh
+```
 
-The system uses Hugging Face's free Inference API for personalized feedback:
+### Python Integration
+```python
+from src.pipeline import MessageProcessor
 
-- **Free tier**: 1,000 requests/month (can request more)
-- **No credit card required**
-- **Fast and reliable**: ~2-5s latency per request
+processor = MessageProcessor()
+result = processor.process("Hello friend!", age_range="8-10")
 
-See [docs/HUGGINGFACE_SETUP.md](docs/HUGGINGFACE_SETUP.md) for detailed setup instructions.
+print(result.classification)  # GREEN
+print(result.feedback)         # None (GREEN messages don't need feedback)
+```
+
+### API Client
+```python
+import requests
+
+response = requests.post(
+    "http://localhost:8000/analyze",
+    json={
+        "message": "You're stupid",
+        "age_range": "8-10"
+    }
+)
+
+data = response.json()
+print(data["classification"])  # RED
+print(data["feedback"])        # Educational feedback
+```
+
+See [examples/](examples/) directory for more examples.
+
+## 🐛 Troubleshooting
+
+### Server Won't Start
+
+```bash
+# Check if port 8000 is in use
+lsof -i :8000
+
+# Install dependencies manually
+python3 -m pip install -r requirements.txt
+
+# Try manual start
+python3 main.py --api
+```
+
+### Module Not Found Errors
+
+```bash
+# Ensure you're in the backend directory
+cd backend
+
+# Install all dependencies
+python3 -m pip install -r requirements.txt
+```
+
+### Python Version Issues
+
+```bash
+# Check Python version (need 3.8+)
+python3 --version
+
+# Install Python 3.8+ if needed
+brew install python3  # macOS
+```
+
+### Hugging Face API Errors
+
+- **Symptom**: Feedback generation fails
+- **Cause**: Invalid or missing HF_API_KEY
+- **Fix**: System automatically falls back to template-based feedback
+- **Optional**: Get a free API key at https://huggingface.co/settings/tokens
+
+## 📚 Documentation
+
+- **[Startup Guide](docs/STARTUP.md)** - Detailed installation and startup instructions
+- **[Hugging Face Setup](docs/HUGGINGFACE_SETUP.md)** - LLM integration guide
+- **[Data Pipeline](docs/DATA_PIPELINE.md)** - Pipeline architecture details
+- **[Testing Guide](docs/TESTING.md)** - Testing and validation
+
+## 🎯 Key Features
+
+### For Children
+- Real-time feedback as they type
+- Educational guidance, not punishment
+- Age-appropriate language (8-10, 11-13)
+- Suggestions for better phrasing
+
+### For Parents
+- Pattern-based insights
+- Privacy-first analysis
+- No raw message storage
+- Weekly behavioral themes
+
+### Technical
+- Fast response times (<500ms typical)
+- Response caching for performance
+- Graceful fallbacks (templates if LLM unavailable)
+- RESTful API with OpenAPI docs
+- Comprehensive test coverage
 
 ## 🔒 Privacy
 
-- No message storage
-- Local processing (ML classification models run on your machine)
-- Hugging Face API calls for feedback generation (no data stored by HF)
+- **No data storage**: Messages are analyzed in real-time and not stored
+- **Local processing**: ML models run on your machine
+- **Optional cloud**: Hugging Face API calls only if API key provided
+- **Pattern-only reporting**: Parents see themes, not individual messages
 
-## 📖 Use Cases
+## 👥 Team
 
-- Chat app moderation
-- Gaming platforms
-- Educational tools
-- Parental controls
-- Teaching digital citizenship
+**Team MLTPY**:
+- **Mel** - Design & Frontend
+- **Lucas** - Research & ML
+- **Prags** - Systems, ML, Full Stack
+- **Tyler** - Infrastructure
+- **Yulei** - Data, ML, Full Stack
+
+Built for the **eSafety Hackathon**.
+
+## 📄 License
+
+MIT License
 
 ---
 
-Made with ❤️ to help kids communicate better online.
-
+**Part of the KindNet project** - [See main README](../README.md)
